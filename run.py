@@ -99,7 +99,7 @@ def difficulty():
             cls()
             print(f"\nI'm sorry {difficulty} is not a valid entry.\n")
     
-    print(f"you typed {difficulty}\nThe board will be {board_size} X {board_size}\nThere will be {no_mines} mines")
+    #print(f"you typed {difficulty}\nThe board will be {board_size} X {board_size}\nThere will be {no_mines} mines")
 
     play(board_size, no_mines)
 
@@ -118,6 +118,12 @@ def play(board_size, no_mines):
     If game status lost inform user and break out of function.  
     """
     print(f"This is the play function confirming the board size is {board_size} and the number of mines {no_mines} has been pulled through")
+
+    board = GameLayout(board_size, no_mines)
+    for row in board.empty_board: #used for testing
+        print(row) #used for testing
+    
+
 
 def win(board):
     """ Check if user has won
@@ -138,7 +144,7 @@ class GameLayout:
         self.board_size = board_size
         self.no_mines = no_mines
 
-        # self.empty_board = self.set_board()
+        self.empty_board = self.set_board()
         # self.mines_board = self.add_mines()
         # self.final_board = self.add_values()
 
@@ -149,13 +155,17 @@ class GameLayout:
         Create list of lists (list length = self.board_size)
         Underscore each list item.
         """
-        pass
+        grid = [["_" for col in range(self.board_size)] for row in range(self.board_size)]
+    
+        return grid
 
     def add_mines(self):
         """
         Use import random to run through empty board (nested for loop) to place mines randomly
         In loop check that the mine is not being placed on another mine. If it is bypass it and continue the for loop.
         """
+
+
         pass
 
     def add_values(self):
