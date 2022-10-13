@@ -5,19 +5,24 @@ To use google sheets api will need to install
 Instruction video (https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+LS101+2021_T1/courseware/293ee9d8ff3542d3b877137ed81b9a5b/071036790a5642f9a6f004f9888b6a45/?child=first)
 """
 
+import os #used to clear console
+
+def cls(): # function to clear console for cross-platform: https://stackoverflow.com/questions/517970/how-to-clear-the-interpreter-console
+    os.system('cls' if os.name=='nt' else 'clear')
+
+
 def start_game():
-    """ Opens the game
-    Introduce game
-    Offer play or rules through user input
-        - show rules (r)
-            - return with anykey
+    """ Opens the game - done
+    Introduce game - done
+    Offer play or rules through user input - done
+        - call rules function (r)
         - call difficulty function (p)
         - error with feedback for invalid enteries
-    Call difficulty function to define board_size and no_mines variables
-    Call play function with defined valriables as arguments
+    Call difficulty function to define board_size and no_mines variables - done
+    Call play function with defined valriables as arguments - done
     Function to recycle on play function completion
     """
-
+    cls()
     print("""
                     _________
                   /  _______  \ 
@@ -34,7 +39,8 @@ def start_game():
 
     home_page = True
     while home_page:
-        intro_nav = input("Enter the 'P' to play,\n or the 'R' rules\n").lower()
+        intro_nav = input("Enter 'P' to play,\nor enter 'R' to see the rules.\n\n").lower()
+        cls()
         if intro_nav == "r":
             home_page = False
             rules()
@@ -42,11 +48,21 @@ def start_game():
             home_page = False
             difficulty()
         else:
-            print("Your input was not valid.")
+            print(f"I'm sorry {intro_nav} is not a valid entry.\n")
 
-def rules():
-    print("rules")
+def rules(): 
+    """ Present rules to user
+    Set anykey to return to inital page
+    """
+    cls()
+    rules = True
+    print("""Game Objective:\n\n
+    **** type in the rules ***
+    """)
+    leave_rules = input("Enter anykey to reurn to the main page\n\n").lower()
+    cls()
 
+    start_game()
 
 def difficulty():
     """ Define difficulty of the game
@@ -57,7 +73,37 @@ def difficulty():
         - hard(h) will return (20, 12) 
         - error with feedback for invalid enteries
     """
-    print("difficulty")
+    cls()
+    evaluating_dificulty = True
+    while evaluating_dificulty:
+        print("There are 3 difficulty settings in this game")
+        print("easy - This will present you with a 6X6 grid and there will be 5 hidden mines")
+        print("medium - This will present you with a 9X9 grid and there will be 10 hidden mines")
+        print("easy - This will present you with a 12X12 grid and there will be 20 hidden mines\n")
+        print("Please enter the difficulty you would like to play:")
+        difficulty = input("Enter 'e' for easy,\nenter 'm' or medium,\nor enter 'h' for hard.\n").lower()
+
+        if difficulty == "e":
+            board_size = 6
+            no_mines = 5
+            evaluating_dificulty = False
+        elif difficulty == "m":
+            board_size = 9
+            no_mines = 10
+            evaluating_dificulty = False
+        elif difficulty == "h":
+            board_size = 12
+            no_mines = 20
+            evaluating_dificulty = False
+        else:
+            cls()
+            print(f"\nI'm sorry {difficulty} is not a valid entry.\n")
+    
+    print(f"you typed {difficulty}\nThe board will be {board_size} X {board_size}\nThere will be {no_mines} mines")
+
+    play(board_size, no_mines)
+
+
 
 def play(board_size, no_mines):
     """ Initiate game play
@@ -71,7 +117,7 @@ def play(board_size, no_mines):
         - If win status is True inform user and break out of function.
     If game status lost inform user and break out of function.  
     """
-    pass
+    print(f"This is the play function confirming the board size is {board_size} and the number of mines {no_mines} has been pulled through")
 
 def win(board):
     """ Check if user has won
