@@ -6,6 +6,8 @@ Instruction video (https://learn.codeinstitute.net/courses/course-v1:CodeInstitu
 """
 
 import os #used to clear console
+import random # used to assign random mine positions
+
 
 def cls(): # function to clear console for cross-platform: https://stackoverflow.com/questions/517970/how-to-clear-the-interpreter-console
     os.system('cls' if os.name=='nt' else 'clear')
@@ -120,8 +122,6 @@ def play(board_size, no_mines):
     print(f"This is the play function confirming the board size is {board_size} and the number of mines {no_mines} has been pulled through")
 
     board = GameLayout(board_size, no_mines)
-    for row in board.empty_board: #used for testing
-        print(row) #used for testing
     
 
 
@@ -144,8 +144,8 @@ class GameLayout:
         self.board_size = board_size
         self.no_mines = no_mines
 
-        self.empty_board = self.set_board()
-        # self.mines_board = self.add_mines()
+        self.board_layout = self.set_board()
+        self.add_mines()
         # self.final_board = self.add_values()
 
         self.guesses = []
@@ -161,12 +161,22 @@ class GameLayout:
 
     def add_mines(self):
         """
-        Use import random to run through empty board (nested for loop) to place mines randomly
-        In loop check that the mine is not being placed on another mine. If it is bypass it and continue the for loop.
+        Use import random to select random coordinates in the empty board_layout and place mines
+        Check coordinated to ensure a mine is not being placed on another mine. 
+        If it is bypass it and continue the while loop.
         """
-
-
-        pass
+        mines_placed = 0
+        while mines_placed < self.no_mines:
+            rand_row = random.randint(0, self.board_size - 1)
+            rand_col = random.randint(0, self.board_size - 1)
+            if self.board_layout[rand_row][rand_col] == "*":
+                continue
+            elif self.board_layout[rand_row][rand_col] == "_":
+                self.board_layout[rand_row][rand_col] = "*"
+                mines_placed += 1
+        
+        for row in self.board_layout: # for testing
+            print(row) # for testing
 
     def add_values(self):
         """
