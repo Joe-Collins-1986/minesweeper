@@ -5,7 +5,6 @@ To use google sheets api will need to install
 Instruction video (https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+LS101+2021_T1/courseware/293ee9d8ff3542d3b877137ed81b9a5b/071036790a5642f9a6f004f9888b6a45/?child=first)
 """
 
-
 def start_game():
     """ Opens the game
     Introduce game
@@ -18,7 +17,35 @@ def start_game():
     Call play function with defined valriables as arguments
     Function to recycle on play function completion
     """
-    pass
+
+    print("""
+                    _________
+                  /  _______  \ 
+                 /  /       \  \ 
+                /  / warning \  \ 
+               /  /   mines   \  \ 
+              /  /    ahead!   \  \ 
+             /  /_______________\  \ 
+             \_____________________/
+
+              WELCOME TO MINSWEEPER     
+        """)
+
+
+    home_page = True
+    while home_page:
+        intro_nav = input("Enter the 'P' to play,\n or the 'R' rules\n").lower()
+        if intro_nav == "r":
+            home_page = False
+            rules()
+        elif intro_nav == "p":
+            home_page = False
+            difficulty()
+        else:
+            print("Your input was not valid.")
+
+def rules():
+    print("rules")
 
 
 def difficulty():
@@ -30,7 +57,7 @@ def difficulty():
         - hard(h) will return (20, 12) 
         - error with feedback for invalid enteries
     """
-    pass
+    print("difficulty")
 
 def play(board_size, no_mines):
     """ Initiate game play
@@ -113,3 +140,4 @@ class GameLayout:
         pass
 
 
+start_game()
