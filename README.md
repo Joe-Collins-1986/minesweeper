@@ -75,17 +75,18 @@ Happy coding!
 
 
 # Minesweeper Project Overview
-   ## Live Project [*(link to live project)*](xxxx)
+   ## Live Project [*(link to live project)*](xxxx) #ADD HEROKU LINK
 
    ## Project Introduction
-   (**Note:** this is a fictitious client generated for the purpose of developing this project to test my HTML, CSS and JavaScript essentials.)
+   (**Note:** The aim of this project will be to develop the classic game 'Minesweeper'. This game will be devloped using Python and will be deployed using mock terminal on the Heroku platform.
 
-   This website has been designed to provide users with simple yet fun Hangman game to play when bored. It has been created with several topics which can be accessed via the settings section of the website.
+   Minesweeper is a challanging single player logic game where the user must select tiles on a grid without hitting a mine. If the user successfully selects a tile without hitting a mine then the tile will provide information as to whether a mine or multiple mines are hidden within its neighbouring tiles. This is presented in the form of numbers, a tile with 3 mines in neighbouring tiles will present the user with the number 3.
 
-   The client requesting this website is using this as the first step in creating a site that will house a number of games and puzzles which he will later look to monetise through the use of advertisements.
+   If the user selects all tiles on the grid without mines they win the game, however if they land on a tile hiding a mine the game is lost.
+
+   If you would like to learn more about Minsweeper you can fine more information here: https://en.wikipedia.org/wiki/Minesweeper_(video_game)
 
    <br>
-
 
 # Responsive Review
 
