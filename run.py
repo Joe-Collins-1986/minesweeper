@@ -100,8 +100,6 @@ def difficulty():
         else:
             cls()
             print(f"\nI'm sorry {difficulty} is not a valid entry.\n")
-    
-    #print(f"you typed {difficulty}\nThe board will be {board_size} X {board_size}\nThere will be {no_mines} mines")
 
     play(board_size, no_mines)
 
@@ -146,7 +144,7 @@ class GameLayout:
 
         self.board_layout = self.set_board()
         self.add_mines()
-        # self.final_board = self.add_values()
+        self.add_values()
 
         self.guesses = []
     
@@ -183,8 +181,69 @@ class GameLayout:
         Loop through grid checking each cells neighboring cells. For each neighboring cell with a mine increase mines_detected variable by 1.
         This number will then be assigned to the centeral cell
         """
-        mines_detected = 0
-        pass
+
+        # place max min to stop going outside of board perameters
+        # https://stackoverflow.com/questions/5996881/how-to-limit-a-number-to-be-within-a-specified-range-python
+
+        
+        """
+        for row in range(self.board_size):
+            for col in range(self.board_size):
+                
+                mines_detected = 0
+                for r in range(max(0, row-1), min(self.board_size - 1, row+1)):
+                    print(row, r)
+                    for c in range(max(0, col-1), min(self.board_size - 1, col+1)):
+
+                        if r == row and c == col:
+                            continue
+                        elif self.board_layout[r][c] == "*":
+                            mines_detected += 1
+
+                print(mines_detected)
+
+                self.board_layout[row][col] = mines_detected
+
+        """
+
+        """
+        Can't get this to work
+        The above needs to be changed so it is not looping through row and coloumn
+        Below needs to be changed so the max min don;t result in multiple counts.
+        """
+
+        for row in range(self.board_size):
+            for col in range(self.board_size):
+
+                mines_detected = 0
+                if self.board_layout[max(0, row-1)][max(0, col-1)] == "*":
+                        mines_detected +=1
+                if self.board_layout[max(0, row-1)][col] == "*":
+                    mines_detected +=1
+                if self.board_layout[max(0, row-1)][min(self.board_size - 1, col+1)] == "*":
+                    mines_detected +=1
+                if self.board_layout[row][max(0, col-1)] == "*":
+                    mines_detected +=1
+                if self.board_layout[row][min(self.board_size - 1, col+1)] == "*":
+                    mines_detected +=1
+                if self.board_layout[min(self.board_size - 1, row+1)][max(0, col-1)] == "*":
+                    mines_detected +=1
+                if self.board_layout[min(self.board_size - 1, row+1)][col] == "*":
+                    mines_detected +=1
+                if self.board_layout[min(self.board_size - 1, row+1)][min(self.board_size - 1, col+1)] == "*":
+                    mines_detected +=1
+
+                if self.board_layout[row][col] == "*":
+                    continue
+                
+                self.board_layout[row][col] = mines_detected
+            
+
+        print("\n.............\n") # for testing
+        for i in self.board_layout: # for testing
+            print(i) # for testing
+
+
 
     def selected_space(self):
         """
