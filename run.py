@@ -148,6 +148,7 @@ class GameLayout:
         self.add_mines()
         self.add_values()
 
+        self.row_seperator = self.underscore()
         self.guesses = []
     
     def set_board(self):
@@ -216,9 +217,17 @@ class GameLayout:
         """
         pass
 
+
     def underscore(self):
-        underscore_str = "_".join(self.board_size)
-        print(underscore_str)
+        """
+        Create dividers between cells dependant on the board_size
+        """
+        underscore_str = "__|"
+        for cell in range(self.board_size-2):
+            underscore_str = underscore_str + "___|"
+        underscore_str = underscore_str + "__"
+        return underscore_str
+
 
     def __str__(self):
         """
@@ -228,19 +237,12 @@ class GameLayout:
         """
         user_board = grid = [["_" for col in range(self.board_size)] for row in range(self.board_size)]
 
-        str_layout = [' | '.join(item) for item in user_board]
-        grid_layout = '\n'.join(str_layout)
-        self.underscore()
+        str_layout = [" | ".join(item) for item in user_board]
+        grid_layout = f"\n{self.row_seperator}\n".join(str_layout)
 
-        print("\n........................\n")
+        print("\n")
+        return grid_layout
 
-
-        
-        print(user_board)
-        print("\n........................\n")
-        print(str_layout)
-        print("\n........................\n")
-        print(grid_layout)
 
 
 start_game()
