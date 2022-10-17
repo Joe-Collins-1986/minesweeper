@@ -120,6 +120,8 @@ def play(board_size, no_mines):
     print(f"This is the play function confirming the board size is {board_size} and the number of mines {no_mines} has been pulled through")
 
     board = GameLayout(board_size, no_mines)
+
+    print(board)
     
 
 
@@ -184,7 +186,6 @@ class GameLayout:
         # place max min to stop going outside of board perameters
         # https://stackoverflow.com/questions/5996881/how-to-limit-a-number-to-be-within-a-specified-range-python
 
-
         for row in range(self.board_size):
             for col in range(self.board_size):
                 
@@ -215,13 +216,31 @@ class GameLayout:
         """
         pass
 
+    def underscore(self):
+        underscore_str = "_".join(self.board_size)
+        print(underscore_str)
+
     def __str__(self):
         """
         Called when class is printed
         Create a user_board
         Run through the recorded guesses and for each coordinate on the user board make it equal to the final board
         """
-        pass
+        user_board = grid = [["_" for col in range(self.board_size)] for row in range(self.board_size)]
+
+        str_layout = [' | '.join(item) for item in user_board]
+        grid_layout = '\n'.join(str_layout)
+        self.underscore()
+
+        print("\n........................\n")
+
+
+        
+        print(user_board)
+        print("\n........................\n")
+        print(str_layout)
+        print("\n........................\n")
+        print(grid_layout)
 
 
 start_game()
