@@ -70,7 +70,7 @@ def difficulty():
     """ Define difficulty of the game
     Explain difficulty settings
     Take user input
-        - easy(e) will return (5, 7) 
+        - easy(e) will return (5, 6) 
         - medium(m) will return (10, 9) 
         - hard(h) will return (20, 12) 
         - error with feedback for invalid enteries
@@ -121,8 +121,11 @@ def play(board_size, no_mines):
 
     board = GameLayout(board_size, no_mines)
 
-    print(board)
-    
+    game_active = True
+    while game_active:
+        print(board)
+        guess = input("Which coordinates would you like to try?")
+        board.selected_space(guess)
 
 
 def win(board):
@@ -131,6 +134,11 @@ def win(board):
     If it has return True else return False
     """
     pass
+
+
+
+
+
 
 class GameLayout:
     """
@@ -207,7 +215,7 @@ class GameLayout:
             print(i) # for testing
 
 
-    def selected_space(self):
+    def selected_space(self, guess):
         """
         Add guess to self.guesses for a record of all guesses
         Check coordinates against final board
@@ -215,9 +223,39 @@ class GameLayout:
             - if > 0 return true
             - if 0 use a recursion loop to expand out until all conected 0 coordinates have been added to guesses list. This will
             never reach a mine as i will always encounter a surounding number first.
+        Run through the recorded guesses and for each coordinate on the user board make it equal to the final board
         """
-        pass
 
+        self.guesses.append(guess)
+
+        for g in self.guesses:
+            x, y = g
+            x = int(x)
+            y = int(y)
+
+            if self.board_layout[x][y] == "*":
+                for row in range(self.board_size):
+                    for col in range(self.board_size):
+                        self.user_board[row][col] = str(self.board_layout[row][col])
+                
+
+                cls()
+                print("GAME OVER, YOU LOSE")
+                #return False
+
+            elif self.board_layout[x][y] > 0:
+                self.user_board[x][y] = str(self.board_layout[x][y])
+                #return True
+
+            elif self.board_layout[x][y] == 0:
+                print("0 process needs to be built")
+                #return True
+
+            else:
+                print("please enter valid coordinates")
+                #return True
+
+        
 
     def underscore(self):
         """
@@ -234,28 +272,22 @@ class GameLayout:
         """
         Called when class is printed
         Create a user_board
-        Run through the recorded guesses and for each coordinate on the user board make it equal to the final board
         """
 
-        for list in self.user_board:
-            list[0] = "| " + list[0]
-            list[-1] = list[-1] + " |"
+        if self.guesses == []:
+            for list in self.user_board:
+                list[0] = "| " + list[0]
+                list[-1] = list[-1] + " |"
 
         str_layout = [" | ".join(item) for item in self.user_board]
         grid_layout = f"\n{self.row_seperator}\n".join(str_layout)
 
-
-        #print("\n")
         underscore = " "
         for us in range(self.board_size-1):
             underscore = underscore + "____"
         underscore = underscore + "___"
-        #print(underscore)
-        #print(grid_layout)
 
         return f"{underscore}\n{grid_layout}\n{self.row_seperator}"
-
-        #return self.row_seperator
 
 
 
