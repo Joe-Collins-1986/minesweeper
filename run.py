@@ -148,6 +148,7 @@ class GameLayout:
         self.add_mines()
         self.add_values()
 
+        self.user_board = [["_" for col in range(self.board_size)] for row in range(self.board_size)] # use to compare with board_layout on user guess
         self.row_seperator = self.underscore()
         self.guesses = []
     
@@ -222,10 +223,10 @@ class GameLayout:
         """
         Create dividers between cells dependant on the board_size
         """
-        underscore_str = "__|"
-        for cell in range(self.board_size-2):
+        underscore_str = "|"
+        for cell in range(self.board_size):
             underscore_str = underscore_str + "___|"
-        underscore_str = underscore_str + "__"
+        
         return underscore_str
 
 
@@ -235,13 +236,26 @@ class GameLayout:
         Create a user_board
         Run through the recorded guesses and for each coordinate on the user board make it equal to the final board
         """
-        user_board = grid = [["_" for col in range(self.board_size)] for row in range(self.board_size)]
 
-        str_layout = [" | ".join(item) for item in user_board]
+        for list in self.user_board:
+            list[0] = "| " + list[0]
+            list[-1] = list[-1] + " |"
+
+        str_layout = [" | ".join(item) for item in self.user_board]
         grid_layout = f"\n{self.row_seperator}\n".join(str_layout)
 
-        print("\n")
-        return grid_layout
+
+        #print("\n")
+        underscore = " "
+        for us in range(self.board_size-1):
+            underscore = underscore + "____"
+        underscore = underscore + "___"
+        #print(underscore)
+        #print(grid_layout)
+
+        return f"{underscore}\n{grid_layout}\n{self.row_seperator}"
+
+        #return self.row_seperator
 
 
 
