@@ -181,35 +181,51 @@ class GameLayout:
         Loop through grid checking each cells neighboring cells. For each neighboring cell with a mine increase mines_detected variable by 1.
         This number will then be assigned to the centeral cell
         """
-
         # place max min to stop going outside of board perameters
         # https://stackoverflow.com/questions/5996881/how-to-limit-a-number-to-be-within-a-specified-range-python
 
-        
-        """
+
         for row in range(self.board_size):
             for col in range(self.board_size):
                 
                 mines_detected = 0
-                for r in range(max(0, row-1), min(self.board_size - 1, row+1)):
-                    print(row, r)
-                    for c in range(max(0, col-1), min(self.board_size - 1, col+1)):
+                for r in range(max(0, row-1), min(self.board_size, row+2)):
+                    for c in range(max(0, col-1), min(self.board_size, col+2)):
+                        #print(r, c)
 
                         if r == row and c == col:
+                            #print("pass")
                             continue
                         elif self.board_layout[r][c] == "*":
                             mines_detected += 1
+                    #print("...")
+                    #print(f"- mines detected: {mines_detected} on this neighboring row")
+                    #print("...")
 
-                print(mines_detected)
+                #print(f"- TOTAL MINES DETECTED: {mines_detected}")
+                #print("NEXT FIELD")
+                if self.board_layout[row][col] != "*":
+                    self.board_layout[row][col] = mines_detected
+            
+            #print("NEXT ROW")
+    
+        print("\n.............\n") # for testing
+        for i in self.board_layout: # for testing
+            print(i) # for testing
 
-                self.board_layout[row][col] = mines_detected
 
-        """
+    
+
+
+
+
 
         """
         Can't get this to work
         The above needs to be changed so it is not looping through row and coloumn
         Below needs to be changed so the max min don;t result in multiple counts.
+        """
+
         """
 
         for row in range(self.board_size):
@@ -242,6 +258,7 @@ class GameLayout:
         print("\n.............\n") # for testing
         for i in self.board_layout: # for testing
             print(i) # for testing
+        """
 
 
 
