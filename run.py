@@ -250,6 +250,7 @@ class GameLayout:
                 for row in range(self.board_size):
                     for col in range(self.board_size):
                         self.user_board[row][col] = str(self.board_layout[row][col])
+                        self.space_edge_guesses(row, col)
                 
 
                 cls()
@@ -258,6 +259,7 @@ class GameLayout:
 
             elif self.board_layout[x][y] > 0:
                 self.user_board[x][y] = str(self.board_layout[x][y])
+                self.space_edge_guesses(x, y)
                 print("above 0 working")
                 print(self.guesses)
 
@@ -269,6 +271,15 @@ class GameLayout:
                 print("please enter valid coordinates")
 
         return True
+
+    def space_edge_guesses(self, x, y):
+        if y == 0:
+            self.user_board[x][y] = "| " + str(self.board_layout[x][y])
+        elif y == self.board_size-1:
+            self.user_board[x][y] = str(self.board_layout[x][y]) + " |"
+
+
+
         
 
     def underscore(self):
@@ -292,6 +303,7 @@ class GameLayout:
             for list in self.user_board:
                 list[0] = "| " + list[0]
                 list[-1] = list[-1] + " |"
+            
 
         str_layout = [" | ".join(item) for item in self.user_board]
         grid_layout = f"\n{self.row_seperator}\n".join(str_layout)
