@@ -136,7 +136,12 @@ def play(board_size, no_mines):
     while game_active:
         print(board)
         guess = input("Which coordinates would you like to try?")
-        board.selected_space(guess)
+        game_active = board.selected_space(guess)
+    
+    cls()
+    print(board)
+    print("GAME OVER, YOU LOSE")
+    input("Would you like to try again?")
 
 
 def win(board):
@@ -249,20 +254,21 @@ class GameLayout:
 
                 cls()
                 print("GAME OVER, YOU LOSE")
-                #return False
+                return False
 
             elif self.board_layout[x][y] > 0:
                 self.user_board[x][y] = str(self.board_layout[x][y])
-                #return True
+                print("above 0 working")
+                print(self.guesses)
 
             elif self.board_layout[x][y] == 0:
                 print("0 process needs to be built")
-                #return True
+
 
             else:
                 print("please enter valid coordinates")
-                #return True
 
+        return True
         
 
     def underscore(self):
