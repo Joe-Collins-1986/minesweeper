@@ -25,6 +25,8 @@ def start_game():
     Function to recycle on play function completion
     """
     cls()
+    # Link to ASCII character instruction https://theasciicode.com.ar/extended-ascii-code/block-graphic-character-ascii-code-219.html
+    # copied █ symbol from windows accoss to mac for use
     print("""
 
       █    █ ███ █   █ █████ █████ █    █ █████ █████ ██████ █████ █████
@@ -47,13 +49,6 @@ def start_game():
                               WELCOME TO MINSWEEPER
 ................................................................................     
         """)
-
-
-
-
-
-
-
 
     home_page = True
     while home_page:
@@ -150,9 +145,6 @@ def win(board):
     If it has return True else return False
     """
     pass
-
-
-
 
 
 
