@@ -3,7 +3,11 @@ To use google sheets api will need to install
 - google-auth
 - gspread
 Instruction video (https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+LS101+2021_T1/courseware/293ee9d8ff3542d3b877137ed81b9a5b/071036790a5642f9a6f004f9888b6a45/?child=first)
+
+NEED TO REVERSE COORDINATES FOR USER EXPERIENCE
 """
+
+
 
 import os #used to clear console
 import random # used to assign random mine positions
@@ -240,37 +244,47 @@ class GameLayout:
         """
 
         self.guesses.append(guess)
+        
+        print(guess)
+        (x, y) = guess
+        x = int(x)
+        y = int(y)
 
-        for g in self.guesses:
-            x, y = g
-            x = int(x)
-            y = int(y)
+        if self.board_layout[x][y] == "*":
+            for row in range(self.board_size):
+                for col in range(self.board_size):
+                    self.user_board[row][col] = str(self.board_layout[row][col])
+                    self.space_edge_guesses(row, col)
 
-            if self.board_layout[x][y] == "*":
-                for row in range(self.board_size):
-                    for col in range(self.board_size):
-                        self.user_board[row][col] = str(self.board_layout[row][col])
-                        self.space_edge_guesses(row, col)
-                
+            return False
 
-                cls()
-                print("GAME OVER, YOU LOSE")
-                return False
+        elif self.board_layout[x][y] > 0:
+            self.user_board[x][y] = str(self.board_layout[x][y])
+            self.space_edge_guesses(x, y)
+            
+            return True
 
-            elif self.board_layout[x][y] > 0:
-                self.user_board[x][y] = str(self.board_layout[x][y])
-                self.space_edge_guesses(x, y)
-                print("above 0 working")
-                print(self.guesses)
+        elif self.board_layout[x][y] == 0:
 
-            elif self.board_layout[x][y] == 0:
-                print("0 process needs to be built")
+            print(self.board_layout[x][y])
+
+            self.user_board[x][y] = str(self.board_layout[x][y])
+            self.space_edge_guesses(x, y)
+
+            for r in range(max(0, x-1), min(self.board_size-1, x+1) +1):
+                for c in range(max(0, y-1), min(self.board_size-1, y+1) +1):
+                    if str(r) + str(c) in self.guesses:
+                        continue
+                    else:
+                        gu = (str(r)+str(c))
+                        print(self.guesses)
+                        self.selected_space(str(gu))
+            return True
 
 
-            else:
-                print("please enter valid coordinates")
-
-        return True
+        '''
+        create value error
+        '''
 
     def space_edge_guesses(self, x, y):
         if y == 0:
@@ -278,9 +292,6 @@ class GameLayout:
         elif y == self.board_size-1:
             self.user_board[x][y] = str(self.board_layout[x][y]) + " |"
 
-
-
-        
 
     def underscore(self):
         """
