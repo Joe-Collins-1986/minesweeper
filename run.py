@@ -138,31 +138,33 @@ def play(board_size, no_mines):
     game_active = True
     while game_active:
         print(board)
-        x_axis = input("\nSelect the row the cell is on you would like to dig (row number)\n")
-        y_axis = input("\nSelect the column the cell is on you would like to dig (column number)\n")
+        x_axis = int(input("\nSelect the row the cell is on you would like to dig (row number)\n"))
+        y_axis = int(input("\nSelect the column the cell is on you would like to dig (column number)\n"))
 
-        #if board.user_board[int(x_axis)][int(y_axis)] != "_":
+
         if board.user_board[int(x_axis)][int(y_axis)] not in ("| _", "_", "_ |", "| F", "F", "F |"):
             cls()
             print(f"\nYou have already dug {x_axis}, {y_axis}\n")
             print("Please pick a cell not already showing on the board")
             continue
 
-        if board.user_board[int(x_axis)][int(y_axis)] in ("| F", "F", "F |"):
+        elif board.user_board[int(x_axis)][int(y_axis)] in ("| F", "F", "F |"):
             print("\nThis position has a flag on it")
             dig = input("Would you like to dig anyway? (Y/N)\n")
             if dig.lower() == "y" or dig == "yes" or dig == "d" or dig == "dig":
                 flag = "n"
         else:
-            flag = input("Would you like to place a flag on this location (Y/N)\n")
+            flag = input("\nWould you like to place a flag on this location (Y/N)\n")
 
         game_active = board.selected_space(x_axis, y_axis, flag)
         cls()
     
     cls()
     print(board)
-    print("GAME OVER, YOU LOSE")
-    input("Would you like to try again?")
+    print("\nGAME OVER, YOU LOSE")
+    print(f"\nRow: {x_axis}, Column: {y_axis} had a mine")
+    input("\nBetter luck next time, press anykey to continue\n")
+    start_game()
 
 
 def win(board):
@@ -262,10 +264,8 @@ class GameLayout:
         stop acceibility while f on cell
         """
 
-        self.guesses.append(x + y)
+        self.guesses.append((x, y))
         
-        x = int(x)
-        y = int(y)
         f = f.lower()
 
         if f == "y" or f == "yes" or f == "f" or f == "flag":
@@ -292,6 +292,7 @@ class GameLayout:
 
         elif self.board_layout[x][y] == 0:
 
+            print("test")
             print(self.board_layout[x][y])
 
             self.user_board[x][y] = str(self.board_layout[x][y])
@@ -299,11 +300,11 @@ class GameLayout:
 
             for r in range(max(0, x-1), min(self.board_size, x+2)):
                 for c in range(max(0, y-1), min(self.board_size, y+2)):
-                    if str(r) + str(c) in self.guesses:
+                    if (r, c) in self.guesses:
                         continue
                     else:
                         print(self.guesses)
-                        self.selected_space(str(r), str(c), f)
+                        self.selected_space(r, c, f)
             return True
 
 
