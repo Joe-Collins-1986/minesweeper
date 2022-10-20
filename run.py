@@ -7,10 +7,9 @@ Instruction video (https://learn.codeinstitute.net/courses/course-v1:CodeInstitu
 NEED TO REVERSE COORDINATES FOR USER EXPERIENCE
 """
 
-
-
 import os #used to clear console
 import random # used to assign random mine positions
+import re
 
 
 def cls(): # function to clear console for cross-platform: https://stackoverflow.com/questions/517970/how-to-clear-the-interpreter-console
@@ -139,8 +138,26 @@ def play(board_size, no_mines):
     game_active = True
     while game_active:
         print(board)
-        guess = input("Which coordinates would you like to try?")
-        game_active = board.selected_space(guess)
+        x_axis = input("\nSelect the row the cell is on you would like to dig (row number)\n")
+        y_axis = input("\nSelect the column the cell is on you would like to dig (column number)\n")
+
+        #if board.user_board[int(x_axis)][int(y_axis)] != "_":
+        if board.user_board[int(x_axis)][int(y_axis)] not in ("| _", "_", "_ |", "| F", "F", "F |"):
+            cls()
+            print(f"\nYou have already dug {x_axis}, {y_axis}\n")
+            print("Please pick a cell not already showing on the board")
+            continue
+
+        if board.user_board[int(x_axis)][int(y_axis)] in ("| F", "F", "F |"):
+            print("\nThis position has a flag on it")
+            dig = input("Would you like to dig anyway? (Y/N)\n")
+            if dig.lower() == "y" or dig == "yes" or dig == "d" or dig == "dig":
+                flag = "n"
+        else:
+            flag = input("Would you like to place a flag on this location (Y/N)\n")
+
+        game_active = board.selected_space(x_axis, y_axis, flag)
+        cls()
     
     cls()
     print(board)
@@ -232,7 +249,7 @@ class GameLayout:
             print(i) # for testing
 
 
-    def selected_space(self, guess):
+    def selected_space(self, x, y, f):
         """
         Add guess to self.guesses for a record of all guesses
         Check coordinates against final board
@@ -241,16 +258,25 @@ class GameLayout:
             - if 0 use a recursion loop to expand out until all conected 0 coordinates have been added to guesses list. This will
             never reach a mine as i will always encounter a surounding number first.
         Run through the recorded guesses and for each coordinate on the user board make it equal to the final board
+       
+        stop acceibility while f on cell
         """
 
-        self.guesses.append(guess)
+        self.guesses.append(x + y)
         
-        print(guess)
-        (x, y) = guess
         x = int(x)
         y = int(y)
+        f = f.lower()
 
-        if self.board_layout[x][y] == "*":
+        if f == "y" or f == "yes" or f == "f" or f == "flag":
+            print("YOU HAVE PLANTED A FLAG")
+            self.user_board[x][y] = "F"
+            self.space_edge_guesses(x, y)
+            print(self.user_board[x][y])
+            
+            return True
+
+        elif self.board_layout[x][y] == "*":
             for row in range(self.board_size):
                 for col in range(self.board_size):
                     self.user_board[row][col] = str(self.board_layout[row][col])
@@ -271,14 +297,13 @@ class GameLayout:
             self.user_board[x][y] = str(self.board_layout[x][y])
             self.space_edge_guesses(x, y)
 
-            for r in range(max(0, x-1), min(self.board_size-1, x+1) +1):
-                for c in range(max(0, y-1), min(self.board_size-1, y+1) +1):
+            for r in range(max(0, x-1), min(self.board_size, x+2)):
+                for c in range(max(0, y-1), min(self.board_size, y+2)):
                     if str(r) + str(c) in self.guesses:
                         continue
                     else:
-                        gu = (str(r)+str(c))
                         print(self.guesses)
-                        self.selected_space(str(gu))
+                        self.selected_space(str(r), str(c), f)
             return True
 
 
@@ -288,9 +313,9 @@ class GameLayout:
 
     def space_edge_guesses(self, x, y):
         if y == 0:
-            self.user_board[x][y] = "| " + str(self.board_layout[x][y])
+            self.user_board[x][y] = "| " + str(self.user_board[x][y])
         elif y == self.board_size-1:
-            self.user_board[x][y] = str(self.board_layout[x][y]) + " |"
+            self.user_board[x][y] = str(self.user_board[x][y]) + " |"
 
 
     def underscore(self):
