@@ -155,9 +155,8 @@ def play(board_size, no_mines):
                 elif y_axis < 0 or y_axis >= board_size:
                     raise Exception (f"y_axis ({y_axis}) is not in range (0:{board_size})")
 
-
             except ValueError as e:
-                print("Please do not type letters or special characters")
+                print("Please do not type letters, special characters and ensure you entered 2 coordinates")
                 print(f"Issue: {e}")
             except Exception as e:
                 print(f"Issue: {e}")
@@ -172,12 +171,34 @@ def play(board_size, no_mines):
             continue
 
         elif board.user_board[int(x_axis)][int(y_axis)] in ("| F", "F", "F |"):
-            print("\nThis position has a flag on it")
-            dig = input("Would you like to dig anyway? (Y/N)\n")
+    
+            dig_input = True
+            while dig_input:
+                try:
+                    print("\nThis position has a flag on it")
+                    dig = input("Would you like to dig anyway? (Y/N)\n")    
+                    if dig not in ("y", "yes", "d", "dig", "n", "no"):
+                        raise Exception (f"That is not a valid entry.")
+                except Exception as e:
+                    print(f"Issue: {e}")
+                else:
+                    dig_input = False
             if dig.lower() == "y" or dig == "yes" or dig == "d" or dig == "dig":
                 flag = "n"
+
         else:
-            flag = input("\nWould you like to place a flag on this location (Y/N)\n")
+            flag_input = True
+            while flag_input:
+                try:
+                    flag = input("\nWould you like to place a flag on this location (Y/N)\n")
+                    if flag not in ("y", "yes", "f", "flag", "n", "no"):
+                        raise Exception (f"That is not a valid entry.")
+                except Exception as e:
+                    print(f"Issue: {e}")
+                else:
+                    flag_input = False
+
+
 
         game_active = board.selected_space(x_axis, y_axis, flag)
         cls()
