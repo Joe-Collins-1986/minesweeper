@@ -142,24 +142,27 @@ def play(board_size, no_mines):
 
         #x_axis = int(input("\nSelect the row the cell is on you would like to dig (row number)\n"))
         #y_axis = int(input("\nSelect the column the cell is on you would like to dig (column number)\n"))
-        x_input = True
-        while x_input:
-            try:
-                x_axis = int(input("\nSelect the row the cell is on you would like to dig (row number)\n"))
-            except ValueError:
-                print('Not a number')
-            else:
-                x_input = False
         
-        y_input = True
-        while y_input:
+        xy_inputs = True
+        while xy_inputs:
             try:
-                y_axis = int(input("\nSelect the column the cell is on you would like to dig (column number)\n"))
-            except ValueError:
-                print('Not a number')
-            else:
-                y_input = False
+                x_axis, y_axis = map(int, input("\nEnter the row & column with a space seperating them (e.g. 3 5)\n").split())
+                
+                if (x_axis < 0 or x_axis >= board_size) and (y_axis < 0 or y_axis >= board_size):
+                    raise Exception (f"x_axis ({x_axis}) and y_axis ({y_axis}) are not in range (0:{board_size})")
+                elif x_axis < 0 or x_axis >= board_size:
+                    raise Exception (f"x_axis ({x_axis}) is not in range (0:{board_size})")
+                elif y_axis < 0 or y_axis >= board_size:
+                    raise Exception (f"y_axis ({y_axis}) is not in range (0:{board_size})")
 
+
+            except ValueError as e:
+                print("Please do not type letters or special characters")
+                print(f"Issue: {e}")
+            except Exception as e:
+                print(f"Issue: {e}")
+            else:
+                xy_inputs = False
 
 
         if board.user_board[int(x_axis)][int(y_axis)] not in ("| _", "_", "_ |", "| F", "F", "F |"):
