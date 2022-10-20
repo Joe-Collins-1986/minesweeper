@@ -138,8 +138,28 @@ def play(board_size, no_mines):
     game_active = True
     while game_active:
         print(board)
-        x_axis = int(input("\nSelect the row the cell is on you would like to dig (row number)\n"))
-        y_axis = int(input("\nSelect the column the cell is on you would like to dig (column number)\n"))
+
+
+        #x_axis = int(input("\nSelect the row the cell is on you would like to dig (row number)\n"))
+        #y_axis = int(input("\nSelect the column the cell is on you would like to dig (column number)\n"))
+        x_input = True
+        while x_input:
+            try:
+                x_axis = int(input("\nSelect the row the cell is on you would like to dig (row number)\n"))
+            except ValueError:
+                print('Not a number')
+            else:
+                x_input = False
+        
+        y_input = True
+        while y_input:
+            try:
+                y_axis = int(input("\nSelect the column the cell is on you would like to dig (column number)\n"))
+            except ValueError:
+                print('Not a number')
+            else:
+                y_input = False
+
 
 
         if board.user_board[int(x_axis)][int(y_axis)] not in ("| _", "_", "_ |", "| F", "F", "F |"):
@@ -319,6 +339,7 @@ class GameLayout:
             self.user_board[x][y] = str(self.user_board[x][y]) + " |"
 
 
+
     def underscore(self):
         """
         Create dividers between cells dependant on the board_size
@@ -339,8 +360,7 @@ class GameLayout:
         if self.guesses == []:
             for list in self.user_board:
                 list[0] = "| " + list[0]
-                list[-1] = list[-1] + " |"
-            
+                list[-1] = list[-1] + " |" 
 
         str_layout = [" | ".join(item) for item in self.user_board]
         grid_layout = f"\n{self.row_seperator}\n".join(str_layout)
