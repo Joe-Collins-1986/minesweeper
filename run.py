@@ -114,7 +114,7 @@ def difficulty():
         else:
             cls()
             print(f"\nI'm sorry {difficulty} is not a valid entry.\n")
-
+    cls()
     play(board_size, no_mines)
 
 
@@ -131,17 +131,13 @@ def play(board_size, no_mines):
         - If win status is True inform user and break out of function.
     If game status lost inform user and break out of function.  
     """
-    print(f"This is the play function confirming the board size is {board_size} and the number of mines {no_mines} has been pulled through")
 
     board = GameLayout(board_size, no_mines)
 
     game_active = True
     while game_active:
+        
         print(board)
-
-
-        #x_axis = int(input("\nSelect the row the cell is on you would like to dig (row number)\n"))
-        #y_axis = int(input("\nSelect the column the cell is on you would like to dig (column number)\n"))
         
         xy_inputs = True
         while xy_inputs:
@@ -156,10 +152,10 @@ def play(board_size, no_mines):
                     raise Exception (f"y_axis ({y_axis}) is not in range (0:{board_size})")
 
             except ValueError as e:
-                print("Please do not type letters, special characters and ensure you entered 2 coordinates")
-                print(f"Issue: {e}")
+                print("\nInvalid Entry:\n - Do not type letters\n - Do not type special characters\n - Ensure you entered 2 coordinates")
+                print(f"\nIssue: {e}")
             except Exception as e:
-                print(f"Issue: {e}")
+                print(f"\nIssue: {e}")
             else:
                 xy_inputs = False
 
@@ -197,8 +193,6 @@ def play(board_size, no_mines):
                     print(f"Issue: {e}")
                 else:
                     flag_input = False
-
-
 
         game_active = board.selected_space(x_axis, y_axis, flag)
         cls()
@@ -264,9 +258,6 @@ class GameLayout:
             elif self.board_layout[rand_row][rand_col] == "_":
                 self.board_layout[rand_row][rand_col] = "*"
                 mines_placed += 1
-        
-        for row in self.board_layout: # for testing
-            print(row) # for testing
 
     def add_values(self):
         """
@@ -290,9 +281,9 @@ class GameLayout:
                 if self.board_layout[row][col] != "*":
                     self.board_layout[row][col] = mines_detected
     
-        print("\n.............\n") # for testing
         for i in self.board_layout: # for testing
             print(i) # for testing
+        print("\n.............\n")  # for testing
 
 
     def selected_space(self, x, y, f):
@@ -316,7 +307,7 @@ class GameLayout:
             print("YOU HAVE PLANTED A FLAG")
             self.user_board[x][y] = "F"
             self.space_edge_guesses(x, y)
-            print(self.user_board[x][y])
+            #print(self.user_board[x][y])
             
             return True
 
@@ -335,9 +326,7 @@ class GameLayout:
             return True
 
         elif self.board_layout[x][y] == 0:
-
-            print("test")
-            print(self.board_layout[x][y])
+            #print(self.board_layout[x][y])
 
             self.user_board[x][y] = str(self.board_layout[x][y])
             self.space_edge_guesses(x, y)
@@ -347,21 +336,14 @@ class GameLayout:
                     if (r, c) in self.guesses:
                         continue
                     else:
-                        print(self.guesses)
                         self.selected_space(r, c, f)
             return True
-
-
-        '''
-        create value error
-        '''
 
     def space_edge_guesses(self, x, y):
         if y == 0:
             self.user_board[x][y] = "| " + str(self.user_board[x][y])
         elif y == self.board_size-1:
             self.user_board[x][y] = str(self.user_board[x][y]) + " |"
-
 
 
     def underscore(self):
@@ -395,7 +377,5 @@ class GameLayout:
         underscore = underscore + "___"
 
         return f"{underscore}\n{grid_layout}\n{self.row_seperator}"
-
-
 
 start_game()
