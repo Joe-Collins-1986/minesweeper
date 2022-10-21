@@ -204,7 +204,7 @@ def play(board_size, no_mines):
             if dig.lower() not in ("y", "yes", "d", "dig"):
                 flag = "leave_flag"
             else:
-                flag = "n"
+                flag = "d"
 
         else:
             flag_input = True
@@ -219,39 +219,29 @@ def play(board_size, no_mines):
                     flag_input = False
 
         game_active = board.selected_space(x_axis, y_axis, flag)
-        
-        no_guesses = 0
-        for n in board.guesses:
-            no_guesses += 1
-        
-        print("\n.................\n")
-        print(board.guesses)
-        print(no_guesses)
-        input("anything")
 
-        win()
+        win(board)
         cls()
     
     cls()
-    print(board)
     print("\nGAME OVER, YOU LOSE")
     print(f"\nRow: {x_axis}, Column: {y_axis} had a mine")
+    print(board)
     input("\nBetter luck next time, press anykey to continue\n")
 
     start_game()
 
 
-def win():
+def win(board):
     """ Check if user has won
     Check if the users guesses have met the available spaces (board - bombs)
     If it has return True else return False
     """
-    pass
-
-
-
-    pass
-
+    if len(board.guesses) == (board.board_size ** 2) - board.no_mines:
+        print("YOU WON")
+        input("Hit anykey to play again")
+        start_game()
+        #return game won to play function in final version so it does not run a function within a function each new game
 
 
 class GameLayout:
@@ -355,8 +345,11 @@ class GameLayout:
             return True
         elif f == "leave_flag":
             print("YOU HAVE LEFT THE FLAG")
-
             return True
+
+        elif f == "d":
+            self.flags_placed -= 1
+        
 
         self.guesses.append((x, y))
         
