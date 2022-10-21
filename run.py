@@ -10,6 +10,7 @@ NEED TO REVERSE COORDINATES FOR USER EXPERIENCE
 import os #used to clear console
 import random # used to assign random mine positions
 import re
+from pyfiglet import figlet_format
 
 
 def cls(): # function to clear console for cross-platform: https://stackoverflow.com/questions/517970/how-to-clear-the-interpreter-console
@@ -40,6 +41,7 @@ def start_game():
      .....................................................................
      █████████████████████████████████████████████████████████████████████
 
+
                                     _________
                 █                 /  _______  \                 █
              █  █  █             /  /       \  \             █  █  █
@@ -50,6 +52,7 @@ def start_game():
                 █            \_____________________/            █  
 
                               WELCOME TO MINSWEEPER
+
 ................................................................................
         """)
     print("\nTESTING GID FORMAT\n")
@@ -71,7 +74,10 @@ def start_game():
 
     print("For a 10 X 10 grid the size would requie a screen (61 X 30)\nnot including instructions and user input area")
     print("...................................\n")
-    
+
+    #IMPORT FIGLET FOR TITLES
+
+    print(figlet_format("MINESWEEPER", font = "standard"))
 
 
 
@@ -93,6 +99,7 @@ def rules():
     Set anykey to return to inital page
     """
     cls()
+    print(figlet_format("RULES", font = "standard"))
     rules = True
     print("""Game Objective:\n\n
     **** type in the rules ***
@@ -112,6 +119,7 @@ def difficulty():
         - error with feedback for invalid enteries
     """
     cls()
+    print(figlet_format("DIFFICULTY", font = "standard"))
     evaluating_dificulty = True
     while evaluating_dificulty:
         print("There are 3 difficulty settings in this game")
@@ -153,12 +161,12 @@ def play(board_size, no_mines):
         - If win status is True inform user and break out of function.
     If game status lost inform user and break out of function.  
     """
-
     board = GameLayout(board_size, no_mines)
 
     game_active = True
     while game_active:
         
+        print(figlet_format("GAME PLAY", font = "standard"))
         print(board)
         
         xy_inputs = True
@@ -224,6 +232,7 @@ def play(board_size, no_mines):
         cls()
     
     cls()
+    print(figlet_format("GAME OVER", font = "standard"))
     print("\nGAME OVER, YOU LOSE")
     print(f"\nRow: {x_axis}, Column: {y_axis} had a mine")
     print(board)
@@ -237,6 +246,7 @@ def win(board):
     Check if the users guesses have met the available spaces (board - bombs)
     If it has return True else return False
     """
+    print(figlet_format("YOU WIN", font = "standard"))
     if len(board.guesses) == (board.board_size ** 2) - board.no_mines:
         print("YOU WON")
         input("Hit anykey to play again")
