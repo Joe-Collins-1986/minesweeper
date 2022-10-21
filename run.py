@@ -52,6 +52,10 @@ def start_game():
                               WELCOME TO MINSWEEPER
 ................................................................................     
         """)
+    
+    print("\U0001F4A5")
+    print("\U0001F6A9")
+    print("12\n")
 
     home_page = True
     while home_page:
