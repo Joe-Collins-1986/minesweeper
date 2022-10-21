@@ -48,28 +48,38 @@ def start_game():
 ................................................................................
 ................................................................................
         """)
+    print("\U0001F4A5")
+    print("\U0001F6A9")
 
-    print("\nTESTING GID FORMAT\n")
-    print(" ___")
-    print("|" + " \U0001F4A5" + "|")
-    print("|___|")
+    print(" _____ _____ _____ _____ _____ _____ _____ _____ _____ ")
+    print("|     |     |     |     |     |     |     |     |     |")
+    print("|  _  |     |     |     |     |     |     |     |     |")
+    print("|_____|_____|_____|_____|_____|_____|_____|_____|_____|")
+    print("|     |     |     |     |     |     |     |     |     |")
+    print("|     |     |     |     |     |     |     |     |     |")
+    print("|_____|_____|_____|_____|_____|_____|_____|_____|_____|")
+    print("|     |     |     |     |     |     |     |     |     |")
+    print("|     |     |     |     |     |     |     |     |     |")
+    print("|_____|_____|_____|_____|_____|_____|_____|_____|_____|")
+    print("|     |     |     |     |     |     |     |     |     |")
+    print("|     |     |     |     |     |     |     |     |     |")
+    print("|_____|_____|_____|_____|_____|_____|_____|_____|_____|")
+    print("|     |     |     |     |     |     |     |     |     |")
+    print("|     |     |     |     |     |     |     |     |     |")
+    print("|_____|_____|_____|_____|_____|_____|_____|_____|_____|")
+    print("|     |     |     |     |     |     |     |     |     |")
+    print("|     |     |     |     |     |     |     |     |     |")
+    print("|_____|_____|_____|_____|_____|_____|_____|_____|_____|")
+    print("|     |     |     |     |     |     |     |     |     |")
+    print("|     |     |     |     |     |     |     |     |     |")
+    print("|_____|_____|_____|_____|_____|_____|_____|_____|_____|")
+    print("|     |     |     |     |     |     |     |     |     |")
+    print("|     |     |     |     |     |     |     |     |     |")
+    print("|_____|_____|_____|_____|_____|_____|_____|_____|_____|")
+    print("|     |     |     |     |     |     |     |     |     |")
+    print("|     |     |     |     |     |     |     |     |     |")
+    print("|_____|_____|_____|_____|_____|_____|_____|_____|_____|")
 
-    print(" _____")
-    print("|     |")
-    print("|" + "  \U0001F4A5 " + "|")
-    print("|_____|")
-
-    print(" _____")
-    print("|     |")
-    print("|" + "  \U0001F6A9 " + "|")
-    print("|_____|")
-
-    print(" _____")
-    print("|     |")
-    print("|" + "  _  " + "|")
-    print("|_____|\n\n")
-
-    print("|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|")
 
     print("For a 10 X 10 grid the size would requie a screen (61 X 30)\nnot including instructions and user input area")
     print("...................................\n")
@@ -173,23 +183,21 @@ def play(board_size, no_mines):
                     raise Exception (f"x_axis ({x_axis}) is not in range (0:{board_size})")
                 elif y_axis < 0 or y_axis >= board_size:
                     raise Exception (f"y_axis ({y_axis}) is not in range (0:{board_size})")
+                
+                if board.user_board[int(x_axis)][int(y_axis)] not in ("| _", "_", "_ |", "| F", "F", "F |"):
+                    raise Exception (f"You have already dug {x_axis} {y_axis}\n")
 
             except ValueError as e:
+                board.reset_gameplay(board)
                 print("\nInvalid Entry:\n - Do not type letters\n - Do not type special characters\n - Ensure you entered 2 coordinates")
                 print(f"\nIssue: {e}")
             except Exception as e:
+                board.reset_gameplay(board)
                 print(f"\nIssue: {e}")
             else:
                 xy_inputs = False
 
-
-        if board.user_board[int(x_axis)][int(y_axis)] not in ("| _", "_", "_ |", "| F", "F", "F |"):
-            cls()
-            print(f"\nYou have already dug {x_axis}, {y_axis}\n")
-            print("Please pick a cell not already showing on the board")
-            continue
-
-        elif board.user_board[int(x_axis)][int(y_axis)] in ("| F", "F", "F |"):
+        if board.user_board[int(x_axis)][int(y_axis)] in ("| F", "F", "F |"):
     
             dig_input = True
             while dig_input:
@@ -215,7 +223,10 @@ def play(board_size, no_mines):
                     if flag.lower() not in ("y", "yes", "f", "flag", "n", "no"):
                         raise Exception (f"That is not a valid entry.")
                 except Exception as e:
-                    print(f"Issue: {e}")
+                    board.reset_gameplay(board)
+                    print("\nEnter the row & column with a space seperating them (e.g. 3 5)")
+                    print(x_axis, y_axis)
+                    print(f"\nIssue: {e}")
                 else:
                     flag_input = False
 
@@ -270,6 +281,8 @@ class GameLayout:
         self.flags_placed = 0
         self.flages_left = self.no_mines - self.flags_placed
 
+        self.reset_board = True
+
 
     
     def set_board(self):
@@ -280,6 +293,18 @@ class GameLayout:
         grid = [["_" for col in range(self.board_size)] for row in range(self.board_size)]
     
         return grid
+    
+
+    def reset_gameplay(self, board):
+        """
+        reset board for validation errors
+        """
+        cls()
+        print(figlet_format("GAME PLAY", font = "standard"))
+        self.reset_board = False
+        print(board)
+        self.reset_board = True
+
 
     def add_mines(self):
         """
@@ -347,7 +372,6 @@ class GameLayout:
             
             return True
         elif f == "leave_flag":
-            print("YOU HAVE LEFT THE FLAG")
             return True
 
         elif f == "d":
@@ -372,7 +396,6 @@ class GameLayout:
             return True
 
         elif self.board_layout[x][y] == 0:
-            #print(self.board_layout[x][y])
 
             self.user_board[x][y] = str(self.board_layout[x][y])
             self.space_edge_guesses(x, y)
@@ -409,7 +432,7 @@ class GameLayout:
         Create a user_board
         """
 
-        if self.guesses == [] and self.flags_placed == 0:
+        if self.guesses == [] and self.flags_placed == 0 and self.reset_board:
             for list in self.user_board:
                 list[0] = "| " + list[0]
                 list[-1] = list[-1] + " |" 
