@@ -50,12 +50,30 @@ def start_game():
                 █            \_____________________/            █  
 
                               WELCOME TO MINSWEEPER
-................................................................................     
+................................................................................
         """)
+    print("\nTESTING GID FORMAT\n")
+    print(" ___")
+    print("|" + " \U0001F4A5" + "|")
+    print("|___|")
+
+    print(" _____")
+    print("|     |")
+    print("|" + "  \U0001F6A9 " + "|")
+    print("|_____|")
+
+    print(" _____")
+    print("|     |")
+    print("|" + "  0  " + "|")
+    print("|_____|\n\n")
+
+    print("|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|")
+
+    print("For a 10 X 10 grid the size would requie a screen (61 X 30)\nnot including instructions and user input area")
+    print("...................................\n")
     
-    print("\U0001F4A5")
-    print("\U0001F6A9")
-    print("12\n")
+
+
 
     home_page = True
     while home_page:
@@ -108,11 +126,11 @@ def difficulty():
             no_mines = 5
             evaluating_dificulty = False
         elif difficulty == "m":
-            board_size = 9
+            board_size = 8
             no_mines = 10
             evaluating_dificulty = False
         elif difficulty == "h":
-            board_size = 12
+            board_size = 10
             no_mines = 20
             evaluating_dificulty = False
         else:
@@ -177,13 +195,15 @@ def play(board_size, no_mines):
                 try:
                     print("\nThis position has a flag on it")
                     dig = input("Would you like to dig anyway? (Y/N)\n")    
-                    if dig not in ("y", "yes", "d", "dig", "n", "no"):
+                    if dig.lower() not in ("y", "yes", "d", "dig", "n", "no"):
                         raise Exception (f"That is not a valid entry.")
                 except Exception as e:
                     print(f"Issue: {e}")
                 else:
                     dig_input = False
-            if dig.lower() == "y" or dig == "yes" or dig == "d" or dig == "dig":
+            if dig.lower() not in ("y", "yes", "d", "dig"):
+                flag = "leave_flag"
+            else:
                 flag = "n"
 
         else:
@@ -191,7 +211,7 @@ def play(board_size, no_mines):
             while flag_input:
                 try:
                     flag = input("\nWould you like to place a flag on this location (Y/N)\n")
-                    if flag not in ("y", "yes", "f", "flag", "n", "no"):
+                    if flag.lower() not in ("y", "yes", "f", "flag", "n", "no"):
                         raise Exception (f"That is not a valid entry.")
                 except Exception as e:
                     print(f"Issue: {e}")
@@ -199,6 +219,17 @@ def play(board_size, no_mines):
                     flag_input = False
 
         game_active = board.selected_space(x_axis, y_axis, flag)
+        
+        no_guesses = 0
+        for n in board.guesses:
+            no_guesses += 1
+        
+        print("\n.................\n")
+        print(board.guesses)
+        print(no_guesses)
+        input("anything")
+
+        win()
         cls()
     
     cls()
@@ -206,14 +237,19 @@ def play(board_size, no_mines):
     print("\nGAME OVER, YOU LOSE")
     print(f"\nRow: {x_axis}, Column: {y_axis} had a mine")
     input("\nBetter luck next time, press anykey to continue\n")
+
     start_game()
 
 
-def win(board):
+def win():
     """ Check if user has won
     Check if the users guesses have met the available spaces (board - bombs)
     If it has return True else return False
     """
+    pass
+
+
+
     pass
 
 
@@ -237,6 +273,11 @@ class GameLayout:
         self.user_board = [["_" for col in range(self.board_size)] for row in range(self.board_size)] # use to compare with board_layout on user guess
         self.row_seperator = self.underscore()
         self.guesses = []
+
+        self.flags_placed = 0
+        self.flages_left = self.no_mines - self.flags_placed
+
+
     
     def set_board(self):
         """
@@ -303,19 +344,24 @@ class GameLayout:
         stop acceibility while f on cell
         """
 
-        self.guesses.append((x, y))
-        
         f = f.lower()
 
         if f == "y" or f == "yes" or f == "f" or f == "flag":
             print("YOU HAVE PLANTED A FLAG")
             self.user_board[x][y] = "F"
             self.space_edge_guesses(x, y)
-            #print(self.user_board[x][y])
+            self.flags_placed += 1
             
             return True
+        elif f == "leave_flag":
+            print("YOU HAVE LEFT THE FLAG")
 
-        elif self.board_layout[x][y] == "*":
+            return True
+
+        self.guesses.append((x, y))
+        
+
+        if self.board_layout[x][y] == "*":
             for row in range(self.board_size):
                 for col in range(self.board_size):
                     self.user_board[row][col] = str(self.board_layout[row][col])
@@ -367,7 +413,7 @@ class GameLayout:
         Create a user_board
         """
 
-        if self.guesses == []:
+        if self.guesses == [] and self.flags_placed == 0:
             for list in self.user_board:
                 list[0] = "| " + list[0]
                 list[-1] = list[-1] + " |" 
