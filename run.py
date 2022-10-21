@@ -31,17 +31,9 @@ def start_game():
     cls()
     # Link to ASCII character instruction https://theasciicode.com.ar/extended-ascii-code/block-graphic-character-ascii-code-219.html
     # copied █ symbol from windows accoss to mac for use
+    
+    print(figlet_format("    MINESWEEPER", font = "standard"))
     print("""
-
-      █    █ ███ █   █ █████ █████ █    █ █████ █████ ██████ █████ █████
-      ██  ██  █  ██  █ █     █     █    █ █     █     █    █ █     █    █
-      █ ██ █  █  █ █ █ █████ █████ █ ██ █ █████ █████ ██████ █████ █████
-      █    █  █  █  ██ █         █ ██  ██ █     █     █      █     █   █
-      █    █ ███ █   █ █████ █████ █    █ █████ █████ █      █████ █    █
-     .....................................................................
-     █████████████████████████████████████████████████████████████████████
-
-
                                     _________
                 █                 /  _______  \                 █
              █  █  █             /  /       \  \             █  █  █
@@ -54,11 +46,18 @@ def start_game():
                               WELCOME TO MINSWEEPER
 
 ................................................................................
+................................................................................
         """)
+
     print("\nTESTING GID FORMAT\n")
     print(" ___")
     print("|" + " \U0001F4A5" + "|")
     print("|___|")
+
+    print(" _____")
+    print("|     |")
+    print("|" + "  \U0001F4A5 " + "|")
+    print("|_____|")
 
     print(" _____")
     print("|     |")
@@ -67,19 +66,13 @@ def start_game():
 
     print(" _____")
     print("|     |")
-    print("|" + "  0  " + "|")
+    print("|" + "  _  " + "|")
     print("|_____|\n\n")
 
     print("|_____|_____|_____|_____|_____|_____|_____|_____|_____|_____|")
 
     print("For a 10 X 10 grid the size would requie a screen (61 X 30)\nnot including instructions and user input area")
     print("...................................\n")
-
-    #IMPORT FIGLET FOR TITLES
-
-    print(figlet_format("MINESWEEPER", font = "standard"))
-
-
 
     home_page = True
     while home_page:
@@ -124,8 +117,8 @@ def difficulty():
     while evaluating_dificulty:
         print("There are 3 difficulty settings in this game")
         print("easy - This will present you with a 6X6 grid and there will be 5 hidden mines")
-        print("medium - This will present you with a 9X9 grid and there will be 10 hidden mines")
-        print("easy - This will present you with a 12X12 grid and there will be 20 hidden mines\n")
+        print("medium - This will present you with a 8X8 grid and there will be 10 hidden mines")
+        print("easy - This will present you with a 10X10 grid and there will be 20 hidden mines\n")
         print("Please enter the difficulty you would like to play:")
         difficulty = input("Enter 'e' for easy,\nenter 'm' or medium,\nor enter 'h' for hard.\n").lower()
 
