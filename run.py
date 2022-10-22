@@ -140,16 +140,20 @@ def play(board_size, no_mines):
         while xy_inputs:
             try:
                 x_axis, y_axis = map(int, input("\nEnter the row & column with a space seperating them (e.g. 3 5)\n").split())
+
+                if (x_axis < 1 or x_axis > board_size) and (y_axis < 1 or y_axis > board_size):
+                    raise Exception (f"x_axis ({x_axis}) and y_axis ({y_axis}) are not in range (1:{board_size})")
+                elif x_axis < 1 or x_axis > board_size:
+                    raise Exception (f"x_axis ({x_axis}) is not in range (1:{board_size})")
+                elif y_axis < 1 or y_axis > board_size:
+                    raise Exception (f"y_axis ({y_axis}) is not in range (1:{board_size})")
+
+                x_axis -= 1
+                y_axis -= 1
                 
-                if (x_axis < 0 or x_axis >= board_size) and (y_axis < 0 or y_axis >= board_size):
-                    raise Exception (f"x_axis ({x_axis}) and y_axis ({y_axis}) are not in range (0:{board_size})")
-                elif x_axis < 0 or x_axis >= board_size:
-                    raise Exception (f"x_axis ({x_axis}) is not in range (0:{board_size})")
-                elif y_axis < 0 or y_axis >= board_size:
-                    raise Exception (f"y_axis ({y_axis}) is not in range (0:{board_size})")
-                
-                if board.user_board[int(x_axis)][int(y_axis)] not in ("|  _", "_", "_  |", "|  F", "F", "F  |"):
+                if board.user_board[int(x_axis)][int(y_axis)] not in (str(x_axis +1)+" |  _", "_", "_  |", str(x_axis +1)+" |  F", "F", "F  |"):
                     raise Exception (f"You have already dug {x_axis} {y_axis}\n")
+
 
             except ValueError as e:
                 board.reset_gameplay(board)
@@ -161,7 +165,7 @@ def play(board_size, no_mines):
             else:
                 xy_inputs = False
 
-        if board.user_board[int(x_axis)][int(y_axis)] in ("|  F", "F", "F  |"):
+        if board.user_board[int(x_axis)][int(y_axis)] in (str(x_axis +1)+" |  F", "F", "F  |"):
     
             dig_input = True
             while dig_input:
@@ -374,7 +378,7 @@ class GameLayout:
 
     def space_edge_guesses(self, x, y):
         if y == 0:
-            self.user_board[x][y] = "|  " + str(self.user_board[x][y])
+            self.user_board[x][y] = str(x +1) + " |  " + str(self.user_board[x][y])
         elif y == self.board_size-1:
             self.user_board[x][y] = str(self.user_board[x][y]) + "  |"
 
