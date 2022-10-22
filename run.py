@@ -90,22 +90,22 @@ def difficulty():
     evaluating_dificulty = True
     while evaluating_dificulty:
         print("There are 3 difficulty settings in this game")
-        print("easy - This will present you with a 6X6 grid and there will be 5 hidden mines")
-        print("medium - This will present you with a 8X8 grid and there will be 10 hidden mines")
-        print("easy - This will present you with a 10X10 grid and there will be 20 hidden mines\n")
+        print("easy - This will present you with a 5X5 grid and there will be 5 hidden mines")
+        print("medium - This will present you with a 7X7 grid and there will be 10 hidden mines")
+        print("easy - This will present you with a 9X9 grid and there will be 20 hidden mines\n")
         print("Please enter the difficulty you would like to play:")
         difficulty = input("Enter 'e' for easy,\nenter 'm' or medium,\nor enter 'h' for hard.\n").lower()
 
         if difficulty == "e":
-            board_size = 6
+            board_size = 5
             no_mines = 5
             evaluating_dificulty = False
         elif difficulty == "m":
-            board_size = 8
+            board_size = 7
             no_mines = 10
             evaluating_dificulty = False
         elif difficulty == "h":
-            board_size = 10
+            board_size = 9
             no_mines = 20
             evaluating_dificulty = False
         else:
@@ -383,8 +383,8 @@ class GameLayout:
         """
         Create dividers between cells dependant on the board_size
         """
-        side_lines_str = "|"
-        underscore_str = "|"
+        side_lines_str = "  |"
+        underscore_str = "  |"
         for cell in range(self.board_size):
 
             side_lines_str = side_lines_str + "     |"
@@ -400,18 +400,23 @@ class GameLayout:
         """
 
         if self.guesses == [] and self.flags_placed == 0 and self.reset_board:
+            row = 1
             for list in self.user_board:
-                list[0] = "|  " + list[0]
-                list[-1] = list[-1] + "  |" 
+                list[0] = str(row) + " |  " + list[0]
+                list[-1] = list[-1] + "  |"
+                row += 1
 
         str_layout = ["  |  ".join(item) for item in self.user_board]
         grid_layout = f"\n{self.row_seperator}\n{self.side_lines}\n".join(str_layout)
 
         """Creat for top of grid"""
-        top_of_grid = " _____"
-        for us in range(self.board_size-1):
+        column_no = "     1   "
+        top_of_grid = "   _____"
+        for i in range(self.board_size-1):
             top_of_grid = top_of_grid + "______"
+            column_no = column_no + "  " + str(i+2) + "   "
+        
 
-        return f"{top_of_grid}\n{self.side_lines}\n{grid_layout}\n{self.row_seperator}"
+        return f"{column_no}\n{top_of_grid}\n{self.side_lines}\n{grid_layout}\n{self.row_seperator}"
 
 start_game()
