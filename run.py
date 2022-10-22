@@ -9,8 +9,7 @@ NEED TO REVERSE COORDINATES FOR USER EXPERIENCE
 
 import os #used to clear console
 import random # used to assign random mine positions
-import re
-from pyfiglet import figlet_format
+from pyfiglet import figlet_format # used for aesthetically pleasing titles
 
 
 def cls(): # function to clear console for cross-platform: https://stackoverflow.com/questions/517970/how-to-clear-the-interpreter-console
@@ -48,41 +47,6 @@ def start_game():
 ................................................................................
 ................................................................................
         """)
-    print("\U0001F4A5")
-    print("\U0001F6A9")
-
-    print(" _____ _____ _____ _____ _____ _____ _____ _____ _____ ")
-    print("|     |     |     |     |     |     |     |     |     |")
-    print("|  _  |     |     |     |     |     |     |     |     |")
-    print("|_____|_____|_____|_____|_____|_____|_____|_____|_____|")
-    print("|     |     |     |     |     |     |     |     |     |")
-    print("|     |     |     |     |     |     |     |     |     |")
-    print("|_____|_____|_____|_____|_____|_____|_____|_____|_____|")
-    print("|     |     |     |     |     |     |     |     |     |")
-    print("|     |     |     |     |     |     |     |     |     |")
-    print("|_____|_____|_____|_____|_____|_____|_____|_____|_____|")
-    print("|     |     |     |     |     |     |     |     |     |")
-    print("|     |     |     |     |     |     |     |     |     |")
-    print("|_____|_____|_____|_____|_____|_____|_____|_____|_____|")
-    print("|     |     |     |     |     |     |     |     |     |")
-    print("|     |     |     |     |     |     |     |     |     |")
-    print("|_____|_____|_____|_____|_____|_____|_____|_____|_____|")
-    print("|     |     |     |     |     |     |     |     |     |")
-    print("|     |     |     |     |     |     |     |     |     |")
-    print("|_____|_____|_____|_____|_____|_____|_____|_____|_____|")
-    print("|     |     |     |     |     |     |     |     |     |")
-    print("|     |     |     |     |     |     |     |     |     |")
-    print("|_____|_____|_____|_____|_____|_____|_____|_____|_____|")
-    print("|     |     |     |     |     |     |     |     |     |")
-    print("|     |     |     |     |     |     |     |     |     |")
-    print("|_____|_____|_____|_____|_____|_____|_____|_____|_____|")
-    print("|     |     |     |     |     |     |     |     |     |")
-    print("|     |     |     |     |     |     |     |     |     |")
-    print("|_____|_____|_____|_____|_____|_____|_____|_____|_____|")
-
-
-    print("For a 10 X 10 grid the size would requie a screen (61 X 30)\nnot including instructions and user input area")
-    print("...................................\n")
 
     home_page = True
     while home_page:
@@ -184,7 +148,7 @@ def play(board_size, no_mines):
                 elif y_axis < 0 or y_axis >= board_size:
                     raise Exception (f"y_axis ({y_axis}) is not in range (0:{board_size})")
                 
-                if board.user_board[int(x_axis)][int(y_axis)] not in ("| _", "_", "_ |", "| F", "F", "F |"):
+                if board.user_board[int(x_axis)][int(y_axis)] not in ("|  _", "_", "_  |", "|  F", "F", "F  |"):
                     raise Exception (f"You have already dug {x_axis} {y_axis}\n")
 
             except ValueError as e:
@@ -197,7 +161,7 @@ def play(board_size, no_mines):
             else:
                 xy_inputs = False
 
-        if board.user_board[int(x_axis)][int(y_axis)] in ("| F", "F", "F |"):
+        if board.user_board[int(x_axis)][int(y_axis)] in ("|  F", "F", "F  |"):
     
             dig_input = True
             while dig_input:
@@ -274,8 +238,8 @@ class GameLayout:
         self.add_mines()
         self.add_values()
 
-        self.user_board = [["_" for col in range(self.board_size)] for row in range(self.board_size)] # use to compare with board_layout on user guess
-        self.row_seperator = self.underscore()
+        self.user_board = self.set_board() # use to compare with board_layout on user guess
+        self.row_seperator, self.side_lines = self.underscore()
         self.guesses = []
 
         self.flags_placed = 0
@@ -410,20 +374,23 @@ class GameLayout:
 
     def space_edge_guesses(self, x, y):
         if y == 0:
-            self.user_board[x][y] = "| " + str(self.user_board[x][y])
+            self.user_board[x][y] = "|  " + str(self.user_board[x][y])
         elif y == self.board_size-1:
-            self.user_board[x][y] = str(self.user_board[x][y]) + " |"
+            self.user_board[x][y] = str(self.user_board[x][y]) + "  |"
 
-
+    
     def underscore(self):
         """
         Create dividers between cells dependant on the board_size
         """
+        side_lines_str = "|"
         underscore_str = "|"
         for cell in range(self.board_size):
-            underscore_str = underscore_str + "___|"
+
+            side_lines_str = side_lines_str + "     |"
+            underscore_str = underscore_str + "_____|"
         
-        return underscore_str
+        return underscore_str, side_lines_str
 
 
     def __str__(self):
@@ -434,17 +401,17 @@ class GameLayout:
 
         if self.guesses == [] and self.flags_placed == 0 and self.reset_board:
             for list in self.user_board:
-                list[0] = "| " + list[0]
-                list[-1] = list[-1] + " |" 
+                list[0] = "|  " + list[0]
+                list[-1] = list[-1] + "  |" 
 
-        str_layout = [" | ".join(item) for item in self.user_board]
-        grid_layout = f"\n{self.row_seperator}\n".join(str_layout)
+        str_layout = ["  |  ".join(item) for item in self.user_board]
+        grid_layout = f"\n{self.row_seperator}\n{self.side_lines}\n".join(str_layout)
 
-        underscore = " "
+        """Creat for top of grid"""
+        top_of_grid = " _____"
         for us in range(self.board_size-1):
-            underscore = underscore + "____"
-        underscore = underscore + "___"
+            top_of_grid = top_of_grid + "______"
 
-        return f"{underscore}\n{grid_layout}\n{self.row_seperator}"
+        return f"{top_of_grid}\n{self.side_lines}\n{grid_layout}\n{self.row_seperator}"
 
 start_game()
