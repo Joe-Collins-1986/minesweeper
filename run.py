@@ -14,6 +14,8 @@ import colorama #colorama tuorial - https://www.youtube.com/watch?v=u51Zjlnui4Y
 from colorama import Fore, Style #Used to color warnings
 colorama.init(autoreset=True) #reset color to default after use
 
+import time
+
 
 def cls(): # function to clear console for cross-platform: https://stackoverflow.com/questions/517970/how-to-clear-the-interpreter-console
     os.system('cls' if os.name=='nt' else 'clear')
@@ -142,10 +144,9 @@ def play(board_size, no_mines):
     If game status lost inform user and break out of function.  
     """
     board = GameLayout(board_size, no_mines)
-
     game_active = True
     won = False
-    while game_active and won == False:
+    while game_active and not won:
         
         print(figlet_format("GAME PLAY", font = "standard"))
         print(board)
@@ -242,9 +243,7 @@ def win(board):
         return True
     else:
         return False
-        #start_game()
-        #return game won to play function in final version so it does not run a function within a function each new game
-
+     
 
 class GameLayout:
     """
