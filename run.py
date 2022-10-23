@@ -51,10 +51,11 @@ def start_game():
     cls()
     # Link to ASCII character instruction https://theasciicode.com.ar/extended-ascii-code/block-graphic-character-ascii-code-219.html
     # copied █ symbol from windows accoss to mac for use
-    
+
     home_page = True
+    home_page_img()
     while home_page:
-        home_page_img()
+
         intro_nav = input("Enter 'P' to play,\nor enter 'R' to see the rules.\n\n").lower()
         cls()
         if intro_nav == "r":
@@ -64,7 +65,10 @@ def start_game():
             home_page = False
             difficulty()
         else:
+            cls()
+            home_page_img()
             print(f"{Fore.RED}{Style.BRIGHT}I'm sorry {intro_nav} is not a valid entry.\n")
+
 
 def rules(): 
     """ Present rules to user
@@ -92,15 +96,14 @@ def difficulty():
     """
     cls()
     print(figlet_format("DIFFICULTY", font = "standard"))
+    print("There are 3 difficulty settings in this game")
+    print("easy - This will present you with a 5X5 grid and there will be 5 hidden mines")
+    print("medium - This will present you with a 7X7 grid and there will be 10 hidden mines")
+    print("easy - This will present you with a 9X9 grid and there will be 20 hidden mines\n")
     evaluating_dificulty = True
     while evaluating_dificulty:
-        print("There are 3 difficulty settings in this game")
-        print("easy - This will present you with a 5X5 grid and there will be 5 hidden mines")
-        print("medium - This will present you with a 7X7 grid and there will be 10 hidden mines")
-        print("easy - This will present you with a 9X9 grid and there will be 20 hidden mines\n")
         print("Please enter the difficulty you would like to play:")
         difficulty = input("Enter 'e' for easy,\nenter 'm' or medium,\nor enter 'h' for hard.\n").lower()
-
         if difficulty == "e":
             board_size = 5
             no_mines = 5
@@ -115,6 +118,11 @@ def difficulty():
             evaluating_dificulty = False
         else:
             cls()
+            print(figlet_format("DIFFICULTY", font = "standard"))
+            print("There are 3 difficulty settings in this game")
+            print("easy - This will present you with a 5X5 grid and there will be 5 hidden mines")
+            print("medium - This will present you with a 7X7 grid and there will be 10 hidden mines")
+            print("easy - This will present you with a 9X9 grid and there will be 20 hidden mines\n")
             print(f"{Fore.RED}{Style.BRIGHT}\nI'm sorry {difficulty} is not a valid entry.\n")
     cls()
     play(board_size, no_mines)
@@ -157,7 +165,7 @@ def play(board_size, no_mines):
                 y_axis -= 1
                 
                 if board.user_board[int(x_axis)][int(y_axis)] not in (str(x_axis +1)+" |  _", "_", "_  |", str(x_axis +1)+" |  F", "F", "F  |"):
-                    raise Exception (f"You have already dug {x_axis} {y_axis}\n")
+                    raise Exception (f"You have already dug {x_axis +1} {y_axis +1}\n")
 
 
             except ValueError as e:
@@ -210,10 +218,9 @@ def play(board_size, no_mines):
     
     cls()
     print(figlet_format("GAME OVER", font = "standard"))
-    print("\nGAME OVER, YOU LOSE")
-    print(f"\nRow: {x_axis}, Column: {y_axis} had a mine")
     print(board)
-    input("\nBetter luck next time, press anykey to continue\n")
+    print(f"\nOh dear!!! It appears that Row: {x_axis}, Column: {y_axis} had a mine")
+    input("\nBetter luck next time, press any key to continue\n")
 
     start_game()
 
@@ -223,8 +230,9 @@ def win(board):
     Check if the users guesses have met the available spaces (board - bombs)
     If it has return True else return False
     """
-    print(figlet_format("YOU WIN", font = "standard"))
     if len(board.guesses) == (board.board_size ** 2) - board.no_mines:
+        cls()
+        print(figlet_format("YOU WIN", font = "standard"))
         print("Insert congratulations message")
         input("Hit anykey to play again")
         start_game()
