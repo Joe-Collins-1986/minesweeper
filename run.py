@@ -4,33 +4,21 @@ To use google sheets api will need to install
 - gspread
 Instruction video (https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+LS101+2021_T1/courseware/293ee9d8ff3542d3b877137ed81b9a5b/071036790a5642f9a6f004f9888b6a45/?child=first)
 
-NEED TO REVERSE COORDINATES FOR USER EXPERIENCE
 """
 
 import os #used to clear console
 import random # used to assign random mine positions
 from pyfiglet import figlet_format # used for aesthetically pleasing titles
 
+import colorama #colorama tuorial - https://www.youtube.com/watch?v=u51Zjlnui4Y
+from colorama import Fore, Style #Used to color warnings
+colorama.init(autoreset=True) #reset color to default after use
+
 
 def cls(): # function to clear console for cross-platform: https://stackoverflow.com/questions/517970/how-to-clear-the-interpreter-console
     os.system('cls' if os.name=='nt' else 'clear')
 
-
-def start_game():
-    """ Opens the game - done
-    Introduce game - done
-    Offer play or rules through user input - done
-        - call rules function (r)
-        - call difficulty function (p)
-        - error with feedback for invalid enteries
-    Call difficulty function to define board_size and no_mines variables - done
-    Call play function with defined valriables as arguments - done
-    Function to recycle on play function completion
-    """
-    cls()
-    # Link to ASCII character instruction https://theasciicode.com.ar/extended-ascii-code/block-graphic-character-ascii-code-219.html
-    # copied █ symbol from windows accoss to mac for use
-    
+def home_page_img():
     print(figlet_format("    MINESWEEPER", font = "standard"))
     print("""
                                     _________
@@ -48,8 +36,25 @@ def start_game():
 ................................................................................
         """)
 
+
+def start_game():
+    """ Opens the game - done
+    Introduce game - done
+    Offer play or rules through user input - done
+        - call rules function (r)
+        - call difficulty function (p)
+        - error with feedback for invalid enteries
+    Call difficulty function to define board_size and no_mines variables - done
+    Call play function with defined valriables as arguments - done
+    Function to recycle on play function completion
+    """
+    cls()
+    # Link to ASCII character instruction https://theasciicode.com.ar/extended-ascii-code/block-graphic-character-ascii-code-219.html
+    # copied █ symbol from windows accoss to mac for use
+    
     home_page = True
     while home_page:
+        home_page_img()
         intro_nav = input("Enter 'P' to play,\nor enter 'R' to see the rules.\n\n").lower()
         cls()
         if intro_nav == "r":
@@ -59,7 +64,7 @@ def start_game():
             home_page = False
             difficulty()
         else:
-            print(f"I'm sorry {intro_nav} is not a valid entry.\n")
+            print(f"{Fore.RED}{Style.BRIGHT}I'm sorry {intro_nav} is not a valid entry.\n")
 
 def rules(): 
     """ Present rules to user
@@ -110,7 +115,7 @@ def difficulty():
             evaluating_dificulty = False
         else:
             cls()
-            print(f"\nI'm sorry {difficulty} is not a valid entry.\n")
+            print(f"{Fore.RED}{Style.BRIGHT}\nI'm sorry {difficulty} is not a valid entry.\n")
     cls()
     play(board_size, no_mines)
 
@@ -158,10 +163,10 @@ def play(board_size, no_mines):
             except ValueError as e:
                 board.reset_gameplay(board)
                 print("\nInvalid Entry:\n - Do not type letters\n - Do not type special characters\n - Ensure you entered 2 coordinates")
-                print(f"\nIssue: {e}")
+                print(f"{Fore.RED}{Style.BRIGHT}\nIssue: {e}")
             except Exception as e:
                 board.reset_gameplay(board)
-                print(f"\nIssue: {e}")
+                print(f"{Fore.RED}{Style.BRIGHT}\nIssue: {e}")
             else:
                 xy_inputs = False
 
@@ -175,7 +180,7 @@ def play(board_size, no_mines):
                     if dig.lower() not in ("y", "yes", "d", "dig", "n", "no"):
                         raise Exception (f"That is not a valid entry.")
                 except Exception as e:
-                    print(f"Issue: {e}")
+                    print(f"{Fore.RED}{Style.BRIGHT}Issue: {e}")
                 else:
                     dig_input = False
             if dig.lower() not in ("y", "yes", "d", "dig"):
@@ -194,7 +199,7 @@ def play(board_size, no_mines):
                     board.reset_gameplay(board)
                     print("\nEnter the row & column with a space seperating them (e.g. 3 5)")
                     print(x_axis, y_axis)
-                    print(f"\nIssue: {e}")
+                    print(f"{Fore.RED}{Style.BRIGHT}\nIssue: {e}")
                 else:
                     flag_input = False
 
@@ -220,7 +225,7 @@ def win(board):
     """
     print(figlet_format("YOU WIN", font = "standard"))
     if len(board.guesses) == (board.board_size ** 2) - board.no_mines:
-        print("YOU WON")
+        print("Insert congratulations message")
         input("Hit anykey to play again")
         start_game()
         #return game won to play function in final version so it does not run a function within a function each new game
