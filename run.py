@@ -144,7 +144,8 @@ def play(board_size, no_mines):
     board = GameLayout(board_size, no_mines)
 
     game_active = True
-    while game_active:
+    won = False
+    while game_active and won == False:
         
         print(figlet_format("GAME PLAY", font = "standard"))
         print(board)
@@ -212,15 +213,18 @@ def play(board_size, no_mines):
                     flag_input = False
 
         game_active = board.selected_space(x_axis, y_axis, flag)
-
-        win(board)
+        won = win(board)
         cls()
-    
-    cls()
-    print(figlet_format("GAME OVER", font = "standard"))
-    print(board)
-    print(f"\nOh dear!!! It appears that Row: {x_axis}, Column: {y_axis} had a mine")
-    input("\nBetter luck next time, press any key to continue\n")
+
+    if won:
+        start_game()
+
+    if not won:
+        cls()
+        print(figlet_format("GAME OVER", font = "standard"))
+        print(board)
+        print(f"\nOh dear!!! It appears that Row: {x_axis+1}, Column: {y_axis+1} had a mine")
+        input("\nBetter luck next time, press any key to continue\n")
 
     start_game()
 
@@ -235,7 +239,10 @@ def win(board):
         print(figlet_format("YOU WIN", font = "standard"))
         print("Insert congratulations message")
         input("Hit anykey to play again")
-        start_game()
+        return True
+    else:
+        return False
+        #start_game()
         #return game won to play function in final version so it does not run a function within a function each new game
 
 
