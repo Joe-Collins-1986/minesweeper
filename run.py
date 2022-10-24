@@ -176,8 +176,11 @@ def return_scoreboard(level):
         str_all_scoreboard_data = "  |  ".join(all_scoreboard_data[i])
         print(f"{i+1}. {str_all_scoreboard_data}")
 
+    input("\nHit any key to return to home page").lower()
 
     #REMINDER - when entering the name creat a function that adds spaces to short names taking them to 10 characters
+    cls()
+    start_game()
 
 
 
