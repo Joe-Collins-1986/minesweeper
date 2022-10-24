@@ -8,6 +8,7 @@ Instruction video (https://learn.codeinstitute.net/courses/course-v1:CodeInstitu
 
 import os #used to clear console
 import random # used to assign random mine positions
+import time # used to time game
 import pyfiglet
 from pyfiglet import figlet_format # used for aesthetically pleasing titles
 
