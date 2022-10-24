@@ -34,30 +34,6 @@ SHEET = GSPREAD_CLIENT.open("Minesweeper_scoreboard")
 
 
 
-
-def return_scoreboard(level):
-    """
-    retrive data from google sheets and present as a scorecard
-    """
-    scoreboard_data = SHEET.worksheet(level)
-    all_scoreboard_data = scoreboard_data.get_all_values()
-
-    all_scoreboard_data.sort(key=lambda x: int(x[3])) #https://stackoverflow.com/questions/36955553/sorting-list-of-lists-by-the-first-element-of-each-sub-list
-    all_scoreboard_data.reverse()
-
-    print(level)
-    for i in range(3):
-        all_scoreboard_data[i].pop(1)
-        all_scoreboard_data[i].pop(2)
-        str_all_scoreboard_data = "  |  ".join(all_scoreboard_data[i])
-        print(f"{i+1}. {str_all_scoreboard_data}")
-
-
-    #REMINDER - when entering the name creat a function that adds spaces to short names taking them to 10 characters
-
-
-
-
 def cls(): # function to clear console for cross-platform: https://stackoverflow.com/questions/517970/how-to-clear-the-interpreter-console
     os.system('cls' if os.name=='nt' else 'clear')
 
@@ -79,8 +55,28 @@ def home_page_img():
 ................................................................................
         """)
 
+def get_username():
 
-def start_game():
+    cls()
+    name_page = True
+    home_page_img()
+    print("Welcome to Minesweeper.\n")
+    while name_page:
+
+            user_name = input("Please enter your name (maximum 10 characters)\n").lower()
+
+            if len(user_name) <= 10:
+                while len(user_name) < 10:
+                    user_name = user_name + " "
+                name_page = False
+                start_game(user_name)
+
+            else:
+                cls()
+                home_page_img()
+                print(f"I'm sorry, the name you entered was too long ({len(user_name)} characters).\n")
+
+def start_game(user_name):
     """ Opens the game - done
     Introduce game - done
     Offer play or rules through user input - done
@@ -98,25 +94,25 @@ def start_game():
     home_page = True
     home_page_img()
     while home_page:
-
+  
         intro_nav = input("Enter 'p' to play,\nEnter 'r' to see the rules\nEnter 's' to see the scoreboard.\n\n").lower()
         cls()
         if intro_nav == "r":
             home_page = False
-            rules()
+            rules(user_name)
         elif intro_nav == "p":
             home_page = False
-            difficulty()
+            difficulty(user_name)
         elif intro_nav == "s":
             home_page = False
-            scoreboard_selection()
+            scoreboard_selection(user_name)
         else:
             cls()
             home_page_img()
             print(f"{Fore.RED}{Style.BRIGHT}I'm sorry {intro_nav} is not a valid entry.\n")
 
 
-def rules(): 
+def rules(user_name): 
     """ Present rules to user
     Set anykey to return to inital page
     """
@@ -129,10 +125,10 @@ def rules():
     input("Enter anykey to reurn to the main page\n\n").lower()
     cls()
 
-    start_game()
+    start_game(user_name)
 
 
-def scoreboard_selection():
+def scoreboard_selection(user_name):
     """
     select the scoreboard the user wishes to see
     """
@@ -152,14 +148,14 @@ def scoreboard_selection():
                 score_nav = "hard"
 
             score_select_page = False
-            return_scoreboard(score_nav)
+            return_scoreboard(score_nav, user_name)
         else:
             cls()
             print(figlet_format("SCOREBOARD SELECTION", font = "standard"))
-            print(f"{Fore.RED}{Style.BRIGHT}I'm sorry {intro_nav} is not a valid entry.\n")
+            print(f"{Fore.RED}{Style.BRIGHT}I'm sorry {score_nav} is not a valid entry.\n")
                 
 
-def return_scoreboard(level):
+def return_scoreboard(level, user_name):
     """
     retrive data from google sheets and present as a scorecard
     """
@@ -180,11 +176,11 @@ def return_scoreboard(level):
 
     #REMINDER - when entering the name creat a function that adds spaces to short names taking them to 10 characters
     cls()
-    start_game()
+    start_game(user_name)
 
 
 
-def difficulty():
+def difficulty(user_name):
     """ Define difficulty of the game
     Explain difficulty settings
     Take user input
@@ -224,11 +220,11 @@ def difficulty():
             print("easy - This will present you with a 9X9 grid and there will be 20 hidden mines\n")
             print(f"{Fore.RED}{Style.BRIGHT}\nI'm sorry {difficulty} is not a valid entry.\n")
     cls()
-    play(board_size, no_mines)
+    play(board_size, no_mines, user_name)
 
 
 
-def play(board_size, no_mines):
+def play(board_size, no_mines, user_name):
     """ Initiate game play
     Define the grid
     Run while loop for game when not lost
@@ -312,11 +308,11 @@ def play(board_size, no_mines):
                     flag_input = False
 
         game_active = board.selected_space(x_axis, y_axis, flag)
-        won = win(board, start_time)
+        won = win(board, start_time, user_name)
         cls()
 
     if won:
-        start_game()
+        start_game(user_name)
 
     if not won:
         cls()
@@ -325,15 +321,14 @@ def play(board_size, no_mines):
         print(f"\nOh dear!!! It appears that Row: {x_axis+1}, Column: {y_axis+1} had a mine")
         input("\nBetter luck next time, press any key to continue\n")
 
-    start_game()
+    start_game(user_name)
 
 
-def win(board, start_time):
+def win(board, start_time, user_name):
     """ Check if user has won
     Check if the users guesses have met the available spaces (board - bombs)
     If it has return True else return False
     """
-    
     if len(board.guesses) == (board.board_size ** 2) - board.no_mines:
         level = ""
         if board.board_size == 9:
@@ -351,7 +346,7 @@ def win(board, start_time):
         print(figlet_format("YOU WIN", font = "standard"))
         print(f"Well done. You completed {level} in {mins}mins : {secs}secs")
     
-        scoreboard_new_data = ["test_name", level, f"{mins}mins {secs}secs", int(duration)]
+        scoreboard_new_data = [user_name, level, f"{mins}mins {secs}secs", int(duration)]
         update_scoreboard(scoreboard_new_data, level)
         input("Hit any key to play again")
         return True
@@ -565,4 +560,5 @@ class GameLayout:
 
         return f"{column_no}\n{top_of_grid}\n{self.side_lines}\n{grid_layout}\n{self.row_seperator}"
 
-start_game()
+get_username()
+#start_game()
