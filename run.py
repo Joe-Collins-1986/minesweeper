@@ -34,7 +34,14 @@ SHEET = GSPREAD_CLIENT.open("Minesweeper_scoreboard")
 scoreboard_data = SHEET.worksheet("colate_data")
 data = scoreboard_data.get_all_values()
 
-print(data)
+
+
+
+
+
+
+
+
 
 
 
@@ -131,7 +138,7 @@ def difficulty():
         difficulty = input("Enter 'e' for easy,\nenter 'm' or medium,\nor enter 'h' for hard.\n").lower()
         if difficulty == "e":
             board_size = 5
-            no_mines = 5
+            no_mines = 1
             evaluating_dificulty = False
         elif difficulty == "m":
             board_size = 7
@@ -263,11 +270,11 @@ def win(board, start_time):
     if len(board.guesses) == (board.board_size ** 2) - board.no_mines:
         level = ""
         if board.board_size == 9:
-            level = "Hard"
-        elif board.board_size == 9:
-            level = "Medium"
+            level = "hard"
+        elif board.board_size == 7:
+            level = "medium"
         else:
-            level = "Easy"
+            level = "easy"
         stop_time = (time.time())
         duration = stop_time - start_time
 
@@ -275,12 +282,35 @@ def win(board, start_time):
         secs = round(duration % 60)
         cls()
         print(figlet_format("YOU WIN", font = "standard"))
-        print(f"Well done. Youe completed {level} in {mins}mins : {secs}secs")
-        input("Hit anykey to play again")
+        print(f"Well done. You completed {level} in {mins}mins : {secs}secs")
+    
+        scoreboard_new_data = ["test_name", level, f"{mins}mins {secs}secs", int(duration)]
+        Update_scoreboard(scoreboard_new_data)
+        input("Hit any key to play again")
         return True
     else:
         return False
      
+def update_scoreboard(data):
+    """
+    Update scoreboard with name, score, time, and int time(to order)
+    """
+    print("\nupdating scoreboard...\n")
+    scoreboard_colate_data = SHEET.worksheet("colate_data")
+    scoreboard_colate_data.append_row(data)
+    print("Scoreboard updated successfully\n")
+
+
+
+
+
+
+
+
+
+
+
+
 
 class GameLayout:
     """
@@ -479,4 +509,4 @@ class GameLayout:
 
         return f"{column_no}\n{top_of_grid}\n{self.side_lines}\n{grid_layout}\n{self.row_seperator}"
 
-#start_game()
+start_game()
