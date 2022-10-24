@@ -8,6 +8,7 @@ Instruction video (https://learn.codeinstitute.net/courses/course-v1:CodeInstitu
 
 import os #used to clear console
 import random # used to assign random mine positions
+import pyfiglet
 from pyfiglet import figlet_format # used for aesthetically pleasing titles
 
 import colorama #colorama tuorial - https://www.youtube.com/watch?v=u51Zjlnui4Y
