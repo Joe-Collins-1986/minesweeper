@@ -5,6 +5,8 @@ To use google sheets api will need to install
 Instruction video (https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+LS101+2021_T1/courseware/293ee9d8ff3542d3b877137ed81b9a5b/071036790a5642f9a6f004f9888b6a45/?child=first)
 
 """
+import gspread
+from google.oauth2.service_account import Credentials
 
 import os #used to clear console
 import random # used to assign random mine positions
@@ -15,6 +17,26 @@ from pyfiglet import figlet_format # used for aesthetically pleasing titles
 import colorama #colorama tuorial - https://www.youtube.com/watch?v=u51Zjlnui4Y
 from colorama import Fore, Style #Used to color warnings
 colorama.init(autoreset=True) #reset color to default after use
+
+
+
+SCOPE = [
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/drive.file",
+    "https://www.googleapis.com/auth/drive"
+    ]
+
+CREDS = Credentials.from_service_account_file("creds.json")
+SCOPED_CREDS = CREDS.with_scopes(SCOPE)
+GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
+SHEET = GSPREAD_CLIENT.open("Minesweeper_scoreboard")
+
+scoreboard_data = SHEET.worksheet("colate_data")
+data = scoreboard_data.get_all_values()
+
+print(data)
+
+
 
 
 
@@ -33,7 +55,7 @@ def home_page_img():
              █  █  █         /  /_______________\  \         █  █  █
                 █            \_____________________/            █  
 
-                              WELCOME TO MINSWEEPER
+                              WELCOME TO MINESWEEPER
 
 ................................................................................
 ................................................................................
@@ -457,4 +479,4 @@ class GameLayout:
 
         return f"{column_no}\n{top_of_grid}\n{self.side_lines}\n{grid_layout}\n{self.row_seperator}"
 
-start_game()
+#start_game()
