@@ -37,7 +37,7 @@ SHEET = GSPREAD_CLIENT.open("Minesweeper_scoreboard")
 
 def return_scoreboard(level):
     """
-    for 10 loop through lists and return lists where list[3] is greater than others then pop from list.
+    retrive data from google sheets and present as a scorecard
     """
     scoreboard_data = SHEET.worksheet(level)
     all_scoreboard_data = scoreboard_data.get_all_values()
@@ -53,22 +53,7 @@ def return_scoreboard(level):
         print(f"{i+1}. {str_all_scoreboard_data}")
 
 
-
-
-    """
-    for row in all_scoreboard_data:
-        print row
-
-    print("\nupdating scoreboard...\n")
-    scoreboard_colate_data = SHEET.worksheet(level)
-    scoreboard_colate_data.append_row(data)
-    print("Scoreboard updated successfully\n")
-    """
-
-
-return_scoreboard("easy")
-
-
+    #REMINDER - when entering the name creat a function that adds spaces to short names taking them to 10 characters
 
 
 
@@ -114,7 +99,7 @@ def start_game():
     home_page_img()
     while home_page:
 
-        intro_nav = input("Enter 'P' to play,\nor enter 'R' to see the rules.\n\n").lower()
+        intro_nav = input("Enter 'p' to play,\nEnter 'r' to see the rules\nEnter 's' to see the scoreboard.\n\n").lower()
         cls()
         if intro_nav == "r":
             home_page = False
@@ -122,6 +107,9 @@ def start_game():
         elif intro_nav == "p":
             home_page = False
             difficulty()
+        elif intro_nav == "s":
+            home_page = False
+            scoreboard_selection()
         else:
             cls()
             home_page_img()
@@ -138,10 +126,60 @@ def rules():
     print("""Game Objective:\n\n
     **** type in the rules ***
     """)
-    leave_rules = input("Enter anykey to reurn to the main page\n\n").lower()
+    input("Enter anykey to reurn to the main page\n\n").lower()
     cls()
 
     start_game()
+
+
+def scoreboard_selection():
+    """
+    select the scoreboard the user wishes to see
+    """
+    score_select_page = True
+    print(figlet_format("SCOREBOARD SELECTION", font = "standard"))
+    print("Each difficulty level has it's own scoreboard. Which scoreboard would you like to see?")
+    while score_select_page:
+
+        score_nav = input("Enter 'e' to view the easy scoreboard,\nEnter 'm' to view the medium scoreboard\nEnter 'h' to view the hard scoreboard.\n\n").lower()
+        cls()
+        if score_nav in ("e", "m", "h"):
+            if score_nav == "e":
+                score_nav = "easy"
+            elif score_nav == "m":
+                score_nav = "medium"
+            else:
+                score_nav = "hard"
+
+            score_select_page = False
+            return_scoreboard(score_nav)
+        else:
+            cls()
+            print(figlet_format("SCOREBOARD SELECTION", font = "standard"))
+            print(f"{Fore.RED}{Style.BRIGHT}I'm sorry {intro_nav} is not a valid entry.\n")
+                
+
+def return_scoreboard(level):
+    """
+    retrive data from google sheets and present as a scorecard
+    """
+    scoreboard_data = SHEET.worksheet(level)
+    all_scoreboard_data = scoreboard_data.get_all_values()
+
+    all_scoreboard_data.sort(key=lambda x: int(x[3])) #https://stackoverflow.com/questions/36955553/sorting-list-of-lists-by-the-first-element-of-each-sub-list
+
+    print(figlet_format(level.capitalize() + " - Top 5", font = "standard"))
+
+    for i in range(5):
+        all_scoreboard_data[i].pop(1)
+        all_scoreboard_data[i].pop(2)
+        str_all_scoreboard_data = "  |  ".join(all_scoreboard_data[i])
+        print(f"{i+1}. {str_all_scoreboard_data}")
+
+
+    #REMINDER - when entering the name creat a function that adds spaces to short names taking them to 10 characters
+
+
 
 def difficulty():
     """ Define difficulty of the game
@@ -524,4 +562,4 @@ class GameLayout:
 
         return f"{column_no}\n{top_of_grid}\n{self.side_lines}\n{grid_layout}\n{self.row_seperator}"
 
-#start_game()
+start_game()
