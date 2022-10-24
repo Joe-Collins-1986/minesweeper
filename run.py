@@ -31,16 +31,42 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("Minesweeper_scoreboard")
 
-scoreboard_data = SHEET.worksheet("colate_data")
-data = scoreboard_data.get_all_values()
 
 
 
 
+def return_scoreboard(level):
+    """
+    for 10 loop through lists and return lists where list[3] is greater than others then pop from list.
+    """
+    scoreboard_data = SHEET.worksheet(level)
+    all_scoreboard_data = scoreboard_data.get_all_values()
+
+    all_scoreboard_data.sort(key=lambda x: int(x[3])) #https://stackoverflow.com/questions/36955553/sorting-list-of-lists-by-the-first-element-of-each-sub-list
+    all_scoreboard_data.reverse()
+
+    print(level)
+    for i in range(3):
+        all_scoreboard_data[i].pop(1)
+        all_scoreboard_data[i].pop(2)
+        str_all_scoreboard_data = "  |  ".join(all_scoreboard_data[i])
+        print(f"{i+1}. {str_all_scoreboard_data}")
 
 
 
 
+    """
+    for row in all_scoreboard_data:
+        print row
+
+    print("\nupdating scoreboard...\n")
+    scoreboard_colate_data = SHEET.worksheet(level)
+    scoreboard_colate_data.append_row(data)
+    print("Scoreboard updated successfully\n")
+    """
+
+
+return_scoreboard("easy")
 
 
 
@@ -285,31 +311,20 @@ def win(board, start_time):
         print(f"Well done. You completed {level} in {mins}mins : {secs}secs")
     
         scoreboard_new_data = ["test_name", level, f"{mins}mins {secs}secs", int(duration)]
-        Update_scoreboard(scoreboard_new_data)
+        update_scoreboard(scoreboard_new_data, level)
         input("Hit any key to play again")
         return True
     else:
         return False
      
-def update_scoreboard(data):
+def update_scoreboard(data, level):
     """
     Update scoreboard with name, score, time, and int time(to order)
     """
     print("\nupdating scoreboard...\n")
-    scoreboard_colate_data = SHEET.worksheet("colate_data")
+    scoreboard_colate_data = SHEET.worksheet(level)
     scoreboard_colate_data.append_row(data)
     print("Scoreboard updated successfully\n")
-
-
-
-
-
-
-
-
-
-
-
 
 
 class GameLayout:
@@ -509,4 +524,4 @@ class GameLayout:
 
         return f"{column_no}\n{top_of_grid}\n{self.side_lines}\n{grid_layout}\n{self.row_seperator}"
 
-start_game()
+#start_game()
