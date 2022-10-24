@@ -65,16 +65,21 @@ def get_username():
 
             user_name = input("Please enter your name (maximum 10 characters)\n").lower()
 
-            if len(user_name) <= 10:
+            if len(user_name) > 0 and len(user_name) <= 10:
                 while len(user_name) < 10:
                     user_name = user_name + " "
                 name_page = False
                 start_game(user_name)
+            
+            elif len(user_name) == 0:
+                cls()
+                home_page_img()
+                print(f"{Fore.RED}{Style.BRIGHT}You have to enter something, how will we recognise you?\n")
 
             else:
                 cls()
                 home_page_img()
-                print(f"I'm sorry, the name you entered was too long ({len(user_name)} characters).\n")
+                print(f"{Fore.RED}{Style.BRIGHT}I'm sorry, the name you entered was too long ({len(user_name)} characters).\n")
 
 def start_game(user_name):
     """ Opens the game - done
@@ -201,7 +206,7 @@ def difficulty(user_name):
         difficulty = input("Enter 'e' for easy,\nenter 'm' or medium,\nor enter 'h' for hard.\n").lower()
         if difficulty == "e":
             board_size = 5
-            no_mines = 1
+            no_mines = 5
             evaluating_dificulty = False
         elif difficulty == "m":
             board_size = 7
@@ -302,7 +307,7 @@ def play(board_size, no_mines, user_name):
                 except Exception as e:
                     board.reset_gameplay(board)
                     print("\nEnter the row & column with a space seperating them (e.g. 3 5)")
-                    print(x_axis, y_axis)
+                    print(x_axis+1, y_axis+1)
                     print(f"{Fore.RED}{Style.BRIGHT}\nIssue: {e}")
                 else:
                     flag_input = False
@@ -448,10 +453,12 @@ class GameLayout:
 
                 if self.board_layout[row][col] != "*":
                     self.board_layout[row][col] = mines_detected
-    
+
+        """
         for i in self.board_layout: # for testing
             print(i) # for testing
         print("\n.............\n")  # for testing
+        """
 
 
     def selected_space(self, x, y, f):
