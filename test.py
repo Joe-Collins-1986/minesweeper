@@ -15,8 +15,8 @@ print(stop_time)
 duration = stop_time - start_time
 print(duration)
 
-hours = duration // 60**2
-mins = duration // 60
+hours = int(duration // 60**2)
+mins = int(duration // 60)
 secs = round(duration % 60)
 
 print(f"Hours: {hours} Mins: {mins} Seconds: {secs}")

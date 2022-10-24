@@ -14,7 +14,6 @@ import colorama #colorama tuorial - https://www.youtube.com/watch?v=u51Zjlnui4Y
 from colorama import Fore, Style #Used to color warnings
 colorama.init(autoreset=True) #reset color to default after use
 
-import time
 
 
 def cls(): # function to clear console for cross-platform: https://stackoverflow.com/questions/517970/how-to-clear-the-interpreter-console
@@ -146,6 +145,7 @@ def play(board_size, no_mines):
     board = GameLayout(board_size, no_mines)
     game_active = True
     won = False
+    start_time = (time.time())
     while game_active and not won:
         
         print(figlet_format("GAME PLAY", font = "standard"))
@@ -214,7 +214,7 @@ def play(board_size, no_mines):
                     flag_input = False
 
         game_active = board.selected_space(x_axis, y_axis, flag)
-        won = win(board)
+        won = win(board, start_time)
         cls()
 
     if won:
@@ -230,15 +230,28 @@ def play(board_size, no_mines):
     start_game()
 
 
-def win(board):
+def win(board, start_time):
     """ Check if user has won
     Check if the users guesses have met the available spaces (board - bombs)
     If it has return True else return False
     """
+    
     if len(board.guesses) == (board.board_size ** 2) - board.no_mines:
+        level = ""
+        if board.board_size == 9:
+            level = "Hard"
+        elif board.board_size == 9:
+            level = "Medium"
+        else:
+            level = "Easy"
+        stop_time = (time.time())
+        duration = stop_time - start_time
+
+        mins = int(duration // 60)
+        secs = round(duration % 60)
         cls()
         print(figlet_format("YOU WIN", font = "standard"))
-        print("Insert congratulations message")
+        print(f"Well done. Youe completed {level} in {mins}mins : {secs}secs")
         input("Hit anykey to play again")
         return True
     else:
