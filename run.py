@@ -198,7 +198,7 @@ def difficulty(user_name):
     print(figlet_format("DIFFICULTY", font = "standard"))
     print("There are 3 difficulty settings in this game")
     print("easy - This will present you with a 5X5 grid and there will be 4 hidden mines")
-    print("medium - This will present you with a 7X7 grid and there will be 7 hidden mines")
+    print("medium - This will present you with a 7X7 grid and there will be 8 hidden mines")
     print("easy - This will present you with a 9X9 grid and there will be 15 hidden mines\n")
     evaluating_dificulty = True
     while evaluating_dificulty:
