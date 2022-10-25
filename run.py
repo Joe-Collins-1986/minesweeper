@@ -265,7 +265,7 @@ def play(board_size, no_mines, user_name):
                 x_axis -= 1
                 y_axis -= 1
                 
-                if board.user_board[int(x_axis)][int(y_axis)] not in (str(x_axis +1)+" |  _", "_", "_  |", str(x_axis +1)+" |  F", "F", "F  |"):
+                if board.user_board[int(x_axis)][int(y_axis)] not in (f"  {str(x_axis +1)}  |  _", "_", "_  |", f"  {str(x_axis +1)}  |  F", "F", "F  |"):
                     raise Exception (f"You have already dug {x_axis +1} {y_axis +1}\n")
 
 
@@ -279,7 +279,7 @@ def play(board_size, no_mines, user_name):
             else:
                 xy_inputs = False
 
-        if board.user_board[int(x_axis)][int(y_axis)] in (str(x_axis +1)+" |  F", "F", "F  |"):
+        if board.user_board[int(x_axis)][int(y_axis)] in (f"  {str(x_axis +1)}  |  F", "F", "F  |"):
     
             dig_input = True
             while dig_input:
@@ -522,7 +522,7 @@ class GameLayout:
 
     def space_edge_guesses(self, x, y):
         if y == 0:
-            self.user_board[x][y] = str(x +1) + " |  " + str(self.user_board[x][y])
+            self.user_board[x][y] = f"  {str(x +1)}  |  {str(self.user_board[x][y])}"
         elif y == self.board_size-1:
             self.user_board[x][y] = str(self.user_board[x][y]) + "  |"
 
@@ -531,8 +531,8 @@ class GameLayout:
         """
         Create dividers between cells dependant on the board_size
         """
-        side_lines_str = "  |"
-        underscore_str = "  |"
+        side_lines_str = "     |"
+        underscore_str = "     |"
         for cell in range(self.board_size):
 
             side_lines_str = side_lines_str + "     |"
@@ -550,16 +550,16 @@ class GameLayout:
         if self.guesses == [] and self.flags_placed == 0 and self.reset_board:
             row = 1
             for list in self.user_board:
-                list[0] = str(row) + " |  " + list[0]
+                list[0] = f"  {str(row)}  |  {list[0]}"
                 list[-1] = list[-1] + "  |"
                 row += 1
 
         str_layout = ["  |  ".join(item) for item in self.user_board]
         grid_layout = f"\n{self.row_seperator}\n{self.side_lines}\n".join(str_layout)
 
-        """Creat for top of grid"""
-        column_no = "     1   "
-        top_of_grid = "   _____"
+        """Create for top of grid"""
+        column_no = "        1   "
+        top_of_grid = "      _____"
         for i in range(self.board_size-1):
             top_of_grid = top_of_grid + "______"
             column_no = column_no + "  " + str(i+2) + "   "
