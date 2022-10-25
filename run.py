@@ -257,7 +257,7 @@ def play(board_size, no_mines, user_name):
     start_time = (time.time())
     while game_active and not won:
         
-        print(figlet_format("GAME PLAY", font = "standard"))
+        print(figlet_format("           GAME PLAY", font = "standard"))
         print(board)
         
         xy_inputs = True
@@ -331,9 +331,9 @@ def play(board_size, no_mines, user_name):
 
     if not won:
         cls()
-        print(figlet_format("GAME OVER", font = "standard"))
+        print(figlet_format("           GAME OVER", font = "standard"))
         print(board)
-        print(f"\nOh dear!!! It appears that Row: {x_axis+1}, Column: {y_axis+1} had a mine")
+        print(f"\n\nOh dear!!! It appears that Row: {x_axis+1}, Column: {y_axis+1} had a mine")
         input("\nBetter luck next time, press any key to continue\n")
 
     start_game(user_name)
@@ -358,12 +358,12 @@ def win(board, start_time, user_name):
         mins = int(duration // 60)
         secs = round(duration % 60)
         cls()
-        print(figlet_format("YOU WIN", font = "standard"))
-        print(f"Well done. You completed {level} in {mins}mins : {secs}secs")
+        print(figlet_format("                YOU WIN", font = "standard"))
+        print(f"\nWell done.\n\nYou completed {level} in {mins}mins : {secs}secs")
     
         scoreboard_new_data = [user_name, level, f"{mins}mins {secs}secs", int(duration)]
         update_scoreboard(scoreboard_new_data, level)
-        input("Hit any key to play again")
+        input("Hit any key to play again\n")
         return True
     else:
         return False
@@ -372,10 +372,12 @@ def update_scoreboard(data, level):
     """
     Update scoreboard with name, score, time, and int time(to order)
     """
-    print("\nupdating scoreboard...\n")
+    print("\n................................................................................\n")
+    print("\nUpdating scoreboard...\n")
     scoreboard_colate_data = SHEET.worksheet(level)
     scoreboard_colate_data.append_row(data)
     print("Scoreboard updated successfully\n")
+    print("\n................................................................................\n")
 
 
 class GameLayout:
@@ -420,7 +422,7 @@ class GameLayout:
         reset board for validation errors
         """
         cls()
-        print(figlet_format("GAME PLAY", font = "standard"))
+        print(figlet_format("           GAME PLAY", font = "standard"))
         self.reset_board = False
         print(board)
         self.reset_board = True
