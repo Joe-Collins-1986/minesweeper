@@ -63,7 +63,7 @@ def get_username():
     print("Welcome to Minesweeper.\n")
     while name_page:
 
-            user_name = input("Please enter your name (maximum 10 characters)\n").lower()
+            user_name = input("Please enter your name (maximum 10 characters)\n").strip().lower()
 
             if len(user_name) > 0 and len(user_name) <= 10:
                 while len(user_name) < 10:
