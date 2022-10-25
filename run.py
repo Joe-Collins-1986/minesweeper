@@ -99,8 +99,8 @@ def start_game(user_name):
     home_page = True
     home_page_img()
     while home_page:
-  
-        intro_nav = input("Enter 'p' to play,\nEnter 'r' to see the rules\nEnter 's' to see the scoreboard.\n\n").lower()
+        print("                 Enter the following keys to navigate the game:\n")
+        intro_nav = input("  'P' to Play                    'R' for Rules                 'S' for Scores\n\n").lower()
         cls()
         if intro_nav == "r":
             home_page = False
@@ -122,12 +122,19 @@ def rules(user_name):
     Set anykey to return to inital page
     """
     cls()
-    print(figlet_format("RULES", font = "standard"))
+    print(figlet_format("                      RULES", font = "standard"))
     rules = True
-    print("""Game Objective:\n\n
-    **** type in the rules ***
-    """)
-    input("Enter anykey to reurn to the main page\n\n").lower()
+    print("\033[4m" + "Instructional Video:\n")
+    print("https://www.youtube.com/watch?v=dvvrOeITzG8\n\n")
+
+    
+    print("\033[4m" + "Game Objective:\n")
+    print("""
+**** type in the rules ***
+
+Video explaining the rules: https://www.youtube.com/watch?v=dvvrOeITzG8
+""")
+    input("Enter anykey to reurn to the main page\n").lower()
     cls()
 
     start_game(user_name)
@@ -138,11 +145,11 @@ def scoreboard_selection(user_name):
     select the scoreboard the user wishes to see
     """
     score_select_page = True
-    print(figlet_format("SCOREBOARD SELECTION", font = "standard"))
-    print("Each difficulty level has it's own scoreboard. Which scoreboard would you like to see?")
+    print(figlet_format("         SCOREBOARD", font = "standard"))
+    print(figlet_format("              SELECTION", font = "standard"))
+    print("                    Which scoreboard would you like to see?\n")
     while score_select_page:
-
-        score_nav = input("Enter 'e' to view the easy scoreboard,\nEnter 'm' to view the medium scoreboard\nEnter 'h' to view the hard scoreboard.\n\n").lower()
+        score_nav = input("  'E' for Easy                   'M' for Medium                 'H' for Hard\n\n").lower()
         cls()
         if score_nav in ("e", "m", "h"):
             if score_nav == "e":
@@ -156,7 +163,8 @@ def scoreboard_selection(user_name):
             return_scoreboard(score_nav, user_name)
         else:
             cls()
-            print(figlet_format("SCOREBOARD SELECTION", font = "standard"))
+            print(figlet_format("         SCOREBOARD", font = "standard"))
+            print(figlet_format("              SELECTION", font = "standard"))
             print(f"{Fore.RED}{Style.BRIGHT}I'm sorry {score_nav} is not a valid entry.\n")
                 
 
@@ -177,7 +185,7 @@ def return_scoreboard(level, user_name):
         str_all_scoreboard_data = "  |  ".join(all_scoreboard_data[i])
         print(f"{i+1}. {str_all_scoreboard_data}")
 
-    input("\nHit any key to return to home page").lower()
+    input("\n\nHit any key to return to home page\n").lower()
 
     #REMINDER - when entering the name creat a function that adds spaces to short names taking them to 10 characters
     cls()
@@ -195,15 +203,17 @@ def difficulty(user_name):
         - error with feedback for invalid enteries
     """
     cls()
-    print(figlet_format("DIFFICULTY", font = "standard"))
-    print("There are 3 difficulty settings in this game")
-    print("easy - This will present you with a 5X5 grid and there will be 4 hidden mines")
-    print("medium - This will present you with a 7X7 grid and there will be 8 hidden mines")
-    print("easy - This will present you with a 9X9 grid and there will be 15 hidden mines\n")
+    print(figlet_format("            DIFFICULTY", font = "standard"))
+    print("There are 3 difficulty settings in this game:\n")
+    print(" - Easy - This will present you with a 5X5 grid and 4 mines.")
+    print(" - Medium - This will present you with a 7X7 grid and 8 mines.")
+    print(" - Hard - This will present you with a 9X9 grid and 15 mines.\n")
     evaluating_dificulty = True
     while evaluating_dificulty:
-        print("Please enter the difficulty you would like to play:")
-        difficulty = input("Enter 'e' for easy,\nenter 'm' or medium,\nor enter 'h' for hard.\n").lower()
+        #print("...................|...................|...................|...................")
+        print("              Please enter the difficulty you would like to play:\n")
+
+        difficulty = input("  'E' for Easy                 'M' for Medium                    'H' for Hard\n\n").lower()
         if difficulty == "e":
             board_size = 5
             no_mines = 4
@@ -218,11 +228,11 @@ def difficulty(user_name):
             evaluating_dificulty = False
         else:
             cls()
-            print(figlet_format("DIFFICULTY", font = "standard"))
-            print("There are 3 difficulty settings in this game")
-            print("easy - This will present you with a 5X5 grid and there will be 5 hidden mines")
-            print("medium - This will present you with a 7X7 grid and there will be 10 hidden mines")
-            print("easy - This will present you with a 9X9 grid and there will be 20 hidden mines\n")
+            print(figlet_format("            DIFFICULTY", font = "standard"))
+            print("There are 3 difficulty settings in this game:\n")
+            print(" - Easy - This will present you with a 5X5 grid and 4 mines.")
+            print(" - Medium - This will present you with a 7X7 grid and 8 mines.")
+            print(" - Hard - This will present you with a 9X9 grid and 15 mines.\n")
             print(f"{Fore.RED}{Style.BRIGHT}\nI'm sorry {difficulty} is not a valid entry.\n")
     cls()
     play(board_size, no_mines, user_name)
@@ -287,7 +297,7 @@ def play(board_size, no_mines, user_name):
                     print("\nThis position has a flag on it")
                     dig = input("Would you like to dig anyway? (Y/N)\n")    
                     if dig.lower() not in ("y", "yes", "d", "dig", "n", "no"):
-                        raise Exception (f"That is not a valid entry.")
+                        raise Exception (f"That is not a valid dig entry.")
                 except Exception as e:
                     print(f"{Fore.RED}{Style.BRIGHT}Issue: {e}")
                 else:
@@ -303,7 +313,7 @@ def play(board_size, no_mines, user_name):
                 try:
                     flag = input("\nWould you like to place a flag on this location (Y/N)\n")
                     if flag.lower() not in ("y", "yes", "f", "flag", "n", "no"):
-                        raise Exception (f"That is not a valid entry.")
+                        raise Exception (f"That is not a valid flag entry.")
                 except Exception as e:
                     board.reset_gameplay(board)
                     print("\nEnter the row & column with a space seperating them (e.g. 3 5)")
@@ -568,4 +578,3 @@ class GameLayout:
         return f"{column_no}\n{top_of_grid}\n{self.side_lines}\n{grid_layout}\n{self.row_seperator}"
 
 get_username()
-#start_game()
