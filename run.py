@@ -197,24 +197,24 @@ def difficulty(user_name):
     cls()
     print(figlet_format("DIFFICULTY", font = "standard"))
     print("There are 3 difficulty settings in this game")
-    print("easy - This will present you with a 5X5 grid and there will be 5 hidden mines")
-    print("medium - This will present you with a 7X7 grid and there will be 10 hidden mines")
-    print("easy - This will present you with a 9X9 grid and there will be 20 hidden mines\n")
+    print("easy - This will present you with a 5X5 grid and there will be 4 hidden mines")
+    print("medium - This will present you with a 7X7 grid and there will be 7 hidden mines")
+    print("easy - This will present you with a 9X9 grid and there will be 15 hidden mines\n")
     evaluating_dificulty = True
     while evaluating_dificulty:
         print("Please enter the difficulty you would like to play:")
         difficulty = input("Enter 'e' for easy,\nenter 'm' or medium,\nor enter 'h' for hard.\n").lower()
         if difficulty == "e":
             board_size = 5
-            no_mines = 5
+            no_mines = 4
             evaluating_dificulty = False
         elif difficulty == "m":
             board_size = 7
-            no_mines = 10
+            no_mines = 8
             evaluating_dificulty = False
         elif difficulty == "h":
             board_size = 9
-            no_mines = 20
+            no_mines = 15
             evaluating_dificulty = False
         else:
             cls()
