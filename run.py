@@ -1,12 +1,3 @@
-"""
-To use google sheets api will need to install 
-- google-auth
-- gspread
-Instruction video (https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+LS101+2021_T1/courseware/293ee9d8ff3542d3b877137ed81b9a5b/071036790a5642f9a6f004f9888b6a45/?child=first)
-
-"""
-import gspread
-from google.oauth2.service_account import Credentials
 
 import os #used to clear console
 import random # used to assign random mine positions
@@ -19,7 +10,9 @@ import colorama #colorama tuorial - https://www.youtube.com/watch?v=u51Zjlnui4Y
 from colorama import Fore, Style #Used to color warnings
 colorama.init(autoreset=True) #reset color to default after use
 
-
+import gspread # read and update google sheets
+from google.oauth2.service_account import Credentials #allow API link to google sheets
+#Instruction video (https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+LS101+2021_T1/courseware/293ee9d8ff3542d3b877137ed81b9a5b/071036790a5642f9a6f004f9888b6a45/?child=first)
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -35,10 +28,17 @@ SHEET = GSPREAD_CLIENT.open("Minesweeper_scoreboard")
 
 
 
-def cls(): # function to clear console for cross-platform: https://stackoverflow.com/questions/517970/how-to-clear-the-interpreter-console
+def cls(): 
+    """
+    Clear console for cross-platform: 
+    https://stackoverflow.com/questions/517970/how-to-clear-the-interpreter-console
+    """
     os.system('cls' if os.name=='nt' else 'clear')
 
 def home_page_img():
+    """
+    Present home page image
+    """
     print(figlet_format("    MINESWEEPER", font = "standard"))
     print("""
                                     _________
@@ -57,7 +57,13 @@ def home_page_img():
         """)
 
 def get_username():
-
+    """
+    Take user imput and store as username
+    Add spacing to name to present consistantly in scoreboard
+    Validate user input
+    Link to ASCII character instruction:
+    https://theasciicode.com.ar/extended-ascii-code/block-graphic-character-ascii-code-219.html
+    """
     cls()
     name_page = True
     home_page_img()
@@ -83,14 +89,13 @@ def get_username():
                 print(f"{Fore.RED}{Style.BRIGHT}I'm sorry, the name you entered was too long '({len(user_name)}' characters).\n")
 
 def start_game(user_name):
-    """ Opens the game - done
-    Introduce game - done
+    """
     Offer play or rules through user input - done
         - call rules function (r)
         - call difficulty function (p)
+        - call scoreboard function (s)
         - error with feedback for invalid enteries
-    Call difficulty function to define board_size and no_mines variables - done
-    Call play function with defined valriables as arguments - done
+    Call difficulty function to define board_size and no_mines variables
     Function to recycle on play function completion
     """
     cls()
@@ -119,8 +124,9 @@ def start_game(user_name):
 
 
 def rules(user_name): 
-    """ Present rules to user
-    Set anykey to return to inital page
+    """
+    Present rules to user
+    Set anykey to return to start_game function
     """
     cls()
     print(figlet_format("                      RULES", font = "standard"))
@@ -143,7 +149,9 @@ Video explaining the rules: https://www.youtube.com/watch?v=dvvrOeITzG8
 
 def scoreboard_selection(user_name):
     """
-    select the scoreboard the user wishes to see
+    Select the scoreboard the user wishes to see
+    Validate entry
+    Call return_scorecard function passing validated input
     """
     score_select_page = True
     print(figlet_format("         SCOREBOARD", font = "standard"))
@@ -171,12 +179,16 @@ def scoreboard_selection(user_name):
 
 def return_scoreboard(level, user_name):
     """
-    retrive data from google sheets and present as a scorecard
+    Retrive data from google sheets and present as a scorecard
+    Sort order using recorded time at index 3 of each list in sheets list
+    Drop unessecary info (difficulty and time in seconds)
+    Set anykey to return to start_game function
     """
     scoreboard_data = SHEET.worksheet(level)
     all_scoreboard_data = scoreboard_data.get_all_values()
 
-    all_scoreboard_data.sort(key=lambda x: int(x[3])) #https://stackoverflow.com/questions/36955553/sorting-list-of-lists-by-the-first-element-of-each-sub-list
+    #https://stackoverflow.com/questions/36955553/sorting-list-of-lists-by-the-first-element-of-each-sub-list
+    all_scoreboard_data.sort(key=lambda x: int(x[3]))
 
     print(figlet_format(level.capitalize() + " - Top 5", font = "standard"))
 
@@ -193,13 +205,12 @@ def return_scoreboard(level, user_name):
 
 
 def difficulty(user_name):
-    """ Define difficulty of the game
+    """ 
+    Define difficulty of the game
     Explain difficulty settings
-    Take user input
-        - easy(e) will return (5, 6) 
-        - medium(m) will return (10, 9) 
-        - hard(h) will return (20, 12) 
-        - error with feedback for invalid enteries
+    Take user input to set size of board and number of mines
+    Validate entry
+    Call play function
     """
     cls()
     print(figlet_format("            DIFFICULTY", font = "standard"))
@@ -209,7 +220,6 @@ def difficulty(user_name):
     print(" - Hard - This will present you with a 9X9 grid and 15 mines.\n")
     evaluating_dificulty = True
     while evaluating_dificulty:
-        #print("...................|...................|...................|...................")
         print("              Please enter the difficulty you would like to play:\n")
 
         difficulty = input("  'E' for Easy                 'M' for Medium                    'H' for Hard\n\n").lower()
@@ -239,16 +249,19 @@ def difficulty(user_name):
 
 
 def play(board_size, no_mines, user_name):
-    """ Initiate game play
-    Define the grid
-    Run while loop for game when not lost
-        - present board
-        - feedback from last guess and provide instructions for next guess
-        - take user input and record as arguments for select space function
-            - error with feedback for invalid enteries
-    Define win stauts by calling win function
-        - If win status is True inform user and break out of function.
-    If game status lost inform user and break out of function.  
+    """ 
+    Asign GameLayout class to board using board size and number of mines:
+        - This will define the board, mine placment and cell values
+    Set the game to active and won to False to run a while loop until game is won or lost
+    Initialte stat time of game to be used in scoreboard
+    Run while loop for game when not lost/won:
+        - Present board
+        - Take and validate user guesses and asign to x y axis variables
+        (Validation dependant on if cell is available, has flag or has been dug)
+        - Pass class guess to update board and define if game still active and break out of while loop if not
+        - Run win function to see if game won. If it is function will print congratulations and break out of while loop if it is.
+    If won status true call start_game function
+    If won status false print game over info and set input anykey to call start_game function
     """
     board = GameLayout(board_size, no_mines)
     game_active = True
@@ -339,8 +352,11 @@ def play(board_size, no_mines, user_name):
 
 
 def win(board, start_time, user_name):
-    """ Check if user has won
+    """ 
     Check if the users guesses have met the available spaces (board - bombs)
+        - If true take stop time and take deference from start time
+        - Print Congratulation info and time taken
+        - Call update scoreboard function
     If it has return True else return False
     """
     if len(board.guesses) == (board.board_size ** 2) - board.no_mines:
