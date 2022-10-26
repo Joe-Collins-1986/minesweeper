@@ -11,6 +11,7 @@ from google.oauth2.service_account import Credentials
 import os #used to clear console
 import random # used to assign random mine positions
 import time # used to time game
+import math # round down seconds
 import pyfiglet
 from pyfiglet import figlet_format # used for aesthetically pleasing titles
 
@@ -79,7 +80,7 @@ def get_username():
             else:
                 cls()
                 home_page_img()
-                print(f"{Fore.RED}{Style.BRIGHT}I'm sorry, the name you entered was too long ({len(user_name)} characters).\n")
+                print(f"{Fore.RED}{Style.BRIGHT}I'm sorry, the name you entered was too long '({len(user_name)}' characters).\n")
 
 def start_game(user_name):
     """ Opens the game - done
@@ -114,7 +115,7 @@ def start_game(user_name):
         else:
             cls()
             home_page_img()
-            print(f"{Fore.RED}{Style.BRIGHT}I'm sorry {intro_nav} is not a valid entry.\n")
+            print(f"{Fore.RED}{Style.BRIGHT}I'm sorry '{intro_nav}' is not a valid entry.\n")
 
 
 def rules(user_name): 
@@ -165,7 +166,7 @@ def scoreboard_selection(user_name):
             cls()
             print(figlet_format("         SCOREBOARD", font = "standard"))
             print(figlet_format("              SELECTION", font = "standard"))
-            print(f"{Fore.RED}{Style.BRIGHT}I'm sorry {score_nav} is not a valid entry.\n")
+            print(f"{Fore.RED}{Style.BRIGHT}I'm sorry '{score_nav}' is not a valid entry.\n")
                 
 
 def return_scoreboard(level, user_name):
@@ -186,8 +187,6 @@ def return_scoreboard(level, user_name):
         print(f"{i+1}. {str_all_scoreboard_data}")
 
     input("\n\nHit any key to return to home page\n").lower()
-
-    #REMINDER - when entering the name creat a function that adds spaces to short names taking them to 10 characters
     cls()
     start_game(user_name)
 
@@ -216,7 +215,7 @@ def difficulty(user_name):
         difficulty = input("  'E' for Easy                 'M' for Medium                    'H' for Hard\n\n").lower()
         if difficulty == "e":
             board_size = 5
-            no_mines = 4
+            no_mines = 1
             evaluating_dificulty = False
         elif difficulty == "m":
             board_size = 7
@@ -233,7 +232,7 @@ def difficulty(user_name):
             print(" - Easy - This will present you with a 5X5 grid and 4 mines.")
             print(" - Medium - This will present you with a 7X7 grid and 8 mines.")
             print(" - Hard - This will present you with a 9X9 grid and 15 mines.\n")
-            print(f"{Fore.RED}{Style.BRIGHT}\nI'm sorry {difficulty} is not a valid entry.\n")
+            print(f"{Fore.RED}{Style.BRIGHT}\nI'm sorry '{difficulty}' is not a valid entry.\n")
     cls()
     play(board_size, no_mines, user_name)
 
@@ -356,7 +355,7 @@ def win(board, start_time, user_name):
         duration = stop_time - start_time
 
         mins = int(duration // 60)
-        secs = round(duration % 60)
+        secs = math.floor(duration % 60)
         cls()
         print(figlet_format("                YOU WIN", font = "standard"))
         print(f"\nWell done.\n\nYou completed {level} in {mins}mins : {secs}secs")
