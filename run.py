@@ -215,7 +215,7 @@ def difficulty(user_name):
         difficulty = input("  'E' for Easy                 'M' for Medium                    'H' for Hard\n\n").lower()
         if difficulty == "e":
             board_size = 5
-            no_mines = 1
+            no_mines = 4
             evaluating_dificulty = False
         elif difficulty == "m":
             board_size = 7
@@ -464,12 +464,6 @@ class GameLayout:
 
                 if self.board_layout[row][col] != "*":
                     self.board_layout[row][col] = mines_detected
-
-        """
-        for i in self.board_layout: # for testing
-            print(i) # for testing
-        print("\n.............\n")  # for testing
-        """
 
 
     def selected_space(self, x, y, f):
