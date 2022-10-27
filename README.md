@@ -35,6 +35,9 @@ Happy coding!
 
 # MINESWEEPER GAME
 
+# ("\U0001F4A5")
+# ("\U0001F6A9")
+
 # Table Of Contents
 - [Minesweeper Project Overview](#minesweeper-project-overview)
    - [Live Project](#live-project-link-to-live-project)
