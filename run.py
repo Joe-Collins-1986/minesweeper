@@ -317,8 +317,7 @@ def play(board_size, no_mines, user_name):
 
             except ValueError as e:
                 board.reset_gameplay(board)
-                print("\nInvalid Entry:\n - Do not type letters\n - Do not type special characters\n - Ensure you entered 2 coordinates")
-                print(f"{Fore.RED}{Style.BRIGHT}\nIssue: {e}")
+                print(f"{Fore.RED}{Style.BRIGHT}\nInvalid Entry:\n - Do not type letters\n - Do not type special characters\n - Ensure you entered 2 coordinates")
             except Exception as e:
                 board.reset_gameplay(board)
                 print(f"{Fore.RED}{Style.BRIGHT}\nIssue: {e}")
