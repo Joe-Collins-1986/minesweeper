@@ -67,9 +67,14 @@ def get_username():
     cls()
     name_page = True
     home_page_img()
-    print("Welcome to Minesweeper.\n")
-    while name_page:
+    intro_msg = """Welcome sergeant, thank you for coming. We have a mission of the utmost urgency.\n
+The enemy has littered the following field with mines. We need your expertise to
+excavate the area and identify where the mines are to allow us to safely run 
+our supply lines across.
 
+Good luck, we are all behind you... a long, long way behind you.\n\n"""
+    print(intro_msg)
+    while name_page:
             user_name = input("Please enter your name (maximum 10 characters)\n").strip().lower()
 
             if len(user_name) > 0 and len(user_name) <= 10:
@@ -81,12 +86,15 @@ def get_username():
             elif len(user_name) == 0:
                 cls()
                 home_page_img()
+                print(intro_msg)
                 print(f"{Fore.RED}{Style.BRIGHT}You have to enter something, how will we recognise you?\n")
 
             else:
                 cls()
                 home_page_img()
+                print(intro_msg)
                 print(f"{Fore.RED}{Style.BRIGHT}I'm sorry, the name you entered was too long '({len(user_name)}' characters).\n")
+
 
 def start_game(user_name):
     """
@@ -134,14 +142,42 @@ def rules(user_name):
     print("\033[4m" + "Instructional Video:\n")
     print("https://www.youtube.com/watch?v=dvvrOeITzG8\n\n")
 
-    
-    print("\033[4m" + "Game Objective:\n")
+    print("\033[4m" + "Mission Objective:")
     print("""
-**** type in the rules ***
-
-Video explaining the rules: https://www.youtube.com/watch?v=dvvrOeITzG8
+The objective of Minesweeper is to select every cell on the presented grid 
+without selecting one that is hiding a mine.\n\n""")
+    
+    print("\033[4m" + "Instructions:")
+    print("""
+1. First select the difficulty you wish to play. Harder settings will have a 
+   larger grid and more mines.\n
+2. You will then be presented with an empty grid.\n
+3. Select two coordinates (row, column) on the board.\n
+    - Once selected the grid cell will either display a number or a mine.\n
+    - If the cell has a mine, you lose.\n
+    - If the cell has a number, it will inform you of surrounding mines to 
+      help you make educated decisions on your next guess.\n
+    - If for example the cell presents the number 2 it means there are two 
+      mines next to the numbered cell.\n
+    - If there are no mines next to the selected cell then the number will 
+      present as a 0 and it will open up the cells next to it
+      until it reaches cells that are next to a mine.\n
+4. If the numbers indicate that a cell has a mine it is good practice to mark 
+   this with a flag to stop yourself forgetting later.\n
+    - You will be asked each time you select a cell if you wish to plant a 
+      flag or dig.\n
+    - If a flag already exists on the cell that you select you will be asked 
+      if you want to dig the spot or leave the flag.\n
+5. If you uncover every cell available cell without selecting those with mines 
+   you win.\n
+6. And the most important step. Have fun...happy mining
 """)
-    input("Enter anykey to reurn to the main page\n").lower()
+
+
+
+
+
+    input("\n\nEnter anykey to reurn to the main page\n").lower()
     cls()
 
     start_game(user_name)
@@ -540,6 +576,8 @@ class GameLayout:
                     else:
                         self.selected_space(r, c, f)
             return True
+
+
 
     def space_edge_guesses(self, x, y):
         if y == 0:
