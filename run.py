@@ -330,12 +330,12 @@ def play(board_size, no_mines, user_name):
             dig_input = True
             while dig_input:
                 try:
-                    print("\nThis position has a flag on it")
+                    print(f"\nThis position ({x_axis+1}, {y_axis+1}) has a flag on it")
                     dig = input("Would you like to dig anyway? (Y/N)\n")    
                     if dig.lower() not in ("y", "yes", "d", "dig", "n", "no"):
-                        board.reset_gameplay(board)
-                        raise Exception (f"That is not a valid dig entry.")
+                        raise Exception ("That is not a valid dig entry.")
                 except Exception as e:
+                    board.reset_gameplay(board)
                     print(f"{Fore.RED}{Style.BRIGHT}\nIssue: {e}")
                 else:
                     dig_input = False
