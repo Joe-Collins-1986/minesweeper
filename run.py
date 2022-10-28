@@ -309,11 +309,11 @@ def play(board_size, no_mines, user_name):
                 elif y_axis < 1 or y_axis > board_size:
                     raise Exception (f"y_axis ({y_axis}) is not in range (1:{board_size})")
 
-                x_axis -= 1
-                y_axis -= 1
+                x_indices = x_axis - 1
+                y_indices = y_axis - 1
                 
-                if board.user_board[int(x_axis)][int(y_axis)] not in (f"  {str(x_axis +1)}  |  _", "_", "_  |", f"  {str(x_axis +1)}  |  F", "F", "F  |"):
-                    raise Exception (f"You have already dug {x_axis +1} {y_axis +1}\n")
+                if board.user_board[int(x_indices)][int(y_indices)] not in (f"  {str(x_axis)}  |  _", "_", "_  |", f"  {str(x_axis)}  |  F", "F", "F  |"):
+                    raise Exception (f"You have already dug {x_axis} {y_axis}\n")
 
 
             except ValueError as e:
@@ -330,12 +330,12 @@ def play(board_size, no_mines, user_name):
             1. validation if a flag exists on the selected cell
             2. If the cell is empty
         """
-        if board.user_board[int(x_axis)][int(y_axis)] in (f"  {str(x_axis +1)}  |  F", "F", "F  |"):
+        if board.user_board[int(x_indices)][int(y_indices)] in (f"  {str(x_axis)}  |  F", "F", "F  |"):
     
             dig_input = True
             while dig_input:
                 try:
-                    print(f"\nThis position ({x_axis+1}, {y_axis+1}) has a flag on it")
+                    print(f"\nThis position ({x_axis}, {y_axis}) has a flag on it")
                     dig = input("Would you like to dig anyway? (Y/N)\n")    
                     if dig.lower() not in ("y", "yes", "d", "dig", "n", "no"):
                         raise Exception ("That is not a valid dig entry.")
@@ -359,12 +359,12 @@ def play(board_size, no_mines, user_name):
                 except Exception as e:
                     board.reset_gameplay(board)
                     print("\nEnter the row & column with a space seperating them (e.g. 3 5)")
-                    print(x_axis+1, y_axis+1)
+                    print(x_axis, y_axis)
                     print(f"{Fore.RED}{Style.BRIGHT}\nIssue: {e}")
                 else:
                     flag_input = False
 
-        game_active = board.selected_space(x_axis, y_axis, flag)
+        game_active = board.selected_space(x_indices, y_indices, flag)
         won = win(board, start_time, user_name)
         cls()
 
