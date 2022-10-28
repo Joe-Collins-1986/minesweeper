@@ -31,6 +31,8 @@ SHEET = GSPREAD_CLIENT.open("Minesweeper_scoreboard")
 def home_page_img():
     """
     Present home page image
+    Link to ASCII character instruction:
+    https://theasciicode.com.ar/extended-ascii-code/block-graphic-character-ascii-code-219.html
     """
     print(figlet_format("    MINESWEEPER", font = "standard"))
     print("""
@@ -51,16 +53,15 @@ def home_page_img():
 
 def get_username():
     """
-    Take user imput and store as username
-    Add spacing to name to present consistantly in scoreboard
+    Run in a while loop
+    Take user input and stores as username
+    Add spacing to the end of name to present consistantly in scoreboard
     Validate user input
-    Link to ASCII character instruction:
-    https://theasciicode.com.ar/extended-ascii-code/block-graphic-character-ascii-code-219.html
     """
     cls()
     name_page = True
     home_page_img()
-    intro_msg = """Welcome sergeant, thank you for coming. We have a mission of the utmost urgency.\n
+    intro_msg = """Welcome Sergeant, thank you for coming. We have a mission of the utmost urgency.\n
 The enemy has littered the following field with mines. We need your expertise to
 excavate the area and identify where the mines are to allow us to safely run 
 our supply lines across.
@@ -91,7 +92,7 @@ Good luck, we are all behind you... a long, long way behind you.\n\n"""
 
 def start_game(user_name):
     """
-    Offer play or rules through user input - done
+    Offer play, rules or score through user input
         - call rules function (r)
         - call difficulty function (p)
         - call scoreboard function (s)
@@ -100,9 +101,6 @@ def start_game(user_name):
     Function to recycle on play function completion
     """
     cls()
-    # Link to ASCII character instruction https://theasciicode.com.ar/extended-ascii-code/block-graphic-character-ascii-code-219.html
-    # copied █ symbol from windows accoss to mac for use
-
     home_page = True
     home_page_img()
     while home_page:
@@ -161,12 +159,11 @@ without selecting one that is hiding a mine.\n\n""")
       flag or dig.\n
     - If a flag already exists on the cell that you select you will be asked 
       if you want to dig the spot or leave the flag.\n
-5. If you uncover every cell available cell without selecting those with mines 
+5. If you uncover every available cell without selecting those with mines 
    you win.\n
 6. And the most important step. Have fun...happy mining
 """)
-    input("\n\nEnter anykey to reurn to the main page\n").lower()
-    cls()
+    input("\n\nHit 'Enter' to return to home page\n").lower()
 
     start_game(user_name)
 
@@ -222,8 +219,8 @@ def return_scoreboard(level, user_name):
         str_all_scoreboard_data = "  |  ".join(all_scoreboard_data[i])
         print(f"{i+1}. {str_all_scoreboard_data}")
 
-    input("\n\nHit any key to return to home page\n").lower()
-    cls()
+    input("\n\nHit 'Enter' to return to home page\n").lower()
+
     start_game(user_name)
 
 
@@ -274,15 +271,16 @@ def difficulty(user_name):
 
 def play(board_size, no_mines, user_name):
     """ 
-    Asign GameLayout class to board using board size and number of mines:
+    Assign GameLayout class to the variable 'board' using board size and number of mines:
         - This will define the board, mine placment and cell values
     Set the game to active and won to False to run a while loop until game is won or lost
-    Initialte stat time of game to be used in scoreboard
+    Initialte start time of game to be used in scoreboard
     Run while loop for game when not lost/won:
         - Present board
         - Take and validate user guesses and asign to x y axis variables
         (Validation dependant on if cell is available, has flag or has been dug)
-        - Pass class guess to update board and define if game still active and break out of while loop if not
+        - Pass x, y and flag inputs to the selected_space function in the GameLayout class to update 
+        board and define if game still active and break out of while loop if not
         - Run win function to see if game won. If it is function will print congratulations and break out of while loop if it is.
     If won status true call start_game function
     If won status false print game over info and set input anykey to call start_game function
@@ -294,8 +292,11 @@ def play(board_size, no_mines, user_name):
     while game_active and not won:
         
         print(figlet_format("           GAME PLAY", font = "standard"))
-        print(board)
-        
+        print(board) 
+
+        """
+        While loop to validate coodinate inputs to check the numbers are in range, the correct number of int values are entered. 
+        """
         xy_inputs = True
         while xy_inputs:
             try:
@@ -324,6 +325,11 @@ def play(board_size, no_mines, user_name):
             else:
                 xy_inputs = False
 
+        """
+        if statement looking for a flag on the cell selcted which will active one of 2 while loops:
+            1. validation if a flag exists on the selected cell
+            2. If the cell is empty
+        """
         if board.user_board[int(x_axis)][int(y_axis)] in (f"  {str(x_axis +1)}  |  F", "F", "F  |"):
     
             dig_input = True

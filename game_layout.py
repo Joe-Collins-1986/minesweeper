@@ -6,7 +6,7 @@ from format import *
 
 class GameLayout:
     """
-    This class will be used to define the levels grid and check user inputs against assigned mines and cell values.
+    This class will be used to define the levels grid and check user inputs against assigned mines and cell value and return the board to the user.
     """
 
     def __init__(self, board_size, no_mines):
@@ -33,7 +33,7 @@ class GameLayout:
     
     def set_board(self):
         """
-        Create list of lists (list length = self.board_size)
+        Create list of lists (list length = self.board_size).
         Underscore each list item.
         """
         grid = [["_" for col in range(self.board_size)] for row in range(self.board_size)]
@@ -43,7 +43,10 @@ class GameLayout:
 
     def reset_gameplay(self, board):
         """
-        reset board for validation errors
+        Reset board function to address validation errors made before any guesses or flags placed.
+        Set reset as a condition for __str__ function to only run if True
+        Then turn reset_board to false before calling string so that if called 
+        and no guesses and no flags the board format won't be alterd. 
         """
         cls()
         print(figlet_format("           GAME PLAY", font = "standard"))
@@ -71,7 +74,7 @@ class GameLayout:
     def add_values(self):
         """
         Loop through grid checking each cells neighboring cells. For each neighboring cell with a mine increase mines_detected variable by 1.
-        This number will then be assigned to the centeral cell
+        This number will then be assigned to the centeral cell if it is not a mine.
         """
         # place max min to stop going outside of board perameters
         # https://stackoverflow.com/questions/5996881/how-to-limit-a-number-to-be-within-a-specified-range-python
@@ -131,11 +134,13 @@ class GameLayout:
 
             return False
 
+
         elif self.board_layout[x][y] > 0:
             self.user_board[x][y] = str(self.board_layout[x][y])
             self.space_edge_guesses(x, y)
             
             return True
+
 
         elif self.board_layout[x][y] == 0:
 
