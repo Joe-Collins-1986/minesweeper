@@ -175,6 +175,7 @@ Happy coding!
     <img src="readme_assets/ux/backgound_img.svg" alt="explossion drawing" width="100"/>
 
    ---
+
    </details>
 
    <details>
@@ -184,6 +185,7 @@ Happy coding!
    <img src="readme_assets/ux/centred_console.png" alt="terminal poitioning on the page" width="450px"/>
 
    ---
+
    </details>
 
 
@@ -192,6 +194,7 @@ Happy coding!
    TO BE ADDED
 
    ---
+
    </details>
 
 
@@ -199,7 +202,7 @@ Happy coding!
 
    Only a skeleton plane has been developed for this project due to it being a command-line application and therefore have preset formating.
 
-   - [Skeleton Plane](https://www.figma.com/file/a9GzO1BVIhSaGTQPYAINzx/hangman-wireframe-(Skeleton)?node-id=0%3A1)
+   - [Skeleton Plane](https://www.figma.com/file/M0wxItI1Bx3Nh4LRIBNp1e/Untitled?node-id=0%3A1)
 
    **Note:** The structure and wireframes are only to act as a concept and are subject to change as the game development evolves.
 
@@ -207,8 +210,85 @@ Happy coding!
    ## Features
 
    ### **Features planning**
-   ![Feature Mind Map](assets/readme-assets/features/mindmap-hangman.png)
-   The above provides an initial mind map into what features might be appropriate for the website given the clients specifications.
+
+   <details>
+      <summary style="font-weight:bold">Mind-Map</summary>
+   <br>
+   The below image provides an initial mind-map into what features might be appropriate for the game based on the set objectives.
+
+   ![Mind Map](readme_assets/features/mind-map.png)
+   If you have a LucidChart account you can also view this Mind-Map [here](https://lucid.app/lucidspark/e0824881-e88c-4530-937e-03f8b923e9b2/edit?viewport_loc=-953%2C-1%2C3247%2C1693%2C0_0&invitationId=inv_d875bc30-8e51-4375-b0f2-c2a63991877b)
+   <br>
+
+   ---
+
+   </details>
+
+   <details>
+      <summary style="font-weight:bold">Priority Matrix</summary>
+   <br>
+   The below maps out the feaibility of the features considered against the user value they provide to halp establish the priortiy they have as part of the build.
+
+   ![Priority Matrix](readme_assets/features/priority-matrix.png)
+   If you have a LucidChart account you can also view this Mind-Map [here](https://lucid.app/lucidspark/4b1e28c9-055d-4535-87d6-0f258286fe20/edit?viewport_loc=-2982%2C2311%2C4151%2C2041%2C0_0&invitationId=inv_67402cc9-c065-4b2a-ac9d-b9c360a0b967)
+   <br>
+
+   Following this review the build order of the features will be broken down into phases:
+
+   #### Phase 1:
+   - Gameplay
+   - Validations
+   - Rules
+   - Difficulty
+
+   #### Phase 2:
+   - Clear screen
+   - Titles
+
+   #### Phase 3:
+   - Scoreboard
+   - Username (useless without scoreboard)
+
+   #### Phase 4 (Future enhancements - currently out of scope):
+   - User interface (e.g. tkinter)
+
+   ---
+
+   </details>
+
+   <details>
+      <summary style="font-weight:bold">Process Flow</summary>
+   <br>
+   The below details the process flow for the game from beginning to end.
+
+   ![Process Flow](readme_assets/features/process-flow.png)<br>
+   If you have a LucidChart account you can also view this Mind-Map [here](https://lucid.app/lucidchart/6f4a551a-5f6e-43eb-9645-1834994d4e27/edit?viewport_loc=-136%2C-64%2C3656%2C1771%2CI~k5YlUlNz8V&invitationId=inv_4642de00-28f1-4eff-8cd1-fe81b08e943d)
+   <br>
+
+   ---
+
+   </details>
+
+   <details>
+      <summary style="font-weight:bold">Functions Flow</summary>
+   <br>
+   xxx
+   <br>
+
+   ---
+   
+   </details>
+
+   <details>
+      <summary style="font-weight:bold">Class Reuirements</summary>
+   <br>
+   xxx
+   <br>
+
+   ---
+   
+   </details>
+
 
    ### **Features breakdown**
 
