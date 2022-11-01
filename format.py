@@ -1,6 +1,5 @@
 import os # used to clear screen - other sheet
 
-
 def cls(): 
     """
     Clear console for cross-platform: 

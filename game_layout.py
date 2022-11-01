@@ -1,7 +1,7 @@
 import random # used to assign random mine positions
 import pyfiglet
 from pyfiglet import figlet_format # used for aesthetically pleasing titles
-from format import *
+from format import * #used for clear function
 
 
 class GameLayout:
@@ -28,8 +28,6 @@ class GameLayout:
         self.flages_left = self.no_mines - self.flags_placed
 
         self.reset_board = True
-
-
     
     def set_board(self):
         """
@@ -104,7 +102,7 @@ class GameLayout:
             never reach a mine as i will always encounter a surounding number first.
         Run through the recorded guesses and for each coordinate on the user board make it equal to the final board
        
-        stop acceibility while f on cell
+        Stop acceibility while f on cell
         """
 
         f = f.lower()
