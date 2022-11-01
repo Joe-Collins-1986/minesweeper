@@ -44,6 +44,7 @@ Happy coding!
    - [Project Introduction](#project-introduction)
 - [Responsive Review](#responsive-review)
    - [Am I Responsive?](#am-i-responsive-link-to-responsive-review-website)
+   - [Development Note on Responsive Design](#development-note-on-responsive-design)
 - [User Experience (UX)](#user-experience-ux)
    - [Website Objectives](#website-objectives)
    - [Website Design](#website-design)
@@ -76,9 +77,18 @@ Happy coding!
 
 <br>
 
+# Tasks:
+- update reponsive image when html is finalised
+- check links on TOC
+- Add flavicon to html tab
+- Add button design to game design
+- Clear rules
+- Hit Enter (not anykey)
+
+
 
 # Minesweeper Project Overview
-   ## Live Project [*(link to live project)*](xxxx) #ADD HEROKU LINK
+   ## Live Project [*(link to live project)*](https://minesweeper-python-project.herokuapp.com/)
 
    ## Project Introduction
    (**Note:** The aim of this project will be to develop the classic game 'Minesweeper'. This game will be devloped using Python and will be deployed using mock terminal on the Heroku platform.
@@ -87,28 +97,36 @@ Happy coding!
 
    If the user selects all tiles on the grid without mines they win the game, however if they land on a tile hiding a mine the game is lost.
 
-   If you would like to learn more about Minsweeper you can fine more information here: https://en.wikipedia.org/wiki/Minesweeper_(video_game)
+   If you would like to learn more about Minsweeper you can find more information here: https://en.wikipedia.org/wiki/Minesweeper_(video_game)
 
    <br>
 
 # Responsive Review
 
-   ## Am I Responsive? [*(link to responsive review website)*](xxx)
-   ![Responsive Review](xxx)
+   ## Am I Responsive? [*(link to responsive review website)*](https://ui.dev/amiresponsive?url=https://minesweeper-python-project.herokuapp.com/)
+   ![Responsive Review](readme_assets/responsive_design/Screenshot%202022-11-01%20at%2011.16.54.png)
+
+   ## Development Note on Responsive Design
+   The objective of this project was to develop a Python command-line application and was not focused on developing a responsive website.<br>
+   As this was not in the scope of the project it was not given consideration.
    
    <br>
 
 # User Experience (UX)
 
-   ## Website Objectives
+   ## Project Objectives
 
    <details>
       <summary style="font-weight:bold">Developer Goals</summary>
 
-   As the developer I want .... 
-   * xx.
-   * xxx.
-   * xxx.
+   As the developer I want to create a simple and engaging game that is easy to use and will result in users returning to the site. 
+   * Easy to use functionality.
+   * Addictive gameplay to encourage return users and drive positive word of mouth to encourage new users.
+   * Provide clear instruction as to the rules of the game.
+   * Set a range of difficulties to allow user progression and continued engagment.
+   * Record winning scores based on difficulty and completion time to promote re-vistiation and competition between users.
+   * Build in flag functionality to allow users to mark cells they believe to have mines.
+   * Build a appealing user interface whilst observing the limitations of the project scope(command-line application).
    
    ---
    </details>
@@ -117,9 +135,9 @@ Happy coding!
       <summary style="font-weight:bold">Developer Future Goals</summary>
    
    Points to consider for future development:
-   * xxx.
-   * xxx.
-   * xxx.
+   * Potential to implement a more userfriendly interface such as tkinter (excluded as not in scope for this project).
+   * Build to be responsive (excluded as not in scope for this project).
+   * If responsive design is set-up then a customised difficulty could be implemented to allow the user to generate a board with a their desired size and number of mines. This was not feasible in this project as it may have exceeded the console size available.
 
    ---
    </details>
@@ -127,9 +145,11 @@ Happy coding!
    <details>
       <summary style="font-weight:bold">First-Time User Goals</summary>
 
-   * xxx.
-   * xxx.
-   * xxx.
+   * Understand the purpose of the site.
+   * Immediately engaged by easy to use yet challanging gameplay.
+   * Invoke nosatalgia.
+   * Simple intuitive menu navigation.
+   * Rules easliy located and understood.
 
    ---
    </details>
@@ -137,86 +157,51 @@ Happy coding!
    <details>
       <summary style="font-weight:bold">Returning User Goals</summary>
    
-   * xxx.
-   * xxx.
-   * xxx.
+   * Use the scoreboard to improve their scores and compete with other users.
+   * Tailor the difficulty to their experience with the game.
 
    ---
    </details>
 
 
-   ## Website Design
+   ## HTML/CSS Design
+   The focus of this project was to develop a command-line application. HTML and CSS development was not in scope for this project.
+
+   However, I did tailor the course provided HTML and CSS files slightly to produse a more engaging user experience.
 
   <details>
-      <summary style="font-weight:bold">Colour Scheme</summary>
-
-   Client wished the game to feel as though it was written on a piece of paper. Therefore, main colours were kept simple with black and white.
-   - Main colours: 
-      - #000000 (Black)
-      - #FFFFFF (White)
-
-   To add a bit of simple colour to the main page margin lines generated through repeating linear gradients used some lighter colours found on paper note pads.
-   - Margin lines on page:
-      - #ffc0cb (Pink) (This colour will also to be used in for the required button hover animation to keep design consistency) 
-      - #9198E5 (Maximum Blue Purple)
-
-   To make sure the menu content stands out this will be set in a new colour. This will be set it a light yellow to mirror a post-it note.
-   - Menu colour:
-      - #E7E773 (Straw) (This colour will be tweaked slightly using linear gradients to give a more real, 3d faded effect.) 
-
-
-   ![Colour Palette](assets/readme-assets/design/hangman-colours.png)
+      <summary style="font-weight:bold">Background</summary>
+   Utilised a SVG file from https://freesvg.org:<br>
+    <img src="readme_assets/ux/backgound_img.svg" alt="explossion drawing" width="100"/>
 
    ---
    </details>
 
    <details>
-      <summary style="font-weight:bold">Typography</summary>
+      <summary style="font-weight:bold">Position of terminal</summary>
 
-   For the typography the client wanted an easy-to-read text which looked handwritten. The balance was to locate a font that gave this impression whilst still being clearly legible even on a small screen.
-   - Font applied with backup options: 'Handlee', cursive, sans-serif
+   Centred the terminal console on the page and increaed it's size to cols: 80, rows: 50 to accommodate the game layout.<br>
+   <img src="readme_assets/ux/centred_console.png" alt="terminal poitioning on the page" width="450px"/>
 
    ---
    </details>
+
 
    <details>
-      <summary style="font-weight:bold">Imagery</summary>
-
-   The images used for development of this website were taken from Unsplash and Font Awesome. These were selected to be minimalist and not detract from the main content which was styled through CSS to meet the client's specifications.
-   - Image for the background wood effect (jon-moore-5fIoyoKlz7A-unsplash.jpg).
-   - Image of the mountain doodle which shows on large screen viewings (nicolas-pinilla-GcDr6ZIzbIw-unsplash.jpg).
-   - Pins and paperclips were edited in photoshop from Unsplash images.
-   - the flavicon icon presented on the web tab was taken from Font Awesome (f43c).
+      <summary style="font-weight:bold">Run program button</summary>
+   TO BE ADDED
 
    ---
    </details>
-
-   <details>
-      <summary style="font-weight:bold">Audio</summary>
-
-   Audio was selected on this project to enhance the user experience but as per best practice guidelines was defaulted to mute. This can be toggled on via the settings menu. <br>
-   The audio was selected from YouTube clips which provided agreement for free usage. In several instances the audio clips were modified using Audacity to shorten them or remove background noise.
-   - Background music (opted not to apply this as it was likely to become monotonous and there would have been licencing issues to obtaining engaging music tracks).
-   - Sound on correct answer. (https://www.youtube.com/watch?v=403gX7TnhTQ)
-   - Sound on incorrect answer.(https://www.youtube.com/watch?v=RZEsfS1rGyY) - modified using Audacity
-   - Sound on getting word correct. (https://www.youtube.com/watch?v=ytjxf9YNJ-0) - modified using Audacity
-   - Sound on getting word incorrect. (https://www.youtube.com/watch?v=na-a3lLB13Q&t=16s) - modified using Audacity
-
-   ---
-   </details>
-
-
-   ## Structure Non-Linear Plane
-   The entire website will be housed on a single index page. The menu navigation, change of topics and win/lose outcomes will be facilitated using JavaScript animating relevant sections.
 
 
    ## Wireframes
 
+   Only a skeleton plane has been developed for this project due to it being a command-line application and therefore have preset formating.
+
    - [Skeleton Plane](https://www.figma.com/file/a9GzO1BVIhSaGTQPYAINzx/hangman-wireframe-(Skeleton)?node-id=0%3A1)
 
-   - [Surface Plane](https://www.figma.com/file/9w1TswEvWfI4N8Fek3Gocf/hangman-wireframe?node-id=0%3A1)
-
-   **Note:** The structure and wireframes are only to act as a concept and are subject to change as the website development evolves in collaboration with the client.
+   **Note:** The structure and wireframes are only to act as a concept and are subject to change as the game development evolves.
 
 
    ## Features
