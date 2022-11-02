@@ -80,8 +80,6 @@ Happy coding!
 # Tasks:
 - update reponsive image when html is finalised
 - check links on TOC
-- Add flavicon to html tab
-- Add button design to game design
 - Clear rules
 - Hit Enter (not anykey)
 

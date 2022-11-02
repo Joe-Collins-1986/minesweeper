@@ -127,12 +127,9 @@ def rules(user_name):
     Present rules to user
     Set anykey to return to start_game function
     """
-    cls()
     print(figlet_format("                      RULES", font = "standard"))
-    rules = True
     print("\033[4m" + "Instructional Video:\n")
     print("https://www.youtube.com/watch?v=dvvrOeITzG8\n\n")
-
     print("\033[4m" + "Mission Objective:")
     print("""
 The objective of Minesweeper is to select every cell on the presented grid 
@@ -165,6 +162,7 @@ without selecting one that is hiding a mine.\n\n""")
 """)
     input("\n\nHit 'Enter' to return to home page\n").lower()
 
+    cls()
     start_game(user_name)
 
 
@@ -233,7 +231,6 @@ def difficulty(user_name):
     Validate entry
     Call play function
     """
-    cls()
     print(figlet_format("            DIFFICULTY", font = "standard"))
     print("There are 3 difficulty settings in this game:\n")
     print(" - Easy - This will present you with a 5X5 grid and 4 mines.")
