@@ -125,7 +125,7 @@ def start_game(user_name):
 def rules(user_name): 
     """
     Present rules to user
-    Set anykey to return to start_game function
+    Set 'Enter' to return to start_game function
     """
     print(figlet_format("                      RULES", font = "standard"))
     print("\033[4m" + "Instructional Video:\n")
@@ -134,7 +134,10 @@ def rules(user_name):
     print("""
 The objective of Minesweeper is to select every cell on the presented grid 
 without selecting one that is hiding a mine.\n\n""")
-    
+
+    input("\nHit 'Enter' to move onto the instructions\n")
+    cls()
+    print(figlet_format("                      RULES", font = "standard"))
     print("\033[4m" + "Instructions:")
     print("""
 1. First select the difficulty you wish to play. Harder settings will have a 
@@ -160,9 +163,8 @@ without selecting one that is hiding a mine.\n\n""")
    you win.\n
 6. And the most important step. Have fun...happy mining
 """)
-    input("\n\nHit 'Enter' to return to home page\n").lower()
+    input("\nHit 'Enter' to return to home page\n")
 
-    cls()
     start_game(user_name)
 
 
@@ -201,7 +203,7 @@ def return_scoreboard(level, user_name):
     Retrive data from google sheets and present as a scorecard
     Sort order using recorded time at index 3 of each list in sheets list
     Drop unessecary info (difficulty and time in seconds)
-    Set anykey to return to start_game function
+    Set 'Enter' to return to start_game function
     """
     scoreboard_data = SHEET.worksheet(level)
     all_scoreboard_data = scoreboard_data.get_all_values()
@@ -280,7 +282,7 @@ def play(board_size, no_mines, user_name):
         board and define if game still active and break out of while loop if not
         - Run win function to see if game won. If it is function will print congratulations and break out of while loop if it is.
     If won status true call start_game function
-    If won status false print game over info and set input anykey to call start_game function
+    If won status false print game over info and set input 'Enter' to call start_game function
     """
     board = game_layout.GameLayout(board_size, no_mines)
     game_active = True
@@ -373,7 +375,7 @@ def play(board_size, no_mines, user_name):
         print(figlet_format("           GAME OVER", font = "standard"))
         print(board)
         print(f"\n\nOh dear!!! It appears that Row: {x_axis+1}, Column: {y_axis+1} had a mine")
-        input("\nBetter luck next time, press any key to continue\n")
+        input("\nBetter luck next time, hit 'Enter' to play again\n")
 
     start_game(user_name)
 
@@ -405,7 +407,7 @@ def win(board, start_time, user_name):
     
         scoreboard_new_data = [user_name, level, f"{mins}mins {secs}secs", int(duration)]
         update_scoreboard(scoreboard_new_data, level)
-        input("Hit any key to play again\n")
+        input("Hit 'Enter' to play again\n")
         return True
     else:
         return False
