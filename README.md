@@ -343,6 +343,112 @@ Happy coding!
    ---
 
    </details>
+
+
+
+
+
+   <details>
+      <summary style="font-weight:bold">Titles</summary>
+   <br>
+
+   To enhance the asthetics of the game without using a interface library such as pygame or tkinter I used pyfiglet to make more engaging titles and to help the user seperate and navigate the various pages/functions.
+
+   ---
+
+   #### Import required
+      import pyfiglet
+      from pyfiglet import figlet_format 
+   <br>
+
+   ---
+   #### Home page
+   For the Intro and home page I wanted to generate a more impactful title. This would make users instantly aware of what they are playing and invoke a positive emotional response.
+
+   ![Intro Title](readme_assets/features/demo-features/intro-title.png)
+   <br>
+
+   ---
+
+   #### Other pages
+   For each of the other pages I also used pyfiglet to make an impactful title.<br>
+   See an example of a title (rules) below.<br><br>
+   This was applied to:
+   - Rules
+   - Scoreboard Selection
+   - Scoreboard
+   - Gameplay
+   - Win
+   - Gameover
+
+   ![Other titles](readme_assets/features/demo-features/rules-title.png)
+   <br>
+
+   </details>
+
+   <details>
+      <summary style="font-weight:bold">Clear Board</summary>
+   <br>
+
+   To ensure that the terminal does not get too cluttered and the user is not provided more information than they need to play the game I utilised a clear function which I obtained from stack overflow:<br>
+   https://stackoverflow.com/questions/517970/how-to-clear-the-interpreter-console
+
+   This function was stored on another py sheet (format.py) to avoid clutter on the main run.py file.
+
+   ---
+
+   #### Import required
+      import os
+   <br>
+
+   ---
+
+   #### Function code
+      def cls(): 
+         os.system('cls' if os.name=='nt' else 'clear')
+   <br>
+
+   </details>
+
+   <details>
+      <summary style="font-weight:bold">Username</summary>
+   <br>
+
+   Set a requirement for the user to enter a username. This username is passed through the functions and used in the scorebaord update if the user wins a game. 
+
+   Upon playing a new game following a win or loss the user will not be required to re-enter their username.
+
+   ---
+
+   #### Username format
+   To appear consistantly on the scoreboard each username was set to be 10 characters long.<br>
+   This was achieved by running a while loop that added a space to the end of the word until it's length equalled 10.
+
+      while len(user_name) < 10:
+         user_name = user_name + " "
+   <br>
+
+   ---
+
+   </details>
+
+   <details>
+      <summary style="font-weight:bold">xxx</summary>
+   <br>
+
+   xxx
+
+   ---
+
+   #### xxx
+   xxx
+
+   ![xxx](readme_assets/features/)
+   <br>
+
+   ---
+
+   </details>
    
    <br>
 
@@ -361,9 +467,9 @@ Happy coding!
 
    ## Languages Used
 
-   - HTML
-   - CSS
-   - JavaScript
+   - HTML (not in scope but used to a minor extent)
+   - CSS (not in scope but used to a minor extent)
+   - Python
 
 
    ## Frameworks, Libraries and Programs Used
