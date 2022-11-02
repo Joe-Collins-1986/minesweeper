@@ -135,7 +135,7 @@ Happy coding!
       <summary style="font-weight:bold">Developer Future Goals</summary>
    
    Points to consider for future development:
-   * Potential to implement a more userfriendly interface such as tkinter (excluded as not in scope for this project).
+   * Potential to implement a more userfriendly interface such as tkinter or pygame (excluded as not in scope for this project).
    * Build to be responsive (excluded as not in scope for this project).
    * If responsive design is set-up then a customised difficulty could be implemented to allow the user to generate a board with a their desired size and number of mines. This was not feasible in this project as it may have exceeded the console size available.
 
@@ -200,7 +200,7 @@ Happy coding!
 
    ## Wireframes
 
-   Only a skeleton plane has been developed for this project due to it being a command-line application and therefore have preset formating.
+   Only a skeleton plane has been developed for this project due to it being a command-line application and therefore having pre-set formating.
 
    - [Skeleton Plane](https://www.figma.com/file/M0wxItI1Bx3Nh4LRIBNp1e/Untitled?node-id=0%3A1)
 
@@ -227,10 +227,10 @@ Happy coding!
    <details>
       <summary style="font-weight:bold">Priority Matrix</summary>
    <br>
-   The below maps out the feaibility of the features considered against the user value they provide to halp establish the priortiy they have as part of the build.
+   The below maps out the feaibility of the features considered against the user value they provide to help establish the priortiy they have as part of the build.
 
    ![Priority Matrix](readme_assets/features/priority-matrix.png)
-   If you have a LucidChart account you can also view this Mind-Map [here](https://lucid.app/lucidspark/4b1e28c9-055d-4535-87d6-0f258286fe20/edit?viewport_loc=-2982%2C2311%2C4151%2C2041%2C0_0&invitationId=inv_67402cc9-c065-4b2a-ac9d-b9c360a0b967)
+   If you have a LucidChart account you can also view this priority matrix [here](https://lucid.app/lucidspark/4b1e28c9-055d-4535-87d6-0f258286fe20/edit?viewport_loc=-2982%2C2311%2C4151%2C2041%2C0_0&invitationId=inv_67402cc9-c065-4b2a-ac9d-b9c360a0b967)
    <br>
 
    Following this review the build order of the features will be broken down into phases:
@@ -250,7 +250,7 @@ Happy coding!
    - Username (useless without scoreboard)
 
    #### Phase 4 (Future enhancements - currently out of scope):
-   - User interface (e.g. tkinter)
+   - User interface (e.g. tkinter, pygame)
 
    ---
 
@@ -262,7 +262,7 @@ Happy coding!
    The below details the process flow for the game from beginning to end.
 
    ![Process Flow](readme_assets/features/process-flow.png)<br>
-   If you have a LucidChart account you can also view this Mind-Map [here](https://lucid.app/lucidchart/6f4a551a-5f6e-43eb-9645-1834994d4e27/edit?viewport_loc=-136%2C-64%2C3656%2C1771%2CI~k5YlUlNz8V&invitationId=inv_4642de00-28f1-4eff-8cd1-fe81b08e943d)
+   If you have a LucidChart account you can also view this process flow [here](https://lucid.app/lucidchart/6f4a551a-5f6e-43eb-9645-1834994d4e27/edit?viewport_loc=-136%2C-64%2C3656%2C1771%2CI~k5YlUlNz8V&invitationId=inv_4642de00-28f1-4eff-8cd1-fe81b08e943d)
    <br>
 
    ---
@@ -272,7 +272,10 @@ Happy coding!
    <details>
       <summary style="font-weight:bold">Functions Flow</summary>
    <br>
-   xxx
+   The below demonstrates the key game functions and how they interact with each other. It also details the inclusion of the Gameplay class.
+
+   ![Functions Flow](readme_assets/features/function-flow.png)<br>
+   If you have a LucidChart account you can also view this functions flow [here](https://lucid.app/lucidchart/6f4a551a-5f6e-43eb-9645-1834994d4e27/edit?viewport_loc=-391%2C-96%2C4221%2C2189%2CMrp4u2cXQ7zq&invitationId=inv_4642de00-28f1-4eff-8cd1-fe81b08e943d)
    <br>
 
    ---
@@ -280,9 +283,12 @@ Happy coding!
    </details>
 
    <details>
-      <summary style="font-weight:bold">Class Reuirements</summary>
+      <summary style="font-weight:bold">Class Requirements</summary>
    <br>
-   xxx
+   The below breaks down the Gameplay class detailing it's purpose, class variables and methods.
+
+   ![Class Requirements](readme_assets/features/class-breakdown.png)<br>
+   If you have a LucidChart account you can also view this class requirements [here](https://lucid.app/lucidchart/6f4a551a-5f6e-43eb-9645-1834994d4e27/edit?viewport_loc=-1010%2C-180%2C3889%2C2017%2CVWq4R58lY_hn&invitationId=inv_4642de00-28f1-4eff-8cd1-fe81b08e943d)
    <br>
 
    ---
