@@ -78,10 +78,8 @@ Happy coding!
 <br>
 
 # Tasks:
-- update reponsive image when html is finalised
 - check links on TOC
-- Clear rules
-- Hit Enter (not anykey)
+- find credits to add
 
 
 
@@ -102,7 +100,7 @@ Happy coding!
 # Responsive Review
 
    ## Am I Responsive? [*(link to responsive review website)*](https://ui.dev/amiresponsive?url=https://minesweeper-python-project.herokuapp.com/)
-   ![Responsive Review](readme_assets/responsive_design/Screenshot%202022-11-01%20at%2011.16.54.png)
+   ![Responsive Review](readme_assets/responsive_design/responsive-screenshot.png)
 
    ## Development Note on Responsive Design
    The objective of this project was to develop a Python command-line application and was not focused on developing a responsive website.<br>
@@ -170,7 +168,7 @@ Happy coding!
   <details>
       <summary style="font-weight:bold">Background</summary>
    Utilised a SVG file from https://freesvg.org:<br>
-    <img src="readme_assets/ux/backgound_img.svg" alt="explossion drawing" width="100"/>
+    <img src="readme_assets/ux/backgound_img.svg" alt="explossion drawing" width="450px"/>
 
    ---
 
@@ -180,7 +178,7 @@ Happy coding!
       <summary style="font-weight:bold">Position of terminal</summary>
 
    Centred the terminal console on the page and increaed it's size to cols: 80, rows: 50 to accommodate the game layout.<br>
-   <img src="readme_assets/ux/centred_console.png" alt="terminal poitioning on the page" width="450px"/>
+   <img src="readme_assets/ux/terminal-centred.png" alt="terminal poitioning on the page" width="450px"/>
 
    ---
 
@@ -189,7 +187,17 @@ Happy coding!
 
    <details>
       <summary style="font-weight:bold">Run program button</summary>
-   TO BE ADDED
+   Button also centred and colours changed to be inkeeping with the game theme and backgroung colour scheme.<br>
+   <img src="readme_assets/ux/button.png" alt="image of run program button" width="450px"/>
+
+   ---
+
+   </details>
+
+   <details>
+      <summary style="font-weight:bold">Flavicon</summary>
+   Flavicon updated for better user experience.<br>
+   <img src="readme_assets/ux/flavicon.png" alt="image of the flavicon on the web tab" width="450px"/>
 
    ---
 
@@ -300,209 +308,42 @@ Happy coding!
    
 
    <details>
-      <summary style="font-weight:bold">Random Word</summary>
+      <summary style="font-weight:bold">HTML/CSS</summary>
    <br>
 
-   #### Random word selected from list
-   There will be 3 lists in this game:
+   The HTML and CSS development was not in scope for this project. However, small ammendments were made to the template provided by the course to align better with the game aesthetics and accomodate the termainal size requirements.
 
-   1. animals
-   2. cars
-   3. countries
+   ---
+
+   #### Console size and position
+   Console was centred for a cleaner look.
+   It was also increased from '80 columns by 24 rows' to '80 columns by 50 rows' to allow for additional info to be provided without the user needing to scroll on the page. This was especially inportant for higher difficulty games as the grid took up a substancial amount of the space available.
+
+   ![Console Position](readme_assets/features/demo-features/console-position.png)
+   <br>
+
+   ---
+
+   #### SVG img
+   An SVG image was used in the background.
+   Due to the build I was not able to implement a png background and instread imput the SVG coordinates directly into the layout.html file.
+
+   ![Background Img](readme_assets/ux/backgound_img.svg)
+   <br>
+
+   ---
+
+   #### Flavicon
+   Flavicon updated for better user experience. 
+   This could not be achieved through the normal process of storing a flavicon icon in the root directory and instead had to link to an external web image.
+
+   ![Flavicon Img](readme_assets/ux/flavicon.png)
+   <br>
+
+   ---
+
+   </details>
    
-   Dependent on the topic selected the random word will be taken from the appropriate list. 
-   
-   If the user selects play again the word will be removed from the list so that it cannot be duplicated.
-   <br>
-
-   ---
-
-   </details>
-
-   <details>
-         <summary style="font-weight:bold">Present Word</summary>
-   <br>
-   
-   #### Empty word
-   At the commencement of the game there is a function to locate a random word from a list (dependent on topic selected) and present as underscores.
-
-   ![Start of game](assets/readme-assets/features/present-word/blank-word.png)
-   <br>
-
-   ---
-
-   #### Guessed letter
-   If the user's guess is in the randomly selected word the letter will appear as well as encouraging words on the screen.
-
-   ![Start of game](assets/readme-assets/features/present-word/correct-guess.png)
-   <br>
-   
-   ---
-
-   #### Guessed incorrect letter
-   If the user's guess is not in the randomly selected word the underscore will remain as well words informing the user the answer is incorrect.
-   
-   It will also result in a hangman element being drawn and the potential winning score being reduced.
-
-   ![Start of game](assets/readme-assets/features/present-word/incorrect-guess.png)
-   <br>
-   
-   ---
-   </details>
-
-   <details>
-      <summary style="font-weight:bold">Select Letters</summary>
-   <br>
-
-   #### Letters selected are checked against word
-   The letter selected will be checked against the randomised word to see if it appears. If it does it will run success outcomes if it does not it will run fail outcomes. It will also update the presented word on the screen to incorporate correctly guessed letters.
-   <br>
-
-   ---
-
-   #### Letters fade after use
-   After a letter is selected it will fade and be deactivated.
-
-   ![Start of game](assets/readme-assets/features/select-letters/faded-letters.png)
-   <br>
-
-   ---
-
-   #### On game completion deactivate all letters
-   After the game is won or lost no letter buttons will be active. This is to stop any further amendments to the score. <br>
-   The letters will not fade, they will just be deactivated.
-   <br>
-
-   ---
-
-   </details>
- 
-   <details>
-      <summary style="font-weight:bold">Hangman Drawing</summary>
-   <br>
-
-   #### Incorrect answers draw hangman element
-   On incorrect guess a hangman element will be drawn. This is done using canvas in JS.
-
-   ![Start of game](assets/readme-assets/features/hangman-drawing/hangman-elements.png)
-   <br>
-
-   ---
-
-   #### On game completion hangman section will be replaced with outcome
-   The div holding the hangman image will also be used to detail if the user has won or lost on game completion.
-
-   ![Start of game](assets/readme-assets/features/hangman-drawing/win.png)
-   <br>
-
-   ---
-   ![Start of game](assets/readme-assets/features/hangman-drawing/lose.png)
-   <br>
-
-   If reset is selected the webpage will refresh which will reset all variable and the game will start again at a score of 0.
-
-   If play again is selected the required variable will be resent in JS leaving the score to accumulate.
-   <br>
-
-   ---
-
-   </details>
-
-   <details>
-      <summary style="font-weight:bold">Rules</summary>
-   <br>
-
-   #### Rules held on index page
-   The rules content will be kept on the same page at the rest of the web content. This is to ensure the score is retained as backend data storage is not in use for this project.
-
-   A scroll feature was added to the rules to post-it to keep the sizing consistent.
-
-   ![Start of game](assets/readme-assets/features/rules/rules-top.png)
-   <br>
-
-   ![Start of game](assets/readme-assets/features/rules/rules-bottom.png)
-   <br>
-
-   ---
-
-   </details>
-
-   <details>
-      <summary style="font-weight:bold">Settings</summary>
-   <br>
-
-   #### Settings held on index page
-   The settings content will be kept on the same page at the rest of the web content. This is to ensure the score is retained as backend data storage is not in use for this project.
-
-   A scroll feature was added to the settings to post-it to keep the sizing consistent. This will only appear if required on small screens.
-
-   ![Start of game](assets/readme-assets/features/settings/settings.png)
-   <br>
-
-   ---
-
-   #### Allow change in topic
-   Within settings it will be possible to change the topic. This will change the list the randomised word is selected from and will also present the currents topic onto the html page.
-
-   (See screenshot above)
-   <br>
-
-   ---
-
-   #### Toggle audio
-   Within settings it will be possible to toggle the audio on and off. As per best practice this will be set to mute as default.
-
-   (See screenshot above)
-   <br>
-
-   ---
-
-   </details>
-
-   <details>
-      <summary style="font-weight:bold">Score</summary>
-   <br>
-
-   #### Score increase
-   Set to increase the score dependent on how many incorrect answers the user makes.
-
-   Potential score starts at 10 each game and reduces by 1 for each incorrect letter guessed.
-
-   ![Start of game](assets/readme-assets/features/score/increase-score.png)
-   <br>
-
-   ---
-
-   #### Score decrease
-   If the user does not guess the word in 10 attempts, then their score will reduce by 5 points. This has the potential to take the users overall score into a negative figure.
-
-   ![Start of game](assets/readme-assets/features/score/lose-5-points.png)
-   <br>
-
-   ---
-
-   #### Score accumulation
-   If the user opts to play again their score will be retained from the previous games with the new score being added.
-
-   ![Start of game](assets/readme-assets/features/score/accumulate-score.png)
-   <br>
-
-   ---
-
-   </details>
-
-   <details>
-      <summary style="font-weight:bold">Social Media Links</summary>
-   <br>
-
-   #### Present links to social media platforms
-   The links provided will take the user to the social media platforms but not to active accounts. This is because the client is fictional and does not have real accounts.
-
-   ![Start of game](assets/readme-assets/features/social-media/social-media.png)
-
-   </details>
-
-   </details>
    <br>
 
 # Further Development
