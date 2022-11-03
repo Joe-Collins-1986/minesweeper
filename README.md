@@ -877,17 +877,17 @@ Happy coding!
    9. time module:
       - Used to time game
    10. math module:
-      - Round down seconds
-   11. random module
-      - Used to randomly place mines
-   12. pyfiglet module
-      - Used to build aesthetically pleasing titles
+         - Round down seconds
+   11. random module:
+         - Used to randomly place mines
+   12. pyfiglet module:
+         - Used to build aesthetically pleasing titles
    13. colorama module:
-      - Used to color validations
-   14. gspread
-      - Used to read and update google sheets
-   15. google.oauth2.service_account
-      - Allow API link to google sheets using credentials
+         - Used to color validations
+   14. gspread:
+         - Used to read and update google sheets
+   15. google.oauth2.service_account:
+         - Allow API link to google sheets using credentials
 
    See requirements.txt for versions of modules used.
 
