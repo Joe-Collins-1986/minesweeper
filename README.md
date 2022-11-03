@@ -602,7 +602,7 @@ Happy coding!
 
    ---
 
-   #### Enter coordates
+   #### Enter coordinates
    The user will then enter coordinates in the following format (row coloumn).
    They will then be offered the opportunity to place a flag. If the user enter 'n' the space will be revealed.
 
@@ -617,6 +617,52 @@ Happy coding!
    ![Select Number](readme_assets/features/demo-features/gameplay/select-number.png)
 
    ![Present Number](readme_assets/features/demo-features/gameplay/opened-number.png)
+   <br>
+
+   ---
+
+   #### Flags
+   Flags are placed by the user on cells they deduce have mines to ensure they do not forget and select them by accident.
+ 
+   Each time a user makes a guess they will be asked if they would like to place a flag at these coordinates. If they select yes then the board will show a 'F' in this cell on the next round.
+
+   ![Place Flag](readme_assets/features/demo-features/gameplay/place-flag.png)
+
+   ![Show Flag](readme_assets/features/demo-features/gameplay/show-flag.png)
+
+   ---
+
+   If a user selects a cell that has a flag on it, they will be informed that a flag exites at this position and asked if they would like to dig anyway.
+
+   ![Dig Flag](readme_assets/features/demo-features/gameplay/dig-flag.png)
+
+   <br>
+
+   ---
+
+   #### Selected cell not next to mine
+   If the user selects a cell that is not neighbouring a mine then the board will update this cell to show a 0. It then uses a recursion loop to check each of it's neibouring cells as a new guess, which then in turn does the same for their neighbouring cells, and so on. This will continue to take place until it reaches values higher than 0 wiich will break the loop.
+
+   This results in the 0's spreading until they reach cells neighbouring mines which will show the appropriate values.
+
+   ![Select Zero](readme_assets/features/demo-features/gameplay/selecting-zero.png)
+
+   ![Show Zero](readme_assets/features/demo-features/gameplay/opened-zero.png)
+
+
+   <br>
+
+   ---
+
+   #### Selected mine
+   If a user selects a cell hiding a mine then they lose the game.
+   The user will be given the game over screen, shown the full revealed board and given an input field to hit 'Enter' to start a new game.
+
+   ![Select Zero](readme_assets/features/demo-features/gameplay/mine.png)
+
+   ![Show Zero](readme_assets/features/demo-features/gameplay/opened-zero.png)
+
+
    <br>
 
    ---
