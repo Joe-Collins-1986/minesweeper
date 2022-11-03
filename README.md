@@ -433,22 +433,145 @@ Happy coding!
    </details>
 
    <details>
-      <summary style="font-weight:bold">xxx</summary>
+      <summary style="font-weight:bold">Rules</summary>
    <br>
 
-   xxx
+   Rules has little complexity and is simply a breakdown of the instructions required to play the game.
+
+   This was spit into 2 pages for readability and also to eliminate a bug identified in manual testing. This bug is detailed in the [Development Bugs](#development-bugs) section of this readme file.
 
    ---
 
-   #### xxx
-   xxx
+   #### Page 1
+   This page provides a link to an instruction video on youtube and the game objectives.
+   It has a input field which will take any user-input entered to move onto the next page of the rules breaking down the instructions.
 
-   ![xxx](readme_assets/features/)
+   ![Page 1](readme_assets/features/demo-features/rules-page-one.png)
+   <br>
+
+   ---
+
+   #### Page 2
+   This details the instruction required to play the game.
+   It also has a input field which will take any user-input entered to move back to the home navigation page.
+
+   ![Page 2](readme_assets/features/demo-features/rules-page-two.png)
    <br>
 
    ---
 
    </details>
+
+
+   <details>
+      <summary style="font-weight:bold">Scoreboard</summary>
+   <br>
+
+   The scoreboard utilises the username which has been entered at the commencement of the game as well as the time the gameplay begins and ends if the user wins. It then updates a specific google sheet dependant on the difficulty the user played and presents the top 5 scores back to the scoreboard screen.
+
+   ---
+
+   #### Imports required
+   This scoreboard requies an API link with google sheets.<br>
+
+      import gspread
+      from google.oauth2.service_account import Credentials
+
+   The time is used to take a start time and end time which is then used to calculate the game duration.
+   Math import is used to round down seconds with math.floor. (The standard round function could round up to 60 which may result in a 0min 60secs time).<br>
+
+      import time
+      import math
+   <br>
+
+   ---
+
+   #### Define constants
+   Using the tutorial provided as part of the 'love-sandwiches' course project, I defined the constants I would require to read and update the google sheet utilising the imports above.<br>
+   (https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+LS101+2021_T1/courseware/293ee9d8ff3542d3b877137ed81b9a5b/071036790a5642f9a6f004f9888b6a45/?child=first)<br>
+
+      SCOPE = [
+         "https://www.googleapis.com/auth/spreadsheets",
+         "https://www.googleapis.com/auth/drive.file",
+         "https://www.googleapis.com/auth/drive"
+         ]
+
+      CREDS = Credentials.from_service_account_file("creds.json")
+      SCOPED_CREDS = CREDS.with_scopes(SCOPE)
+      GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
+      SHEET = GSPREAD_CLIENT.open("Minesweeper_scoreboard")
+   <br>
+
+   ---
+   
+   #### Page 1
+   This page allows the user to select the appropriate scoreboard. Each difficulty level has it's own scoreboard( easy, medium, hard).
+
+   ![Page 1](readme_assets/features/demo-features/scoredboard-navigation.png)
+   <br>
+
+   ---
+
+   #### Page 2
+   Once the game is won, the game duration is calculated and recorded alongside the difficulty and username. This is then imported to the google sheets.<br>
+   When the scoreboard page is called it presents back the top 5 scores on the specified google sheet whilst eliminating any unessesary data (difficulty - because this is on the title, time in secs - shown in proper format)
+
+   ![Top 5](readme_assets/features/demo-features/scoreboard-top-five.png)
+
+   ---
+
+   ![Google Sheets](readme_assets/features/demo-features/google-sheets-scores.png)
+   <br>
+
+   ---
+
+   </details>
+
+
+
+
+   <details>
+      <summary style="font-weight:bold">xx</summary>
+   <br>
+
+   xx
+
+   ---
+
+   #### xx
+   xx
+
+   ![xx](readme_assets/features/demo-features/)
+   <br>
+
+   ---
+
+   </details>
+
+
+
+   <details>
+      <summary style="font-weight:bold">xx</summary>
+   <br>
+
+   xx
+
+   ---
+
+   #### xx
+   xx
+
+   ![xx](readme_assets/features/demo-features/)
+   <br>
+
+   ---
+
+   </details>
+
+
+
+
+   
    
    <br>
 
