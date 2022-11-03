@@ -482,12 +482,6 @@ Happy coding!
       import gspread
       from google.oauth2.service_account import Credentials
 
-   The time is used to take a start time and end time which is then used to calculate the game duration.
-   Math import is used to round down seconds with math.floor. (The standard round function could round up to 60 which may result in a 0min 60secs time).<br>
-
-      import time
-      import math
-
    To format the title the pyfiglet is required.<br>
    
       import pyfiglet
@@ -658,9 +652,9 @@ Happy coding!
    If a user selects a cell hiding a mine then they lose the game.
    The user will be given the game over screen, shown the full revealed board and given an input field to hit 'Enter' to start a new game.
 
-   ![Select Zero](readme_assets/features/demo-features/gameplay/mine.png)
+   ![Select Mine](readme_assets/features/demo-features/gameplay/select-mine.png)
 
-   ![Show Zero](readme_assets/features/demo-features/gameplay/opened-zero.png)
+   ![Show Mine](readme_assets/features/demo-features/gameplay/show-mine.png)
 
 
    <br>
@@ -669,38 +663,175 @@ Happy coding!
 
    </details>
 
+   <details>
+      <summary style="font-weight:bold">Win Game</summary>
+   <br>
 
+   Once the number of available spaces minus the number of mines is equal to the number of cells on the board the game will take a stop time,present the user with congratulations and update the google sheet with the users name, diffulty played and time.
 
+   ___
 
+   #### Imports required
+   This win function requies an API link with google sheets to update the data recoreded with new winners.<br>
 
+      import gspread
+      from google.oauth2.service_account import Credentials
 
+   The time is used to take a end time which is used in conjunction with the passed start time to calculate the came duration.
+   Math import is used to round down seconds with math.floor. (The standard round function could round up to 60 which may result in a 0min 60secs time).<br>
 
+      import time
+      import math
+
+   To format the title the pyfiglet is required.<br>
+   
+      import pyfiglet
+      from pyfiglet import figlet_format
+
+   ___
+
+   #### Evaluating win status
+   The win activities are triggered when the number of available spaces equalls the number of mines.
+
+      if len(board.guesses) == (board.board_size ** 2) - board.no_mines:
+
+   <br>
+
+   ---
+
+   #### Win layout
+   The win page will inform the user of their time and let them know that the scoreboard has been updated.
+
+   ![Win](readme_assets/features/demo-features/gameplay/win.png)
+
+   ---
+   
+
+   <br>
+
+   ---
+
+   #### Update scoreboard
+   The win game will call the upate scoreboard function.
+
+      def update_scoreboard(data, level):
+         print("\n................................................................................\n")
+         print("\nUpdating scoreboard...\n")
+         scoreboard_colate_data = SHEET.worksheet(level)
+         scoreboard_colate_data.append_row(data)
+         print("Scoreboard updated successfully\n")
+         print("\n................................................................................\n")
+
+   <br>
+
+   ---
+
+   </details>
 
 
 
 
    <details>
-      <summary style="font-weight:bold">xx</summary>
+      <summary style="font-weight:bold">Validations</summary>
    <br>
 
-   xx
+   Validations have been added to the majority of the input fields to ensure that the game does not break and that the user is advised as to what error they have made when inputing data.
+
+   All input fields use the .lower() function to allow the ability to check input regardless on case.
+
+   Any input fields without restrictions (i.e hit 'Enter' to continue) do not have validations as the user can enter anything they wish and it will still work as required when they hit enter.
 
    ---
 
-   #### xx
-   xx
+   #### Import required
+   Validations use the colorama import to highlight the statements in bright red to stand out to the user.<br>
+   I used the following tutorial to understand the use of colorama:<br>
+   https://www.youtube.com/watch?v=u51Zjlnui4Y
 
-   ![xx](readme_assets/features/demo-features/)
+   Note the colorama.init(autoset=True) automatically returns the text to it's default format after the colorama is applied to a string.
+
+      import colorama #colorama tuorial
+      from colorama import Fore, Style
+      colorama.init(autoreset=True) 
+
+   <br>
+
+   ---
+
+   #### Username validations
+   The user name input must be at least one character long and not exceed 10 characters.
+   The .strip() function has been applied to stop users from entering spaces as their only characters.
+
+   ![No Entry](readme_assets/features/demo-features/validations/val-username-none.png)
+
+   ---
+
+   ![To Long](readme_assets/features/demo-features/validations/val-username-to-long.png)
+
+   <br>
+
+   ---
+
+   #### Homepage validations
+   If any input other than 'p', 'r' or 's' is entered the user will be informed that this is not a valid entry and provided feedback on what they entered.
+
+   ![Not Valid](readme_assets/features/demo-features/validations/val-home-page.png)
+
+   <br>
+
+   ---
+
+   #### Scoreboard Selection & Difficulty validations
+   If any input other than 'e', 'm' or 'h' is entered the user will be informed that this is not a valid entry and provided feedback on what they entered.
+
+   ![Not Valid](readme_assets/features/demo-features/validations/val-difficulty.png)
+
+   <br>
+
+   ---
+
+   #### Gameplay validations
+   When asked for coordinates, if the user enters letters, special characters or more/less than the 2 required coordinates the following error will show.
+
+   ![Non Coordinates](readme_assets/features/demo-features/validations/val-coordinates-non-values.png)
+
+   ---
+
+   If the user enters coordinates outside the range of the board it will highlight this to them.
+
+   ![Out Range](readme_assets/features/demo-features/validations/val-xy-out-range.png)
+
+   ---
+
+   ![Out Range](readme_assets/features/demo-features/validations/val-x-out-range.png)
+
+   ---
+
+   ![Out Range](readme_assets/features/demo-features/validations/val-y-out-range.png)
+
+   ---
+
+   If the user trys to select a cell that has already been revealed the following error message will appear.
+
+   ![Already Dug](readme_assets/features/demo-features/validations/val-already-dug.png)
+
+   ---
+
+   If the user enters and invalid entry when asked if they wish to place a flag on the seleced cell the following message will show.
+
+   ![Non Coordinates](readme_assets/features/demo-features/validations/val-flag.png)
+
+   ---
+
+   If the user enters and invalid entry when asked if they wish to dig on a flag cell the following message will show.
+
+   ![Non Coordinates](readme_assets/features/demo-features/validations/val-dig-flag.png)
+
    <br>
 
    ---
 
    </details>
-
-
-
-
-   
    
    <br>
 
