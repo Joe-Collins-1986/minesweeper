@@ -1,4 +1,4 @@
-import game_layout # used to clear screen - other sheet
+import game_layout # used to access class - other sheet
 from format import * # used to clear screen - other sheet
 
 import time # used to time game
@@ -374,7 +374,7 @@ def play(board_size, no_mines, user_name):
         cls()
         print(figlet_format("           GAME OVER", font = "standard"))
         print(board)
-        print(f"\n\nOh dear!!! It appears that Row: {x_axis+1}, Column: {y_axis+1} had a mine")
+        print(f"\n\nOh dear!!! It appears that Row: {x_axis}, Column: {y_axis} had a mine")
         input("\nBetter luck next time, hit 'Enter' to play again\n")
 
     start_game(user_name)

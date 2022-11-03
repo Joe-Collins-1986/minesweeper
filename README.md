@@ -344,10 +344,6 @@ Happy coding!
 
    </details>
 
-
-
-
-
    <details>
       <summary style="font-weight:bold">Titles</summary>
    <br>
@@ -442,6 +438,15 @@ Happy coding!
 
    ---
 
+   #### Imports required
+   To format the title the pyfiglet is required.<br>
+
+      import pyfiglet
+      from pyfiglet import figlet_format
+   <br>
+
+   ---
+
    #### Page 1
    This page provides a link to an instruction video on youtube and the game objectives.
    It has a input field which will take any user-input entered to move onto the next page of the rules breaking down the instructions.
@@ -482,6 +487,11 @@ Happy coding!
 
       import time
       import math
+
+   To format the title the pyfiglet is required.<br>
+   
+      import pyfiglet
+      from pyfiglet import figlet_format
    <br>
 
    ---
@@ -527,26 +537,99 @@ Happy coding!
 
    </details>
 
-
-
-
    <details>
-      <summary style="font-weight:bold">xx</summary>
+      <summary style="font-weight:bold">Difficulty</summary>
    <br>
 
-   xx
+   The difficulty page allows the user to select a level that is appropriate to their skill and experience with the game.
 
    ---
 
-   #### xx
-   xx
+   #### Imports required
+   To format the title the pyfiglet is required.<br>
 
-   ![xx](readme_assets/features/demo-features/)
+      import pyfiglet
+      from pyfiglet import figlet_format
+   <br>
+
+   ---
+
+   #### Difficulty selection
+   The difficutly options that the user selects will affect the size of the board and the number of mines hidden.
+
+   ![Difficulty](readme_assets/features/demo-features/difficulty.png)
    <br>
 
    ---
 
    </details>
+
+   <details>
+      <summary style="font-weight:bold">Gameplay</summary>
+   <br>
+
+   The gameplay works by first using a class to generate a board with all the mines and values placed. It then generates a second board which is presented to the user without the mines and value information. Once a user makes a coordinate guess the cell the user guesses on the user board is updated to equal that of the values board.
+
+   If the user selects a cell with a mine they lose, if they select all cells without a mine they win.
+
+   ---
+
+   #### Imports required
+   Class is assigned to board in gameplay to set the board relative to the board size and mines passed. This then sets the mine postions utilising import random and the values in realtion to those mines. The class is called to  update the userboard with guesses and return a visual userboard to the console.<br>
+
+      import game_layout
+      import random (called in class GameLayout)
+
+   To format the title the pyfiglet is required.<br>
+
+      import pyfiglet
+      from pyfiglet import figlet_format
+
+   To take the start time of the game which will later be used to calculate the game duration in the win function.<br>
+
+      import time
+
+   <br>
+
+   ---
+
+   #### Starting board
+   The board board size and number of mines depends on the difficulty selected by the user.
+   Each round a board is presented to the user showing the values from their prevous guesses.
+
+   ![Starting Board](readme_assets/features/demo-features/gameplay/starting-board.png)
+   <br>
+
+   ---
+
+   #### Enter coordates
+   The user will then enter coordinates in the following format (row coloumn).
+   They will then be offered the opportunity to place a flag. If the user enter 'n' the space will be revealed.
+
+   ![First Guess](readme_assets/features/demo-features/gameplay/starting-board-with%20guesses.png)
+   <br>
+
+   ---
+
+   #### Selected number value
+   If the user selects a cell which is next to a mine it will present a number. The number will reference how many mines are in it's neighbouring cells.
+
+   ![Select Number](readme_assets/features/demo-features/gameplay/select-number.png)
+
+   ![Present Number](readme_assets/features/demo-features/gameplay/opened-number.png)
+   <br>
+
+   ---
+
+   </details>
+
+
+
+
+
+
+
+
 
 
 
