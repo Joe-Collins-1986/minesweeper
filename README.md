@@ -836,13 +836,9 @@ Happy coding!
    <br>
 
 # Further Development
-   * Add additional categories to the hangman game.
-   * Use web scraping to generate full word lists for future categories.
-   * Add optional timer to game.
-   * Provide language options to game.
-   * Retain scores using back-end development to provide a scoreboard for users.
-   * Add additional games.
-   * Add advertisements to site to generate revenue.
+   * Transfer to a more user friendly interface.
+   * Interface allowing responsive design would allow custom difficulty where the user can specify the board size and number on mines they desire.
+   * Potential to add other games and create a home page forgame selection.
    
    <br>
 
@@ -857,20 +853,43 @@ Happy coding!
 
    ## Frameworks, Libraries and Programs Used
 
-   1. Google Fonts:
-      - Used to obtain appropriate fonts to use in website not held as standard.
-   2. Font Awesome:
-      - Used to obtain several icons used to improve the visuals of the website.
-   3. Git:
+   1. Git:
       - Used for version control and to Push to GitHub.
-   4. GitHub:
-      - Used to store and share the code as well as publish to live website.
-   6. Figma:
+   2. GitHub:
+      - Used to store and share the code.
+   3. Heroku:
+      - Used as a platform to store and play the game.
+   4. Figma:
       - Used to plan out website format.
-   7. Web Developer:
-      - Used to analyse HTML, CSS and JavaScript output and correct where required.
-   8. Canvas:
-      - Used to draw the hangman on JS.
+   5. Web Developer:
+      - Used to analyse HTML, CSS output and correct where required.
+   6. Lucidchart:
+      - Used to develop
+         - mind map
+         - process flow
+         - function flow
+         - class breakdown
+         - priority matrix
+   7. Google Sheets:
+      - Set up API to update with user scores and feedback to the game.
+   8. os module:
+      - Used to clear console screen
+   9. time module:
+      - Used to time game
+   10. math module:
+      - Round down seconds
+   11. random module
+      - Used to randomly place mines
+   12. pyfiglet module
+      - Used to build aesthetically pleasing titles
+   13. colorama module:
+      - Used to color validations
+   14. gspread
+      - Used to read and update google sheets
+   15. google.oauth2.service_account
+      - Allow API link to google sheets using credentials
+
+   See requirements.txt for versions of modules used.
 
    <br>
 
