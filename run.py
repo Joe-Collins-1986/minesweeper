@@ -1,6 +1,5 @@
 import gspread  # read and update google sheets
 from google.oauth2.service_account import Credentials  # allow API link to google sheets
-# Instruction video (https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+LS101+2021_T1/courseware/293ee9d8ff3542d3b877137ed81b9a5b/071036790a5642f9a6f004f9888b6a45/?child=first)
 
 import game_layout  # used to access class - other sheet
 from format import *  # used to clear screen - other sheet
@@ -10,7 +9,7 @@ import math  # round down seconds
 import pyfiglet
 from pyfiglet import figlet_format  # for aesthetically pleasing titles
 
-import colorama  # colorama tuorial - (https://www.youtube.com/watch?v=u51Zjlnui4Y)
+import colorama
 from colorama import Fore, Style  # Used to color warnings
 colorama.init(autoreset=True)  # reset color to default after use
 
@@ -29,8 +28,6 @@ SHEET = GSPREAD_CLIENT.open("Minesweeper_scoreboard")
 def home_page_img():
     """
     Present home page image
-    Link to ASCII character instruction:
-    https://theasciicode.com.ar/extended-ascii-code/block-graphic-character-ascii-code-219.html
     """
     print(figlet_format("    MINESWEEPER", font = "standard"))
     print("""

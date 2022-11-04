@@ -1,7 +1,8 @@
 # Tasks:
 - check links on TOC
-- find credits to add
-- add mine and flag images to features
+- pep8 and adding to the testing section of the readme.
+- put readme through word
+- links check
 
 # MINESWEEPER GAME
 
@@ -890,7 +891,7 @@
 
    <details>
       <summary style="font-weight:bold">Developer Goals</summary>
-
+   <br>
    As the developer I want to create a simple and engaging game that is easy to use and will result in users returning to the site. 
    * Easy to use functionality.
       - **REVIEW - Simple intuitive inputs and eady to interpret content on the screen. Built without overcomplicating and game requirements.**
@@ -911,9 +912,8 @@
    </details>
 
    <details>
-      <summary style="font-weight:bold">First-Time Visitor Goals</summary>
       <summary style="font-weight:bold">First-Time User Goals</summary>
-
+   <br>
    * Understand the purpose of the site.
       - **REVIEW - Very clear game purpose and easy to locate and read rules where required.**
    * Immediately engaged by easy to use yet challanging gameplay.
@@ -930,7 +930,7 @@
 
    <details>
       <summary style="font-weight:bold">Returning User Goals</summary>
-   
+   <br>   
    * Use the scoreboard to improve their scores and compete with other users.
       - **REVIEW - Scoreboard set up using an API with google sheets to record the winning times by the user and present back the top 5 for each difficulty setting.**
    * Tailor the difficulty to their experience with the game.
@@ -992,12 +992,10 @@
 
    <details>
       <summary style="font-weight:bold">Failure To Update requirements.txt File</summary>
-   
-   **Error experienced:**<br>
+   <br>
+   I failed to update the requiements.txt file with the modules i needed to run my code. As a result when it was uploaded and run through Heroku it gave the following error.
 
    ![Requirements.txt](readme_assets/bugs/requirements/requirements.png)
-   
-   I failed to update the requiements.txt file with the module i neede to run my code. As a result when it was uploaded and run through Heroku it gave the above error.
 
    Following a conversation with a Code Institute Tutor I realised my mistake and he showed me how to update this file automatically using the following comand:<br>
    pip freeze > requirements.txt
@@ -1012,23 +1010,12 @@
 
    <details>
       <summary style="font-weight:bold">Rules Title</summary>
-   
-   xxx
-
-   ![xxx]()
-  
    <br>
+   When testing the game on Heroku (which has a set console size) it was identified that when leaving rules the title was not clearing. This was because it was not in the viewable screen at the point of the cls function being called due to the amount of info on the page.
 
-   ___
+   ![Rules Title](readme_assets/bugs/rules-title/rules%20title.png)
 
-   </details>
-
-   <details>
-      <summary style="font-weight:bold">Username Accepted Space</summary>
-   
-   xxx
-
-   ![xxx]()
+   To resolve this and also improve the readabilty of the rules I split it over 2 pages which fixed the problem.
   
    <br>
 
@@ -1038,53 +1025,87 @@
 
    <details>
       <summary style="font-weight:bold">Scoreboard Presentation Issue</summary>
-   
-   xxx
+   <br>
+   When testing and reviewing the scoreboard it became apparent that the format did not look good due to the variation in username lengths.
+
+   ![Username Length](readme_assets/bugs/username/username-length.png)
+
+   To resolve this a added a while loop that added a space to the end of the username whilst it was less than 10 characters long. This then presented correctly.
+
+   ![Username Length Two](readme_assets/bugs/username/username-lenth-two.png)
   
    <br>
 
-   **Code blocks detailing issue:**
-
-   Python code:
+   **Code to resolve issue:**
 
       if len(user_name) > 0 and len(user_name) <= 10:
                 while len(user_name) < 10:
                     user_name = user_name + " "
 
+   ___
+
+   </details>
+
+   <details>
+      <summary style="font-weight:bold">Username Accepted Space</summary>
+   <br>
+   I wanted the the users to enter a name between 1-10 characters long to be used in the scoreboard. To do this I used if statements and called validation errors if the user hit enter without typing anything or if they enterd a username longer than 10 characters.
+   
+   ![Username Spaces](readme_assets/bugs/username/username-spaces.png)
+
+   However in testing it was identified that a user could enter a space with no other characters and it would not call a validation but would also present no name on the scoreboard. To combat this my mentor introduced me to the .strip() function which removes spacing at the begining and end of the string whilst leaving the spacing in the string alone.
+
+   I added this to the user input field alongside the .lower() function and it resolved the issue.
+
+   **Code to resolve issue:**
+
+      user_name = input("Please enter your name (maximum 10 characters)\n").strip().lower()
+
+  
+   <br>
+
+   ___
+
    </details>
    
 
    ## Key Learn
-   The main key learn I took from this project was to build the readme file in conjunction with the website development.
+   As this was my first introduction to python I was learning a lot as I went. I feel that for my future projects I will aim to:
 
-   I was not sure if the design and functionality were feasible for the development of this project given my limited experience in CSS and JS. Therefore, I spent a lot of time building it in a test environment before deciding I could accomplish the desired result.
-
-   By the time I had realised it was feasible I had completed a lot of the work. As a result of this I had to retrospectively complete sections of the readme file which would have been better suited to completing at the scoping, researching and initial build stages.
-
-   Despite this I feel that I did a good job recording my progress through easy-to-understand concise commits which made it easier to revisit certain elements of the project where necessary.
+   - Write smaller blocks of code. I feel this would improve the readabilty and maintinabilty of the code as a whole whilst also being easier to track my progress.
+   - I also feel I could have been more efficient with the use of classes. Potentially incorporating certain gameplay functions into the classes for easier readability of the run.py file and improving the re-usability of defined variables.
 
    <br>
 
 
 # Deployment
+   ## Set Up APIs using Google Cloud
+   1. The following video details the steps required enabling:
+      - Google Drive API (get credendials to securely access the Google files from the drive)
+      - Google Sheets API<br>
+   [Enable APIs using Google Cloud](https://www.youtube.com/watch?v=WTll5p4N7hE)
+
+
    ## Set Up Local GitHub Repository
-   1. Go to https://github.com/Code-Institute-Org/gitpod-full-template.
+   1. Go to https://github.com/Code-Institute-Org/python-essentials-template.
    2. Select use this template.
    3. Add repository name within my GitHub. (This will generate a repository in my Git Hub with the appropriate files.)
 
 
    ## Repository Framework
    1. Select the repository on GitHub and open with GitPod (green button).
-   2. Create required html page.
-   3. Create assets folder.
-   4. Within assets folder create CSS folder, images folder, JS folder & readme-assets folder.
-   5. Add required files to folders including style.css, images, script.js, etc.
+   2. Move JSON file (obtained when setting up APIs using Google Cloud) into GitPod workspace.
+   4. Rename to cred.json
+   5. Copy client_email from creds file and go to Google Sheets and share the sheet with this copied email to grant access.
+   6. Add cred.json file to gitignore.
+   7. Create readme_assets folder to store images used in the README file.
+   8. Create any additonal .py files requires to store classes or linked functions etc.
 
 
    ## Update Repository
    1. When adding a new feature create a separate branch to work in safely typing into the terminal "git branch 'name of required feature/update'".
    2. Checkout the branch with "git checkout 'name of required feature/update'".
-   3. Make updates and test using "python -m http.server".
+   3. Make updates and test using "python3 run.py".
    4. Once testing is complete add to Git staging area using "git add ."
    5. Commit the changes and add a useful explanation of what action was done to track the history in GitHub using "git commit -m 'explanation of update'".
    6. Once the feature is complete, fully tested, and ready to be added to the main branch first go to the main branch using "git checkout main".
@@ -1093,47 +1114,54 @@
    9. Use "git push" to push the commits to GitHub. These will then appear in the live website if it has been set up in GitHub Pages.
 
 
-   ## GitHub Pages
-   Deploy in GitHub Pages:
-   1. Log in to my GitHub and go to my appropriate repository.
-   2. Access settings.
-   3. Under 'Code and Automation' go to pages.
-   4. Leave the source as Deploy from Branch.
-   5. Set Branch to Main.
-   6. Save.
-   7. Give GitHub a few minutes and the live URL is provided at the top of the GutHub Pages section of settings.
-   8. Any Git Pushes from the terminal whilst working on the repository using GitPod will now update in this live site.
+   ## Heroku Deployment
+   1. In the console enter pip3 freeze > requirements.txt to update the requirements.txt file with necessary modules used in the code.
+   2. Log in to [Heroku](https://id.heroku.com/login) and create an account.
+   3. Click 'Create new app' button.
+   4. Enter a unique name for your app and select your region then click 'Create app'.
+   5. Go the the 'Settings' tab.
+   6. Click 'Reveal Config Vars'.
+   7. In the KEY field enter CREDS, in the VALUE field enter the copied content from the creds.json file then hit 'Add'.
+   8. In the KEY field enter PORTS, in the VALUE field enter 8000 then hit 'Add'.
+   9. Click 'Add Buildpack' and select 'python' and save changes.
+   10. Click 'Add Buildpack' and select 'node.js' and save changes.
+   11. Go to the 'Deploy' tab.
+   12. Select 'GitHub' as the deployment method and click 'Connect to GitHub'.
+   13. Search for the GitHub Repository name and hit 'Connect'.
+   14. Click 'Automatic Deploys' to get Heroku to update automatically when GitPod changes are pushed to GitHub.
+   15. Click 'Deploy Branch' to launch the project to Heroku for the first time.
+   16. Click 'View' to go to live app.
+   17. Run game to test functionality and APIs are working.
 
    <br>
 
 
 # Credits
    ## Development Resources
-   The following sources acted as guidance for understanding. No code was taken directly for use in this project.
+   The following sources acted as guidance for understanding.
 
-
-   * Learning how to use linear gradients. This was used to develop the look of a notepad with re-occurring lines. (https://www.w3schools.com/css/css3_gradients.asp), (https://codepen.io/ceg9498/post/creating-lined-paper)
-   * FlexBox guidance/re-fresh. (https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
-   * Intro to canvas in JS to create the hangman image. (https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial)
-   * Canvas responsive. (https://stackoverflow.com/questions/34772957/how-to-make-canvas-responsive)
-   * Clearing the canvas. (https://stackoverflow.com/questions/2142535/how-to-clear-the-canvas-for-redrawing)
-   * Understanding event listeners. (https://www.w3schools.com/js/js_htmldom_eventlistener.asp)
-   * Change mouse pointer on hover for menu list items (https://www.w3schools.com/cssref/pr_class_cursor.asp)
-   * Understand the toggle class method to utilise in menu activation. (https://www.w3schools.com/howto/howto_js_toggle_class.asp)
-   * Set JS rules dependent on-screen size. (https://www.w3schools.com/jsrEF/met_win_matchmedia.asp)
-   * Wrap entire game in an initialise function to eliminate global variables. (https://www.youtube.com/watch?v=_4V4yUxGng8)
+   * Code Institute Python Essentials modules for fundemental python functionality.
+   * Code Institute Love Sandwich Tutorial for API set up and settings the required constant variable to access and update Google Sheets.
+   * Get a general idea of how to structure Minesweeper: [Tech With Tim](https://www.youtube.com/watch?v=RRYgc4YIhEs&t=194s)
+   * Tutorial on Pyfiglet for titles: [Learn Learn Scratch Tutorials](https://www.youtube.com/watch?v=U1aUteSg2a4)
+   * Tutorial on Colorama for validatons: [Tech With Tim](https://www.youtube.com/watch?v=u51Zjlnui4Y)
+   * ASCII guidance document for decorating home page: [theasciicode.com](https://theasciicode.com.ar/extended-ascii-code/block-graphic-character-ascii-code-219.html)
+   * Clear function taken from stackoverflow: [stackoverflow (popcnt)](https://stackoverflow.com/questions/517970/how-to-clear-the-interpreter-console)
+   * Validate Username with .strip(): Spencer Barriball - Mentor
+   * Use of f-strings [python.org](https://docs.python.org/3/tutorial/inputoutput.html)
+   * Sort lists by item in lists: [Iredra](https://stackoverflow.com/questions/36955553/sorting-list-of-lists-by-the-first-element-of-each-sub-list)
+   * Tutorial on python Classes: [Corey Schafer](https://www.youtube.com/watch?v=ZDa-Z5JzLYM)
+   * Tutorial on recursion: [Joe James](https://www.youtube.com/watch?v=wMNrSM5RFMc&t=387s)
+   * Slack for project queries and testing
    * Stack Overflow used for generalised queries during development.
 
 
    ## Media Resources
-   * All images were obtained from Unsplash.
-      - Image for the background wood effect (jon-moore-5fIoyoKlz7A-unsplash.jpg).
-      - Image of the mountain doodle which shows on large screen viewings (nicolas-pinilla-GcDr6ZIzbIw-unsplash.jpg).
-   * Audio was taken form YouTube videos
-      - Sound on correct answer. (https://www.youtube.com/watch?v=403gX7TnhTQ)
-      - Sound on incorrect answer. (https://www.youtube.com/watch?v=RZEsfS1rGyY) - modified using Audacity
-      - Sound on getting word correct. (https://www.youtube.com/watch?v=ytjxf9YNJ-0) - modified using Audacity
-      - Sound on getting word incorrect. (https://www.youtube.com/watch?v=na-a3lLB13Q&t=16s) - modified using Audacity
+   * Images Used:
+      - [HTML background image](https://freesvg.org/explosion-vector-illustration)
+      - [flavicon explosion image](https://cdn.pixabay.com/photo/2013/07/12/18/41/explosion-153710_960_720.png)
+   * Youtube Videos Used:
+      - [Minesweeper instructional video](https://www.youtube.com/watch?v=dvvrOeITzG8)
 
 
    ## Acknowledgements
