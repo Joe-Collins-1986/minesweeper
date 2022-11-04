@@ -1,20 +1,18 @@
-import game_layout # used to access class - other sheet
-from format import * # used to clear screen - other sheet
+import gspread  # read and update google sheets
+from google.oauth2.service_account import Credentials  # allow API link to google sheets
+# Instruction video (https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+LS101+2021_T1/courseware/293ee9d8ff3542d3b877137ed81b9a5b/071036790a5642f9a6f004f9888b6a45/?child=first)
 
-import time # used to time game
-import math # round down seconds
+import game_layout  # used to access class - other sheet
+from format import *  # used to clear screen - other sheet
+
+import time  # used to time game
+import math  # round down seconds
 import pyfiglet
-from pyfiglet import figlet_format # used for aesthetically pleasing titles
+from pyfiglet import figlet_format  # for aesthetically pleasing titles
 
-import colorama #colorama tuorial - https://www.youtube.com/watch?v=u51Zjlnui4Y
-from colorama import Fore, Style #Used to color warnings
-colorama.init(autoreset=True) #reset color to default after use
-
-import gspread # read and update google sheets
-from google.oauth2.service_account import Credentials #allow API link to google sheets
-#Instruction video (https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+LS101+2021_T1/courseware/293ee9d8ff3542d3b877137ed81b9a5b/071036790a5642f9a6f004f9888b6a45/?child=first)
-
-
+import colorama  # colorama tuorial - (https://www.youtube.com/watch?v=u51Zjlnui4Y)
+from colorama import Fore, Style  # Used to color warnings
+colorama.init(autoreset=True)  # reset color to default after use
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -62,9 +60,8 @@ def get_username():
     name_page = True
     home_page_img()
     intro_msg = """Welcome Sergeant, thank you for coming. We have a mission of the utmost urgency.\n
-The enemy has littered the following field with mines. We need your expertise to
-excavate the area and identify where the mines are to allow us to safely run 
-our supply lines across.
+The enemy has littered the following field with mines. We need your expertise to excavate the area and identify where the mines are to allow us to safely 
+run our supply lines across.
 
 Good luck, we are all behind you... a long, long way behind you.\n\n"""
     print(intro_msg)
@@ -76,12 +73,12 @@ Good luck, we are all behind you... a long, long way behind you.\n\n"""
                     user_name = user_name + " "
                 name_page = False
                 start_game(user_name)
-            
+
             elif len(user_name) == 0:
                 cls()
                 home_page_img()
                 print(intro_msg)
-                print(f"{Fore.RED}{Style.BRIGHT}You have to enter something, how will we recognise you?\n")
+                print(f"{Fore.RED}{Style.BRIGHT}You have to enter something,how will we recognise you?\n")
 
             else:
                 cls()
@@ -122,7 +119,7 @@ def start_game(user_name):
             print(f"{Fore.RED}{Style.BRIGHT}I'm sorry '{intro_nav}' is not a valid entry.\n")
 
 
-def rules(user_name): 
+def rules(user_name):
     """
     Present rules to user
     Set 'Enter' to return to start_game function
@@ -137,8 +134,8 @@ without selecting one that is hiding a mine.\n\n""")
 
     input("\nHit 'Enter' to move onto the instructions\n")
     cls()
-    print(figlet_format("                      RULES", font = "standard"))
-    print("\033[4m" + "Instructions:")
+    print(figlet_format("                      RULES", font="standard"))
+    print("\033[4m"+"Instructions:")
     print("""
 1. First select the difficulty you wish to play. Harder settings will have a 
    larger grid and more mines.\n

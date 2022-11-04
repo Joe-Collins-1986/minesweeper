@@ -1,42 +1,9 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
-
-Welcome Joe-Collins-1986,
-
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
-
-## Reminders
-
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
-
-## Creating the Heroku app
-
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
-
-1. `heroku/python`
-2. `heroku/nodejs`
-
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
-
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
-
-Connect your GitHub repository and deploy as normal.
-
-## Constraints
-
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
------
-Happy coding!
-
-
-
+# Tasks:
+- check links on TOC
+- find credits to add
+- add mine and flag images to features
 
 # MINESWEEPER GAME
-
-# ("\U0001F4A5")
-# ("\U0001F6A9")
 
 # Table Of Contents
 - [Minesweeper Project Overview](#minesweeper-project-overview)
@@ -76,12 +43,6 @@ Happy coding!
    - [Acknowledgements](#acknowledgements)
 
 <br>
-
-# Tasks:
-- check links on TOC
-- find credits to add
-
-
 
 # Minesweeper Project Overview
    ## Live Project [*(link to live project)*](https://minesweeper-python-project.herokuapp.com/)
@@ -630,6 +591,15 @@ Happy coding!
 
    ![Dig Flag](readme_assets/features/demo-features/gameplay/dig-flag.png)
 
+   ---
+
+   Consideration was made for using an image instead of a 'F' on the board.
+   To do this considered using the following Unicode Character ("\U0001F6A9") 🚩
+
+   However, the unicode character took up 2 spaces on the board which did not look right as the rest was set up to deal with single characters. I considered changing the cell size on the board to accomodate this but this would have meant that either the 1 character numbers or the flag would have been slightly off center.
+
+   In the end I opted to keep the 'F' as I felt this was inkeeping with the games old school asthetic being a console game.
+
    <br>
 
    ---
@@ -655,6 +625,15 @@ Happy coding!
    ![Select Mine](readme_assets/features/demo-features/gameplay/select-mine.png)
 
    ![Show Mine](readme_assets/features/demo-features/gameplay/show-mine.png)
+
+   ---
+
+   Consideration was made for using an image instead of a '*' on the board.
+   To do this considered using the following Unicode Character ("\U0001F4A5") 💥
+
+   However, as with the flag the unicode character took up 2 spaces on the board which did not look right as the rest was set up to deal with single characters. I considered changing the cell size on the board to accomodate this but this would have meant that either the 1 character numbers or the mine would have been slightly off center.
+
+   In the end I opted to keep the '*' as I felt this was inkeeping with the games old school asthetic being a console game.
 
 
    <br>
@@ -727,9 +706,6 @@ Happy coding!
    ---
 
    </details>
-
-
-
 
    <details>
       <summary style="font-weight:bold">Validations</summary>
@@ -894,353 +870,186 @@ Happy coding!
    <br>
 
 # Testing
-   ## HTML Validator Results: 
-   - [HTML index page](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fjoe-collins-1986.github.io%2FHangman%2F)
+   ## HTML Validation: 
+   - HTML not in scope for this project.
 
-   <details>
-      <summary style="font-weight:bold">HTML Issue Resolutions</summary>
-
-   ### Warnings
-   Following the HTML validation, the following warnings were identified and addressed.
-
-   ![HTML Warnings](assets/readme-assets/bugs/html/html-warinings.png)
-
-   ---
-
-   #### **Resolutions**
-   **Points 1 - 2:**
-   These were initially implemented as li items acting as a menu option directing to additional content. However, removed aria-label following best practice due to no href.
-
-   ---
-
-   **Points 3 - 7:**
-   All ID first occurrences were addressed by changing duplicate IDs to classes.
-
-   ---
-
-   **Points 8:**
-   Placed empty quotes into h2 space to remove error. This header is produced by JS.
-
-   ---
-
-   ### Errors
-   Following the HTML validation, the following errors were identified and addressed.
-
-   ![HTML Warnings](assets/readme-assets/bugs/html/html-errors.png)
-
-   ---
-
-   #### **Resolutions**
-   **Point 1:**
-   Delete stray div tag.
-
-   ---
-
-   **Points 2 - 6:**
-   - Replace IDs with Classes and update CSS to .element as opposed to #element.
-   - Checked ID was not used in JS.
-   - Removed duplicate class syntax e.g. class="settings-pin" class="pin-right". This was changed to class=”settings-pin pin-right”.
-
-   ---
-
-   **Points 7 - 10:**
-   Mute is defaulted as true so no need to specify. Therefore removed = “true”.
-
-   ---
-   </details>
-
-
-   ## CSS Validator Results
-   - [CSS validator results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fjoe-collins-1986.github.io%2FHangman%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
-
-   <details>
-      <summary style="font-weight:bold">CSS Issue Resolutions</summary>
-
-   ### Warnings & errors
-   Following the CSS validation, the following warnings and errors were identified and addressed.
-
-   ![CSS Warnings](assets/readme-assets/bugs/css/css-errors.png)
-
-   ---
-
-   **Points 1 - 2:**
-   Removed unnecessary semi-colon.
-
-   ---
-
-   **Warning Provided:** 'Imported style sheets are not checked in direct input and file upload modes'.
-
-   **Stack Overflow Response to Warning:** You're just trying to validate your CSS file using the W3C validator, and it's letting you know that it's not going to validate the imported style sheet (Google's). It's not an error, just some information for you.
-
-   ---
-   </details>
-
-
-   ## JS Validator Results
-   ![JS validator results using https://beautifytools.com/javascript-validator.php](assets/readme-assets/validation/js-validation.png)
-
-   <details>
-      <summary style="font-weight:bold">JS Issue Resolutions</summary>
-
-   ### Errors
-   Following the JS validation the following errors were identified and addressed.
-
-   **Points - define variables:** <br>
-   ![JS Errors](assets/readme-assets/bugs/js/define-variable.png)
-
-   Errors resolved by declaring i in the relevant for loops.
-
-   ---
-
-   **Points - template literal syntax:** <br>
-   ![JS Errors](assets/readme-assets/bugs/js/esversion.png)
-
-   Cause by use of Font Awesome. no detriment to usage. Site functioning as expected. Following consultation with my mentor no action was required.
-
-   ---
-
-   **Points - functions declared within loops referencing an outer scoped variable:** <br>
-   ![JS Errors](assets/readme-assets/bugs/js/functions-declared-within-loops.png)
-
-   Utilising outer scoped variables. No issues caused by this, and maintenance is acceptable. Following consultation with my mentor no action was required.
-
-   ---
-
-   **Points - expected a conditional expression and instead saw an assignment.:** <br>
-   ![JS Errors](assets/readme-assets/bugs/js/conditional-not-assignment.png)
-
-   Functions built with if statements, with no else option. No errors occurring. Following consultation with my mentor no action was required.
-
-   ---
-
-   **Points - level not defined.:** <br>
-   ![JS Errors](assets/readme-assets/bugs/js/level-not-defined.png)
-
-   HTML ID not defined as a variable. Created a variable for this and stored as level.
-
-   ---
-
-   **Points - 	'i' is not defined.:** <br>
-   ![JS Errors](assets/readme-assets/bugs/js/i-not-defined.png)
-
-   Declare i as a variable.
-
-   </details>
-
-
-   ## Console Log Warning
-   ![Console Log Warning](assets/readme-assets/validation/console-log-warning.png)
-
-   <details>
-      <summary style="font-weight:bold">Console Log Warning Review</summary>
-
-   On refreshing the page a warning was highlighted on the console log. I used Stack Overflow to investigate the potential impact of this warning.
-
-   Stack Overflow findings:
-
-      Basically you can ignore it. GitHub hosted pages disable FLoC, which is Google's 3rd party cookie alternative. GitHub, Microsoft, doesn't seems to like it.
-
-   Following this review and consultation with my mentor no action was required for this warning.
-
-   </details>
    
+   ## CSS Validator Results
+   - CSS not in scope for this project.
 
-   ## Lighthouse Accessibility Results:
-   ![Accessibility Review](assets/readme-assets/validation/accessibility.png)
+  
+   ## JS Validator Results
+   - JS not in scope for this project.
+
+
+   ## JS PEP8 Validation Results
+   TO BE ADDED
 
 
    ## Testing User Stories From User Experience (UX) Section
 
    <details>
-      <summary style="font-weight:bold">Client Goals</summary>
+      <summary style="font-weight:bold">Developer Goals</summary>
 
-   The client wants a simple and engaging game that is easy to use and will result in users returning to the site. 
-   * Sleek yet simple UX design.
-      - **REVIEW - UX design kept minimalist. Simple, clear colour scheme with engaging visuals to make the page look like it is being completed on a notepad as one might historically play hangman.**
+   As the developer I want to create a simple and engaging game that is easy to use and will result in users returning to the site. 
    * Easy to use functionality.
-      - **REVIEW - Simple intuitive buttons/functions. Built without overcomplicating and game requirements. All built on one page for simplicity.**
-   * Responsive for any device size to encourage mobile use as well as desktop use.
-      - **REVIEW - Built with responsive design for all devices. Structure of page amended to best suit the appropriate device size.**
-   * Links to the client's social network accounts to enhance their online presence.
-      - **REVIEW - Social network links located in footer with clear recognisable images.**
-   * Addictive gameplay to encourage return clients and drive positive word of mouth to encourage new users.
+      - **REVIEW - Simple intuitive inputs and eady to interpret content on the screen. Built without overcomplicating and game requirements.**
+   * Addictive gameplay to encourage return users and drive positive word of mouth to encourage new users.
       - **REVIEW - Used feedback from testers to build a game which has been well received with testers re-using for their own enjoyment.**
-   
-   ---
-   </details>
-
-   <details>
-      <summary style="font-weight:bold">Client Future Goals</summary>
-   
-   Points to consider for future development:
-   * Additional words and topics to be added to the hangman game.
-      - **REVIEW - Option to add additional lists to the game and increase the existing lists. Code written to make this addition easy to implement.**
-   * Allow for scores to be recorded and stored into a leader board.
-      - **REVIEW - For future enhancements utilising back-end development, it would be good to store user data and scores to generate a leader board encouraging re-use and competition between users.**
-   * Additional games and puzzles added to the site.
-      - **REVIEW - Use the site to develop a range of similar games with a consistent aesthetic appeal.**
-   * Generate advertisement revenue through the site.
-      - **REVIEW - Once web traffic is sufficient use the site to advertise products and services. This must be done in a way to minimise the negative impact on user experience.**
-
+   * Provide clear instruction as to the rules of the game.
+      - **REVIEW - Specific section of the game dedicated to detailing the rules which is easy to navigate to. Aslo has an external video link providing further instruction if required.**
+   * Set a range of difficulties to allow user progression and continued engagment.
+      - **REVIEW - 3 game difficulties available to the user. Each difficulty has a diffent size of board and number of mines.**
+   * Record winning scores based on difficulty and completion time to promote re-vistiation and competition between users.
+      - **REVIEW - User name, game completion time and diffulctly recorded with the top 5 scores per difficulty fed back to the user in the form of the scoreboard.**
+   * Build in flag functionality to allow users to mark cells they believe to have mines.
+      - **REVIEW - This functionality has been built into the game. Each time a user makes a guess they are asked if they wish to place a flag. Flags will appear as a 'F'.**
+   * Build a appealing user interface whilst observing the limitations of the project scope(command-line application).
+      - **REVIEW - ASCII art, use of pyfiglet, a clear function using os and colorama to colour and brighted validations were used to make tha console game more appealing to the user. Selection options where spread over one line to give the impression of a games interface page.**
+      **I also increased the console size to better accomodate the minesweeper board size.**
    ---
    </details>
 
    <details>
       <summary style="font-weight:bold">First-Time Visitor Goals</summary>
+      <summary style="font-weight:bold">First-Time User Goals</summary>
 
-   * Immediately engaged by the UX design.
-      - **REVIEW - Engaging gameplay and visuals developed based on user feedback to ensure an immediate and continued interest in the game.**
    * Understand the purpose of the site.
       - **REVIEW - Very clear game purpose and easy to locate and read rules where required.**
+   * Immediately engaged by easy to use yet challanging gameplay.
+      - **REVIEW - Engaging gameplay and visuals developed based on user feedback to ensure an immediate and continued interest in the game.**
+   * Invoke nosatalgia.
+      - **REVIEW - The use of an old school console based interface works well with the retro gameplay of this classic.**
    * Simple intuitive menu navigation.
-      - **REVIEW - Menus built to stand out using colour differentiation. Always easily identified on the screen.**
-   * Intuitive content and links to social media.
-      - **REVIEW - Social Media links easily identifiable and located on the screen.**
-   * Readable and aesthetically pleasing on all devices.
-      - **REVIEW - Game structure amended to best present on each device size. Smooth responsive alterations on reducing screen size.**
+      - **REVIEW - Clear navigational instructions provided throughout the game with validation errors to aide the user if they enter invalid info.**
+   * Rules easliy located and understood.
+      - **REVIEW - Rules located in their own section with clear menu navigation leading to them.**
 
    ---
    </details>
 
    <details>
-      <summary style="font-weight:bold">Returning Visitor Goals</summary>
+      <summary style="font-weight:bold">Returning User Goals</summary>
    
-   * Revisit to replay game to try different topics.
-      - **REVIEW - Multiple topics generated to keep people of different interests engaged. On completion of a topic, it will be unusable (until game reset) giving the user a feeling of accomplishment.**
-   * Revisit to replay game to beat previous score.
-      - **REVIEW - Accumulating score gives a challenge to users to see how high a score they can generate and try to beat this on re-visits.**
-   * Revisit to locate social media links to client.
-      - **REVIEW - Social Media links available for anyone trying to link in with the client (These are not set to real accounts for this project due to a fictional client).**
+   * Use the scoreboard to improve their scores and compete with other users.
+      - **REVIEW - Scoreboard set up using an API with google sheets to record the winning times by the user and present back the top 5 for each difficulty setting.**
+   * Tailor the difficulty to their experience with the game.
+      - **REVIEW - 3 difficulty settings created with varyious board sizes and number of mines.**
 
    </details>
 
 
    ## Further Testing
    * Tested across Google Chrome, Safari, Microsoft Edge, Fire Fox browsers on both Mac and Windows.
-   * Viewed on a variety of devices using Web Developer Tools as well as several live desktop, iPad and mobile devices. 
-   * Each page tested by developer and friends to ensure functionality worked as expected.
+   * Gameplay and validations tested by developer and friends to ensure functionality worked as expected.
    * Issued to Slack community to review and provide feedback on.
 
 
    ## Development Bugs
 
    <details>
-      <summary style="font-weight:bold">Menu Toggle Issue</summary>
+      <summary style="font-weight:bold">Add Value Function</summary>
    
-   On closing settings or rules using the close button on a small screen the menu remains open. I want this to close to improve aesthetics and reduce required button clicks when returning to game.
+   **Add Value Function Initial Issue:**<br>
 
-   ![Leave Settings Img](assets/readme-assets/bugs/develoment/leave-settings.png)
+   ![Add Value One](readme_assets/bugs/add-val/bug-add-val-one.png)
 
-   ![Leave Settings Img](assets/readme-assets/bugs/develoment/small-menu.png)
+   When calling the cell check via a list call the min/max function duplicated checks when the cells were on the perimeter of the grid.
 
-   Image shows that after ‘Leave Settings’ is selected the menu remains on screen until the ? icon is selected again.
+   If it was checking a -1 it would check as a 0 and then it would check the 0 again on the next loop.
 
-   Another issue this caused was that if the rules or settings content were opened on a small screen and the ? icon was clicked it would toggle the menu off and need to be clicked again to open the menu options.
+   ___
 
-   The final issue with the toggle option on the ? icon was that when it was set to on and the screen size was changed to large, when rules or settings were opened and the screen was returned to small the menu overlapped the rules or settings content.
-
-   ![Leave Settings Img](assets/readme-assets/bugs/develoment/overlap-menu.png)
-
-   Image shows the menu overlapping rules and settings content.
-
-   By adding the matchMedia code and moving the rules and settings in front of the small screen menu with a CSS z-index of 2 the functionality works as intended.
+   **Created a for loop to run through neighbouring cells:**<br>
    
-   <br>
+   ![Add Value Two](readme_assets/bugs/add-val/bug-add-val-two.png)
 
-   **Code block to resolve:**
+   The issue with this fix was that it was searching for cells outside of the grid e.g. -1, -1. This resulted in it identifying mines at the end of the previous column.
+   
+   To resolve this, I looked to implement the min max function I used when searching list items in the previous code. This should work as it is setting a range not looking for specific items and therefore duplicating.
 
-      if (matchMedia("(min-width: 821px)").matches) {
-            postIt.className = "post-it-contents";
-      }
-      else {
-            postIt.classList.toggle("select");
-      }
+   ___
+
+   **Marked up solution:**<br>
+
+   ![Add Value Three](readme_assets/bugs/add-val/bug-add-val-three.png)
+
+   Implemented the min max to the range to keep the review of neighbouring cells to within the grid coordinates. Needed to add +2 to the top limit as this would not be included (range goes up to top limit e.g. 1,10 goes 0-9.
+   
+   Used comments to check the progress of the code for each loop to easily identify issues and understand where to place the board update.
+
+   ___
+
+   **Working solution:**<br>
+
+   ![Add Value Four](readme_assets/bugs/add-val/bug-add-val-four.png)
+
+   Solution works as required.
 
    ___
 
    </details>
 
    <details>
-      <summary style="font-weight:bold">Canvas Re-Size</summary>
+      <summary style="font-weight:bold">Failure To Update requirements.txt File</summary>
    
-   When I initially drew the hangman on the canvas, I had an issue if the screen was re-sized. The image would not re-size along with it.
+   **Error experienced:**<br>
 
-   By implementing an event listener for window re-size and calculating the canvas images based on a percentage of the canvas height and width I was able to resolve this issue.
+   ![Requirements.txt](readme_assets/bugs/requirements/requirements.png)
+   
+   I failed to update the requiements.txt file with the module i neede to run my code. As a result when it was uploaded and run through Heroku it gave the above error.
 
-   ![Leave Settings Img](assets/readme-assets/bugs/develoment/hangman-resize.png)
+   Following a conversation with a Code Institute Tutor I realised my mistake and he showed me how to update this file automatically using the following comand:<br>
+   pip freeze > requirements.txt
 
-   Image shows canvas not re-sizing to match screen change.
+   ![pip3 freeze](readme_assets/bugs/requirements/pip3-freeze.png)
   
    <br>
 
-   **Code block to resolve:**
+   ___
 
-      window.addEventListener("resize", function() {
-        canvas.width = canvasSize.clientWidth;
-        canvas.height = canvasSize.clientHeight;
-        hangmanDraw();
-      });
+   </details>
 
-   The above code block shows how when the screen size is changed the canvas re-sizes and redraws the required elements.
-
-      function drawBase() {
-        ctx.fillRect(canvas.width * 0.2, canvas.height * 0.9, canvas.width * 0.6, 5);
-      }
+   <details>
+      <summary style="font-weight:bold">Rules Title</summary>
    
-   The above code block shows a canvas element calculated based on canvas dimensions.
+   xxx
+
+   ![xxx]()
+  
+   <br>
 
    ___
 
    </details>
 
    <details>
-      <summary style="font-weight:bold">Underscore Overlap</summary>
+      <summary style="font-weight:bold">Username Accepted Space</summary>
    
-   When testing the game, it was identified that for long words the underscores overlapped the word output container.
+   xxx
 
-   ![Leave Settings Img](assets/readme-assets/bugs/develoment/underscores-overlap.jpg)
+   ![xxx]()
+  
+   <br>
 
-   However, when some of the letters were presented as text it did not.
+   ___
 
-   ![Leave Settings Img](assets/readme-assets/bugs/develoment/word-fits.jpg)
+   </details>
 
-   I identified that this was because in the JS code I had put spaces around the underscores. However, I had also set the CSS word output to have a letter spacing of 0.8rem.
+   <details>
+      <summary style="font-weight:bold">Scoreboard Presentation Issue</summary>
+   
+   xxx
   
    <br>
 
    **Code blocks detailing issue:**
 
-   JS code:
+   Python code:
 
-      function underscoreWord() {
-         for (let i = 0; i < selectedWord.length; i++) { 
-            shownWord[i] = " _ "; //remove spaces from around the underscore
-            }
-        
-            wordOutput.innerHTML = shownWord.join(" ");
-         }
-   
-   CSS code:
-
-      #word-output {
-         height: 54px;
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         font-size: 2rem;
-         font-weight: bold;
-         letter-spacing: .8rem; // already has spacing between letters
-         background-color: white;
-         border: 2px solid black;
-         border-radius: 1.2rem;
-         margin-bottom: 27px;
-      }
-
-   By removing the spacing from the underscore in the JS code, it resolved the issue. 
-
-   Despite this I later decided to make the maximum word length 6 letters. This was because when the text size was reduced to fit the output container for a small screen it was becoming challenging to read the letters.
-
-   In future developments the word output container could be increased to allow for longer words and potentially sentences. 
+      if len(user_name) > 0 and len(user_name) <= 10:
+                while len(user_name) < 10:
+                    user_name = user_name + " "
 
    </details>
    
