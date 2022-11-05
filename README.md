@@ -874,7 +874,50 @@
    - JS not in scope for this project.
 
    ## JS PEP8 Validation Results
-   TO BE ADDED
+   - At the time of this project PEP8online.com was down so I added a PEP8 validator to the Gitpod Workspace using the 'pip3 install pycodestyle' command.
+
+   This identified a number of validation issues across my 3 py files which mostly related to:
+   1. line to long
+   2. trailing whitespace
+
+   ![All Errors](readme_assets/testing/all-files.png)
+
+   When researching PEP8 I identified an auto validation command that could be used to resolve the majority of the validation errors which I used on the 3 py files I created as part of this project:
+
+      $ autopep8 --in-place --aggressive --aggressive <filename>
+
+   This command reduced the number of errors significantly:
+
+   ![Reduced Errors](readme_assets/testing/after-terminal-command.png)
+
+   I then went in to the game_layout.py and run.py file to manually update the remaining issues.
+
+   ___
+   
+   **game_play.py:**<br>
+   I ran manual updates on the outstanding issues until only 2 remained.
+
+   ![game_layout Final](readme_assets/testing/game-layout-final.png)
+
+   These 2 lines where intentionally left as i felt breaking the line length would negatively impact the readability of the code:
+
+   Error 1 (line too long (85 > 79 characters)pycodestyleE(501)[Ln 168, Col 80]:
+
+      self.user_board[x][y] = f"  {str(x +1)}  |  {str(self.user_board[x][y])}"
+
+   Error 2 (line too long (100 > 79 characters)pycodestyleE(501)[Ln 210, Col 80]:
+
+      self.user_board[x][y] = f"  {str(x +1)}  |  {str(self.user_board[x][y])}"
+
+   ___
+   
+   **run.py:**<br>
+   I ran manual updates on the outstanding issues until they were all resolved.
+   I do feel this slightly impacted the readability of some of the printed strings and user input fields but I aligned the wrapped lines content to make it as clear as possible.
+
+   **gitpod.yml:**<br>
+   There were some additional warnings raised for gitpod.yml which related to a jupiter extension. These were not in scope and had no impact on the live games functionality so were not addressed.
+
 
    ## Testing User Stories From User Experience (UX) Section
 
@@ -1133,6 +1176,7 @@
    * Sort lists by item in lists: [Iredra](https://stackoverflow.com/questions/36955553/sorting-list-of-lists-by-the-first-element-of-each-sub-list)
    * Tutorial on python Classes: [Corey Schafer](https://www.youtube.com/watch?v=ZDa-Z5JzLYM)
    * Tutorial on recursion: [Joe James](https://www.youtube.com/watch?v=wMNrSM5RFMc&t=387s)
+   * PEP8 auto validation update: [pypi.org](https://pypi.org/project/autopep8/)
    * Slack for project queries and testing
    * Stack Overflow used for generalised queries during development.
 
