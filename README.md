@@ -127,6 +127,8 @@
 
   <details>
       <summary style="font-weight:bold">Background</summary>
+   <br>
+
    Utilised a SVG file from https://freesvg.org:
    <br>
 
@@ -138,6 +140,7 @@
 
    <details>
       <summary style="font-weight:bold">Position of terminal</summary>
+   <br>
 
    Centred the terminal console on the page and increased its size to cols: 80, rows: 50 to accommodate the game layout.
    <br>
@@ -150,6 +153,8 @@
 
    <details>
       <summary style="font-weight:bold">Run program button</summary>
+   <br>
+
    Button also centred and colours changed to be innkeeping with the game theme and background colour scheme.
    <br>
 
@@ -161,6 +166,8 @@
 
    <details>
       <summary style="font-weight:bold">Favicon</summary>
+   <br>
+   
    Favicon updated for better user experience.
    <br>
    
