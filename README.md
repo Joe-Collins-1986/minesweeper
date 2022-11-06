@@ -69,6 +69,7 @@
 
    <details>
       <summary style="font-weight:bold">Developer Goals</summary>
+   <br>
 
    As the developer I want to create a simple and engaging game that is easy to use and will result in users returning to the site. 
    * Easy to use functionality.
@@ -84,6 +85,7 @@
 
    <details>
       <summary style="font-weight:bold">Developer Future Goals</summary>
+   <br>
    
    Points to consider for future development:
    * Potential to implement a more user-friendly interface such as tkinter or pygame (excluded as not in scope for this project).
@@ -95,7 +97,9 @@
 
    <details>
       <summary style="font-weight:bold">First-Time User Goals</summary>
+   <br>
 
+   Objectives for when a new user goes to the site for the first time:
    * Understand the purpose of the site.
    * Immediately engaged by easy to use yet challenging gameplay.
    * Invoke nostalgia.
@@ -107,7 +111,9 @@
 
    <details>
       <summary style="font-weight:bold">Returning User Goals</summary>
+   <br>
    
+   Objectives for when a user returns to the site:
    * Use the scoreboard to improve their scores and compete with other users.
    * Tailor the difficulty to their experience with the game.
 
@@ -157,7 +163,6 @@
    </details>
 
    ## Wireframes
-
    Only a skeleton plane has been developed for this project due to it being a command-line application and therefore having pre-set formatting.
 
    - [Skeleton Plane](https://www.figma.com/file/M0wxItI1Bx3Nh4LRIBNp1e/Untitled?node-id=0%3A1)
@@ -171,6 +176,7 @@
    <details>
       <summary style="font-weight:bold">Mind-Map</summary>
    <br>
+
    The below image provides an initial mind-map into what features might be appropriate for the game based on the set objectives.
 
    ![Mind Map](readme_assets/features/mind-map.png)
@@ -184,6 +190,7 @@
    <details>
       <summary style="font-weight:bold">Priority Matrix</summary>
    <br>
+
    The below maps out the feasibility of the features considered against the user value they provide to help establish the priority they have as part of the build.
 
    ![Priority Matrix](readme_assets/features/priority-matrix.png)
@@ -216,6 +223,7 @@
    <details>
       <summary style="font-weight:bold">Process Flow</summary>
    <br>
+
    The below details the process flow for the game from beginning to end.
 
    ![Process Flow](readme_assets/features/process-flow.png)<br>
@@ -229,6 +237,7 @@
    <details>
       <summary style="font-weight:bold">Functions Flow</summary>
    <br>
+
    The below demonstrates the key game functions and how they interact with each other. It also details the inclusion of the Gameplay class.
 
    ![Functions Flow](readme_assets/features/function-flow.png)<br>
@@ -242,6 +251,7 @@
    <details>
       <summary style="font-weight:bold">Class Requirements</summary>
    <br>
+
    The below breaks down the Gameplay class detailing it's purpose, class variables and methods.
 
    ![Class Requirements](readme_assets/features/class-breakdown.png)<br>
@@ -671,7 +681,6 @@
 
    ---
    
-
    <br>
 
    ---
@@ -798,6 +807,8 @@
    <br>
 
 # Further Development
+
+   Objectives to further enhance the site in the future:
    * Transfer to a more user-friendly interface.
    * Interface allowing responsive design would allow custom difficulty where the user can specify the board size and number on mines they desire.
    * Potential to add other games and create a home page for game selection.
@@ -807,13 +818,11 @@
 # Technologies Used
 
    ## Languages Used
-
    - HTML (not in scope but used to a minor extent)
    - CSS (not in scope but used to a minor extent)
    - Python
 
    ## Frameworks, Libraries and Programs Used
-
    1. Git:
       - Used for version control and to Push to GitHub.
    2. GitHub:
@@ -856,18 +865,18 @@
 
 # Testing
    ## HTML Validation
-   - HTML not in scope for this project.
+   HTML not in scope for this project.
 
    
    ## CSS Validation
-   - CSS not in scope for this project.
+   CSS not in scope for this project.
 
   
    ## JS Validation
-   - JS not in scope for this project.
+   JS not in scope for this project.
 
    ## Python PEP8 Validation
-   - At the time of this project PEP8online.com was down so I added a PEP8 validator to the Gitpod Workspace using the 'pip3 install pycodestyle' command.
+   At the time of this project PEP8online.com was down so I added a PEP8 validator to the Gitpod Workspace using the 'pip3 install pycodestyle' command.
 
    This identified a number of validation issues across my 3 py files which mostly related to:
    1. line to long
@@ -917,7 +926,6 @@
    <details>
       <summary style="font-weight:bold">Developer Goals</summary>
    <br>
-   As the developer I want to create a simple and engaging game that is easy to use and will result in users returning to the site.
 
    * Easy to use functionality.
       - **REVIEW - Simple intuitive inputs and easy to interpret content on the screen. Built without overcomplicating and game requirements.**
@@ -975,6 +983,7 @@
 
    <details>
       <summary style="font-weight:bold">Add Value Function</summary>
+   <br>
    
    **Add Value Function Initial Issue:**<br>
 
