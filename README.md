@@ -127,8 +127,10 @@
 
   <details>
       <summary style="font-weight:bold">Background</summary>
-   Utilised a SVG file from https://freesvg.org:<br>
-    <img src="readme_assets/ux/backgound_img.svg" alt="explosion drawing" width="450px"/>
+   Utilised a SVG file from https://freesvg.org:
+   <br>
+
+   <img src="readme_assets/ux/backgound_img.svg" alt="explosion drawing" width="450px"/>
 
    ---
 
@@ -137,7 +139,9 @@
    <details>
       <summary style="font-weight:bold">Position of terminal</summary>
 
-   Centred the terminal console on the page and increased its size to cols: 80, rows: 50 to accommodate the game layout.<br>
+   Centred the terminal console on the page and increased its size to cols: 80, rows: 50 to accommodate the game layout.
+   <br>
+
    <img src="readme_assets/ux/terminal-centred.png" alt="terminal positioning on the page" width="450px"/>
 
    ---
@@ -146,7 +150,9 @@
 
    <details>
       <summary style="font-weight:bold">Run program button</summary>
-   Button also centred and colours changed to be innkeeping with the game theme and background colour scheme.<br>
+   Button also centred and colours changed to be innkeeping with the game theme and background colour scheme.
+   <br>
+
    <img src="readme_assets/ux/button.png" alt="image of run program button" width="450px"/>
 
    ---
@@ -155,7 +161,9 @@
 
    <details>
       <summary style="font-weight:bold">Favicon</summary>
-   Favicon updated for better user experience.<br>
+   Favicon updated for better user experience.
+   <br>
+   
    <img src="readme_assets/ux/flavicon.png" alt="image of the favicon on the web tab" width="450px"/>
 
    ---
