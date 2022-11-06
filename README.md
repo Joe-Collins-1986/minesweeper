@@ -14,9 +14,8 @@
    - [Am I Responsive?](#am-i-responsive-link-to-responsive-review-website)
    - [Development Note on Responsive Design](#development-note-on-responsive-design)
 - [User Experience (UX)](#user-experience-ux)
-   - [Website Objectives](#website-objectives)
-   - [Website Design](#website-design)
-   - [Structure Non-Linear Plane](#structure-non-linear-plane)
+   - [Project Objectives](#project-objectives)
+   - [HTML/CSS Design](#htmlcss-design)
    - [Wireframes](#wireframes)
    - [Features](#features)
 - [Further Development](#further-development)
@@ -24,20 +23,20 @@
    - [Languages Used](#languages-used)
    - [Frameworks, Libraries & Programs Used](#frameworks-libraries-and-programs-used)
 - [Testing](#testing)
-   - [HTML Validator Results](#html-validator-results)
-   - [CSS Validator Results](#css-validator-results)
-   - [JS Validator Results](#js-validator-results)
-   - [Console Log Warning](#console-log-warning)
-   - [Lighthouse Accessibility Results](#lighthouse-accessibility-results)
+   - [HTML Validation](#html-validation)
+   - [CSS Validation](#css-validation)
+   - [JS Validation](#js-validation)
+   - [Python PEP8 Validation](#python-pep8-validation)
    - [Testing User Stories from User Experience (UX) Section](#testing-user-stories-from-user-experience-ux-section)
    - [Further Testing](#further-testing)
    - [Development Bugs](#development-bugs)
-   - [Key Learn](#key-learn)
+   - [Key Learns](#key-learns)
 - [Deployment](#deployment)
+   - [Set Up APIs Using Google Cloud](#set-up-apis-using-google-cloud)
    - [Set Up Local GitHub Repository](#set-up-local-github-repository)
    - [Repository Framework](#repository-framework)
    - [Update Repository](#update-repository)
-   - [GitHub Pages](#github-pages)
+   - [Heroku Deployment](#heroku-deployment)
 - [Credits](#credits)
    - [Development Resources](#development-resources)
    - [Media Resources](#media-resources)
@@ -862,18 +861,18 @@
    <br>
 
 # Testing
-   ## HTML Validation: 
+   ## HTML Validation
    - HTML not in scope for this project.
 
    
-   ## CSS Validator Results
+   ## CSS Validation
    - CSS not in scope for this project.
 
   
-   ## JS Validator Results
+   ## JS Validation
    - JS not in scope for this project.
 
-   ## JS PEP8 Validation Results
+   ## Python PEP8 Validation
    - At the time of this project PEP8online.com was down so I added a PEP8 validator to the Gitpod Workspace using the 'pip3 install pycodestyle' command.
 
    This identified a number of validation issues across my 3 py files which mostly related to:
@@ -1106,7 +1105,7 @@
    </details>
    
 
-   ## Key Learn
+   ## Key Learns
    As this was my first introduction to python, I was learning a lot as I went. I feel that for my future projects I will aim to:
 
    - Write smaller blocks of code. I feel this would improve the readability and maintainability of the code as a whole whilst also being easier to track my progress.
@@ -1115,7 +1114,7 @@
    <br>
 
 # Deployment
-   ## Set Up APIs using Google Cloud
+   ## Set Up APIs Using Google Cloud
    1. The following video details the steps required enabling:
       - Google Drive API (get credentials to securely access the Google files from the drive)
       - Google Sheets API<br>
