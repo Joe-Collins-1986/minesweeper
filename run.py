@@ -146,7 +146,7 @@ def rules(user_name):
 The objective of Minesweeper is to select every cell on the presented grid
 without selecting one that is hiding a mine.\n\n""")
 
-    input("\nHit 'Enter' to move onto the instructions\n")
+    input("Hit 'Enter' to move onto the instructions\n")
     cls()
     print(figlet_format("                      RULES", font="standard"))
     print("\033[4m" + "Instructions:")
