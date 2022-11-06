@@ -1,9 +1,3 @@
-# Tasks:
-- check links on TOC
-- pep8 and adding to the testing section of the readme.
-- put readme through word
-- links check
-
 # MINESWEEPER GAME
 
 # Table Of Contents
