@@ -924,7 +924,8 @@
    <details>
       <summary style="font-weight:bold">Developer Goals</summary>
    <br>
-   As the developer I want to create a simple and engaging game that is easy to use and will result in users returning to the site. 
+   As the developer I want to create a simple and engaging game that is easy to use and will result in users returning to the site.
+
    * Easy to use functionality.
       - **REVIEW - Simple intuitive inputs and easy to interpret content on the screen. Built without overcomplicating and game requirements.**
    * Addictive gameplay to encourage return users and drive positive word of mouth to encourage new users.
@@ -946,6 +947,7 @@
    <details>
       <summary style="font-weight:bold">First-Time User Goals</summary>
    <br>
+
    * Understand the purpose of the site.
       - **REVIEW - Very clear game purpose and easy to locate and read rules where required.**
    * Immediately engaged by easy to use yet challenging gameplay.
@@ -962,7 +964,8 @@
 
    <details>
       <summary style="font-weight:bold">Returning User Goals</summary>
-   <br>   
+   <br>
+
    * Use the scoreboard to improve their scores and compete with other users.
       - **REVIEW - Scoreboard set up using an API with google sheets to record the winning times by the user and present back the top 5 for each difficulty setting.**
    * Tailor the difficulty to their experience with the game.
@@ -1023,6 +1026,7 @@
    <details>
       <summary style="font-weight:bold">Failure To Update requirements.txt File</summary>
    <br>
+
    I failed to update the requiements.txt file with the modules I needed to run my code. As a result, when it was uploaded and run through Heroku it gave the following error.
 
    ![Requirements.txt](readme_assets/bugs/requirements/requirements.png)
@@ -1041,6 +1045,7 @@
    <details>
       <summary style="font-weight:bold">Rules Title</summary>
    <br>
+
    When testing the game on Heroku (which has a set console size) it was identified that when leaving rules the title was not clearing. This was because it was not in the viewable screen at the point of the cls function being called due to the amount of info on the page.
 
    ![Rules Title](readme_assets/bugs/rules-title/rules%20title.png)
@@ -1056,6 +1061,7 @@
    <details>
       <summary style="font-weight:bold">Scoreboard Presentation Issue</summary>
    <br>
+
    When testing and reviewing the scoreboard it became apparent that the format did not look good due to the variation in username lengths.
 
    ![Username Length](readme_assets/bugs/username/username-length.png)
@@ -1079,6 +1085,7 @@
    <details>
       <summary style="font-weight:bold">Username Accepted Space</summary>
    <br>
+   
    I wanted the users to enter a name between 1-10 characters long to be used in the scoreboard. To do this I used if statements and called validation errors if the user hit enter without typing anything or if they entered a username longer than 10 characters.
    
    ![Username Spaces](readme_assets/bugs/username/username-spaces.png)
