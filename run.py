@@ -23,7 +23,17 @@ SCOPE = [
 CREDS = Credentials.from_service_account_file("creds.json")
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
-SHEET = GSPREAD_CLIENT.open("Minesweeper_scoreboard")
+
+try:
+    SHEET = GSPREAD_CLIENT.open("Minesweeper_scoreboard")
+except BaseException:
+    cls()
+    print(
+        f"{Fore.RED}{Style.BRIGHT}We seem to be having an issue "
+        "accessing google sheets.\n"
+        "You will be able to play the game but your score won't be recorded.")
+    input("\nHit 'Enter' to continue\n")
+    cls()
 
 
 def home_page_img():
@@ -221,19 +231,25 @@ def return_scoreboard(level, user_name):
     Drop unessecary info (difficulty and time in seconds)
     Set 'Enter' to return to start_game function
     """
-    scoreboard_data = SHEET.worksheet(level)
-    all_scoreboard_data = scoreboard_data.get_all_values()
+    try:
+        scoreboard_data = SHEET.worksheet(level)
+        all_scoreboard_data = scoreboard_data.get_all_values()
 
-    # https://stackoverflow.com/questions/36955553/sorting-list-of-lists-by-the-first-element-of-each-sub-list
-    all_scoreboard_data.sort(key=lambda x: int(x[3]))
+        # https://stackoverflow.com/questions/36955553/sorting-list-of-lists-by-the-first-element-of-each-sub-list
+        all_scoreboard_data.sort(key=lambda x: int(x[3]))
 
-    print(figlet_format(level.capitalize() + " - Top 5", font="standard"))
+        print(figlet_format(level.capitalize() + " - Top 5", font="standard"))
 
-    for i in range(5):
-        all_scoreboard_data[i].pop(1)
-        all_scoreboard_data[i].pop(2)
-        str_all_scoreboard_data = "  |  ".join(all_scoreboard_data[i])
-        print(f"{i+1}. {str_all_scoreboard_data}")
+        for i in range(5):
+            all_scoreboard_data[i].pop(1)
+            all_scoreboard_data[i].pop(2)
+            str_all_scoreboard_data = "  |  ".join(all_scoreboard_data[i])
+            print(f"{i+1}. {str_all_scoreboard_data}")
+    except BaseException:
+        print(
+            f"{Fore.RED}{Style.BRIGHT}We seem to be having an issue "
+            "accessing the scoreboard at this time.\n"
+            "Please try again later after reloading the game.")
 
     input("\n\nHit 'Enter' to return to home page\n")
 
@@ -375,14 +391,14 @@ def play(board_size, no_mines, user_name):
         """
         if board.user_board[int(x_indices)][int(y_indices)] in (
                 f"  {str(x_axis)}  |  F", "F", "F  |"):
-
             dig_input = True
             while dig_input:
                 try:
                     print(
                         f"\nThis position ({x_axis}, "
                         f"{y_axis}) has a flag on it")
-                    dig = input("Would you like to dig anyway? (Y/N)\n").strip()
+                    dig = input("Would you like to dig anyway? "
+                                "(Y/N)\n").strip()
                     if dig.lower() not in ("y", "yes", "d", "dig", "n", "no"):
                         raise Exception("That is not a valid dig entry.")
                 except Exception as e:
@@ -479,10 +495,16 @@ def update_scoreboard(data, level):
     """
     print("\n............................................."
           "...................................\n")
-    print("\nUpdating scoreboard...\n")
-    scoreboard_colate_data = SHEET.worksheet(level)
-    scoreboard_colate_data.append_row(data)
-    print("Scoreboard updated successfully\n")
+    try:
+        print("\nUpdating scoreboard...\n")
+        scoreboard_colate_data = SHEET.worksheet(level)
+        scoreboard_colate_data.append_row(data)
+        print("Scoreboard updated successfully\n")
+    except BaseException:
+        print(
+            f"{Fore.RED}{Style.BRIGHT}We have been unable to "
+            "update the scoreboard due to connectivity issues.\n"
+            "We appologise for this inconvenience.")
     print("\n............................................."
           "...................................\n")
 
