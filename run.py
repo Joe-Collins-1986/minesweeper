@@ -114,7 +114,7 @@ def start_game(user_name):
         intro_nav = input(
             "  'P' to Play                    "
             "'R' for Rules                 "
-            "'S' for Scores\n\n").lower()
+            "'S' for Scores\n\n").strip().lower()
         cls()
         if intro_nav == "r":
             home_page = False
@@ -193,7 +193,7 @@ def scoreboard_selection(user_name):
         score_nav = input(
             "  'E' for Easy                   "
             "'M' for Medium                 "
-            "'H' for Hard\n\n").lower()
+            "'H' for Hard\n\n").strip().lower()
         cls()
         if score_nav in ("e", "m", "h"):
             if score_nav == "e":
@@ -235,7 +235,7 @@ def return_scoreboard(level, user_name):
         str_all_scoreboard_data = "  |  ".join(all_scoreboard_data[i])
         print(f"{i+1}. {str_all_scoreboard_data}")
 
-    input("\n\nHit 'Enter' to return to home page\n").lower()
+    input("\n\nHit 'Enter' to return to home page\n")
 
     start_game(user_name)
 
@@ -261,7 +261,7 @@ def difficulty(user_name):
         difficulty = input(
             "  'E' for Easy                 "
             "'M' for Medium                    "
-            "'H' for Hard\n\n").lower()
+            "'H' for Hard\n\n").strip().lower()
         if difficulty == "e":
             board_size = 5
             no_mines = 4
@@ -382,7 +382,7 @@ def play(board_size, no_mines, user_name):
                     print(
                         f"\nThis position ({x_axis}, "
                         f"{y_axis}) has a flag on it")
-                    dig = input("Would you like to dig anyway? (Y/N)\n")
+                    dig = input("Would you like to dig anyway? (Y/N)\n").strip()
                     if dig.lower() not in ("y", "yes", "d", "dig", "n", "no"):
                         raise Exception("That is not a valid dig entry.")
                 except Exception as e:
@@ -401,7 +401,7 @@ def play(board_size, no_mines, user_name):
                 try:
                     flag = input(
                         "\nWould you like to place a flag on this "
-                        "location (Y/N)\n")
+                        "location (Y/N)\n").strip()
                     if flag.lower() not in ("y", "yes", "f",
                                             "flag", "n", "no"):
                         raise Exception(f"That is not a valid flag entry.")
