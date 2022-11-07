@@ -817,6 +817,32 @@
 
    ---
 
+   #### API validations
+   If the game fails to link with Google Sheets the following validations will be presented.
+
+   ---
+
+   At the beginning of the game the user will be informed if the API with Google Sheets fails for any reason.
+
+   ![Non Coordinates](readme_assets/features/demo-features/validations/set-up-api-error.png)
+
+   ---
+
+   If the user tries to view the scoreboard and the API link fails, they will be presented with the following error message:
+
+   ![Non Coordinates](readme_assets/features/demo-features/validations/scoreboard-error.png)
+
+   ---
+
+   If the user wins the game but the API link is not working, they will be informed that the scoreboard will not update with their result.
+
+   ![Non Coordinates](readme_assets/features/demo-features/validations/update-score-error.png)
+
+
+   <br>
+
+   ___
+
    </details>
    
    <br>
