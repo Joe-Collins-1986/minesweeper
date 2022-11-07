@@ -80,9 +80,6 @@ class GameLayout:
         This number will then be assigned to the centeral cell
         if it is not a mine.
         """
-        # place max min to stop going outside of board perameters
-        # https://stackoverflow.com/questions/5996881/how-to-limit-a-number-to-be-within-a-specified-range-python
-
         for row in range(self.board_size):
             for col in range(self.board_size):
 

@@ -1198,6 +1198,7 @@
    * Validate Username with .strip(): Spencer Barriball - Mentor
    * Use of f-strings: [python.org](https://docs.python.org/3/tutorial/inputoutput.html)
    * Sort lists by item in lists: [Iredra](https://stackoverflow.com/questions/36955553/sorting-list-of-lists-by-the-first-element-of-each-sub-list)
+   * Min max range restrictions: [Mantis Toboggan](https://stackoverflow.com/questions/5996881/how-to-limit-a-number-to-be-within-a-specified-range-python)
    * Tutorial on python Classes: [Corey Schafer](https://www.youtube.com/watch?v=ZDa-Z5JzLYM)
    * Tutorial on recursion: [Joe James](https://www.youtube.com/watch?v=wMNrSM5RFMc&t=387s)
    * PEP8 auto validation update: [pypi.org](https://pypi.org/project/autopep8/)
