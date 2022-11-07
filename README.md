@@ -195,7 +195,7 @@
    The below image provides an initial mind-map into what features might be appropriate for the game based on the set objectives.
 
    ![Mind Map](readme_assets/features/mind-map.png)
-   If you have a LucidChart account, you can also view this Mind-Map [here](https://lucid.app/lucidspark/e0824881-e88c-4530-937e-03f8b923e9b2/edit?viewport_loc=-953%2C-1%2C3247%2C1693%2C0_0&invitationId=inv_d875bc30-8e51-4375-b0f2-c2a63991877b)
+   If you have a LucidChart account, you can also view this Mind-Map [here](https://lucid.app/lucidspark/e0824881-e88c-4530-937e-03f8b923e9b2/edit?viewport_loc=-953%2C-1%2C3247%2C1693%2C0_0&invitationId=inv_d875bc30-8e51-4375-b0f2-c2a63991877b).
    <br>
 
    ---
@@ -209,7 +209,7 @@
    The below maps out the feasibility of the features considered against the user value they provide to help establish the priority they have as part of the build.
 
    ![Priority Matrix](readme_assets/features/priority-matrix.png)
-   If you have a LucidChart account, you can also view this priority matrix [here](https://lucid.app/lucidspark/4b1e28c9-055d-4535-87d6-0f258286fe20/edit?viewport_loc=-2982%2C2311%2C4151%2C2041%2C0_0&invitationId=inv_67402cc9-c065-4b2a-ac9d-b9c360a0b967)
+   If you have a LucidChart account, you can also view this priority matrix [here](https://lucid.app/lucidspark/4b1e28c9-055d-4535-87d6-0f258286fe20/edit?viewport_loc=-2982%2C2311%2C4151%2C2041%2C0_0&invitationId=inv_67402cc9-c065-4b2a-ac9d-b9c360a0b967).
    <br>
 
    Following this review the build order of the features will be broken down into phases:
@@ -242,7 +242,7 @@
    The below details the process flow for the game from beginning to end.
 
    ![Process Flow](readme_assets/features/process-flow.png)<br>
-   If you have a LucidChart account, you can also view this process flow [here](https://lucid.app/lucidchart/6f4a551a-5f6e-43eb-9645-1834994d4e27/edit?viewport_loc=-136%2C-64%2C3656%2C1771%2CI~k5YlUlNz8V&invitationId=inv_4642de00-28f1-4eff-8cd1-fe81b08e943d)
+   If you have a LucidChart account, you can also view this process flow [here](https://lucid.app/lucidchart/6f4a551a-5f6e-43eb-9645-1834994d4e27/edit?viewport_loc=-136%2C-64%2C3656%2C1771%2CI~k5YlUlNz8V&invitationId=inv_4642de00-28f1-4eff-8cd1-fe81b08e943d).
    <br>
 
    ---
@@ -256,7 +256,7 @@
    The below demonstrates the key game functions and how they interact with each other. It also details the inclusion of the Gameplay class.
 
    ![Functions Flow](readme_assets/features/function-flow.png)<br>
-   If you have a LucidChart account, you can also view this functions flow [here](https://lucid.app/lucidchart/6f4a551a-5f6e-43eb-9645-1834994d4e27/edit?viewport_loc=-391%2C-96%2C4221%2C2189%2CMrp4u2cXQ7zq&invitationId=inv_4642de00-28f1-4eff-8cd1-fe81b08e943d)
+   If you have a LucidChart account, you can also view this functions flow [here](https://lucid.app/lucidchart/6f4a551a-5f6e-43eb-9645-1834994d4e27/edit?viewport_loc=-391%2C-96%2C4221%2C2189%2CMrp4u2cXQ7zq&invitationId=inv_4642de00-28f1-4eff-8cd1-fe81b08e943d).
    <br>
 
    ---
@@ -270,7 +270,7 @@
    The below breaks down the Gameplay class detailing it's purpose, class variables and methods.
 
    ![Class Requirements](readme_assets/features/class-breakdown.png)<br>
-   If you have a LucidChart account, you can also view this class requirements [here](https://lucid.app/lucidchart/6f4a551a-5f6e-43eb-9645-1834994d4e27/edit?viewport_loc=-1010%2C-180%2C3889%2C2017%2CVWq4R58lY_hn&invitationId=inv_4642de00-28f1-4eff-8cd1-fe81b08e943d)
+   If you have a LucidChart account, you can also view this class requirements [here](https://lucid.app/lucidchart/6f4a551a-5f6e-43eb-9645-1834994d4e27/edit?viewport_loc=-1010%2C-180%2C3889%2C2017%2CVWq4R58lY_hn&invitationId=inv_4642de00-28f1-4eff-8cd1-fe81b08e943d).
    <br>
 
    ---
@@ -292,7 +292,7 @@
 
    #### Console size and position
    Console was centred for a cleaner look.
-   It was also increased from '80 columns by 24 rows' to '80 columns by 50 rows' to allow for additional info to be provided without the user needing to scroll on the page. This was especially inportant for higher difficulty games as the grid took up a substancial amount of the space available.
+   It was also increased from '80 columns by 24 rows' to '80 columns by 50 rows' to allow for additional info to be provided without the user needing to scroll on the page. This was especially important for higher difficulty games as the grid took up a substantial amount of the space available.
 
    ![Console Position](readme_assets/features/demo-features/console-position.png)
    <br>
@@ -432,7 +432,7 @@
    ---
 
    #### Page 2
-   This details the instruction required to play the game.
+   This details the instructions required to play the game.
    It also has an input field which will take any user-input entered to move back to the home navigation page.
 
    ![Page 2](readme_assets/features/demo-features/rules-page-two.png)
@@ -492,7 +492,7 @@
 
    #### Page 2
    Once the game is won, the game duration is calculated and recorded alongside the difficulty and username. This is then imported to the google sheets.<br>
-   When the scoreboard page is called it presents back the top 5 scores on the specified google sheet whilst eliminating any unnecessary data (difficulty - because this is on the title, time in secs - shown in proper format)
+   When the scoreboard page is called it presents back the top 5 scores on the specified google sheet whilst eliminating any unnecessary data (difficulty - because this is on the title, time in secs - shown in proper format).
 
    ![Top 5](readme_assets/features/demo-features/scoreboard-top-five.png)
 
@@ -607,7 +607,7 @@
    ---
 
    Consideration was made for using an image instead of a 'F' on the board.
-   To do this considered using the following Unicode Character ("\U0001F6A9") 🚩
+   To do this I considered using the following Unicode Character ("\U0001F6A9"). 🚩
 
    However, the Unicode character took up 2 spaces on the board which did not look right as the rest was set up to deal with single characters. I considered changing the cell size on the board to accommodate this, but this would have meant that either the 1-character numbers or the flag would have been slightly off centre.
 
@@ -641,11 +641,11 @@
    ---
 
    Consideration was made for using an image instead of a '*' on the board.
-   To do this considered using the following Unicode Character ("\U0001F4A5") 💥
+   To do this I considered using the following Unicode Character ("\U0001F4A5"). 💥
 
    However, as with the flag the Unicode character took up 2 spaces on the board which did not look right as the rest was set up to deal with single characters. I considered changing the cell size on the board to accomodate this but this would have meant that either the 1 character numbers or the mine would have been slightly off centre.
 
-   In the end I opted to keep the '*' as I felt this was innkeeping with the games old school aesthetic being a console game.
+   In the end I opted to keep the '*' as I felt this was in keeping with the games old school aesthetic being a console game.
 
    <br>
 
@@ -723,7 +723,7 @@
 
    Validations have been added to the majority of the input fields to ensure that the game does not break, and that the user is advised as to what error they have made when inputting data.
 
-   All input fields use the .lower() function to allow the ability to check input regardless on case.
+   All input fields use the .lower() function to allow the ability to check input regardless of case.
 
    Any input fields without restrictions (i.e. hit 'Enter' to continue) do not have validations as the user can enter anything they wish and it will still work as required when they hit enter.
 
@@ -858,21 +858,21 @@
    7. Google Sheets:
       - Set up API to update with user scores and feedback to the game.
    8. os module:
-      - Used to clear console screen
+      - Used to clear console screen.
    9. time module:
-      - Used to time game
+      - Used to time game.
    10. math module:
-         - Round down seconds
+         - Round down seconds.
    11. random module:
-         - Used to randomly place mines
+         - Used to randomly place mines.
    12. pyfiglet module:
-         - Used to build aesthetically pleasing titles
+         - Used to build aesthetically pleasing titles.
    13. colorama module:
-         - Used to colour validations
+         - Used to colour validations.
    14. gspread:
-         - Used to read and update google sheets
+         - Used to read and update google sheets.
    15. google.oauth2.service_account:
-         - Allow API link to google sheets using credentials
+         - Allow API link to google sheets using credentials.
 
    See requirements.txt for versions of modules used.
 
@@ -894,7 +894,7 @@
    At the time of this project PEP8online.com was down so I added a PEP8 validator to the Gitpod Workspace using the 'pip3 install pycodestyle' command.
 
    This identified a number of validation issues across my 3 py files which mostly related to:
-   1. line to long
+   1. line too long
    2. trailing whitespace
 
    ![All Errors](readme_assets/testing/all-files.png)
@@ -916,7 +916,7 @@
 
    ![game_layout Final](readme_assets/testing/game-layout-final.png)
 
-   These 2 lines where intentionally left as i felt breaking the line length would negatively impact the readability of the code:
+   These 2 lines were intentionally left as i felt breaking the line length would negatively impact the readability of the code:
 
    Error 1 (line too long (85 > 79 characters)pycodestyleE(501)[Ln 168, Col 80]:
 
@@ -955,7 +955,7 @@
    * Build in flag functionality to allow users to mark cells they believe to have mines.
       - **REVIEW - This functionality has been built into the game. Each time a user makes a guess they are asked if they wish to place a flag. Flags will appear as a 'F'.**
    * Build a appealing user interface whilst observing the limitations of the project scope(command-line application).
-      - **REVIEW - ASCII art, use of pyfiglet, a clear function using os and colorama to colour and brighten validations were used to make the console game more appealing to the user. Selection options where spread over one line to give the impression of a games interface page.**
+      - **REVIEW - ASCII art, use of pyfiglet, a clear function using os and colorama to colour and brighten validations were used to make the console game more appealing to the user. Selection options were spread over one line to give the impression of a games interface page.**<br>
       **I also increased the console size to better accommodate the minesweeper board size.**
    ---
    </details>
@@ -992,7 +992,7 @@
    ## Further Testing
    * Tested across Google Chrome, Safari, Microsoft Edge, Fire Fox browsers on both Mac and Windows.
    * Gameplay and validations tested by developer and friends to ensure functionality worked as expected.
-   * Issued to Slack community to review and provide feedback on.
+   * Issued to Slack community to review and provide feedback.
 
    ## Development Bugs
 
@@ -1083,7 +1083,7 @@
 
    ![Username Length](readme_assets/bugs/username/username-length.png)
 
-   To resolve this a added a while loop that added a space to the end of the username whilst it was less than 10 characters long. This then presented correctly.
+   To resolve this I added a while loop that added a space to the end of the username whilst it was less than 10 characters long. This then presented correctly.
 
    ![Username Length Two](readme_assets/bugs/username/username-lenth-two.png)
   
@@ -1146,14 +1146,14 @@
    ## Repository Framework
    1. Select the repository on GitHub and open with GitPod (green button).
    2. Move JSON file (obtained when setting up APIs using Google Cloud) into GitPod workspace.
-   4. Rename to cred.json
+   4. Rename to cred.json.
    5. Copy client_email from creds file and go to Google Sheets and share the sheet with this copied email to grant access.
    6. Add cred.json file to gitignore.
    7. Create readme_assets folder to store images used in the README file.
    8. Create any additonal .py files requires to store classes or linked functions etc.
 
    ## Update Repository
-   1. When adding a new feature create a separate branch to work in safely typing into the terminal "git branch 'name of required feature/update'".
+   1. When adding a new feature create a separate branch to work in safely by typing into the terminal "git branch 'name of required feature/update'".
    2. Checkout the branch with "git checkout 'name of required feature/update'".
    3. Make updates and test using "python3 run.py".
    4. Once testing is complete add to Git staging area using "git add ."
@@ -1189,19 +1189,19 @@
    The following sources acted as guidance for understanding.
 
    * Code Institute Python Essentials modules for fundamental python functionality.
-   * Code Institute Love Sandwich Tutorial for API set up and settings the required constant variable to access and update Google Sheets.
+   * Code Institute Love Sandwich Tutorial for API set up and settings the required constant. variable to access and update Google Sheets.
    * Get a general idea of how to structure Minesweeper: [Tech With Tim](https://www.youtube.com/watch?v=RRYgc4YIhEs&t=194s)
    * Tutorial on Pyfiglet for titles: [Learn Scratch Tutorials](https://www.youtube.com/watch?v=U1aUteSg2a4)
    * Tutorial on Colorama for validatons: [Tech With Tim](https://www.youtube.com/watch?v=u51Zjlnui4Y)
    * ASCII guidance document for decorating home page: [theasciicode.com](https://theasciicode.com.ar/extended-ascii-code/block-graphic-character-ascii-code-219.html)
    * Clear function taken from stackoverflow: [stackoverflow (popcnt)](https://stackoverflow.com/questions/517970/how-to-clear-the-interpreter-console)
    * Validate Username with .strip(): Spencer Barriball - Mentor
-   * Use of f-strings [python.org](https://docs.python.org/3/tutorial/inputoutput.html)
+   * Use of f-strings: [python.org](https://docs.python.org/3/tutorial/inputoutput.html)
    * Sort lists by item in lists: [Iredra](https://stackoverflow.com/questions/36955553/sorting-list-of-lists-by-the-first-element-of-each-sub-list)
    * Tutorial on python Classes: [Corey Schafer](https://www.youtube.com/watch?v=ZDa-Z5JzLYM)
    * Tutorial on recursion: [Joe James](https://www.youtube.com/watch?v=wMNrSM5RFMc&t=387s)
    * PEP8 auto validation update: [pypi.org](https://pypi.org/project/autopep8/)
-   * Slack for project queries and testing
+   * Slack for project queries and testing.
    * Stack Overflow used for generalised queries during development.
 
    ## Media Resources
