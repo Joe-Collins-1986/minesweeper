@@ -553,6 +553,12 @@
       import pyfiglet
       from pyfiglet import figlet_format
 
+   To colour the flag red colorama is required.<br>
+
+      import colorama
+      from colorama import Fore, Style
+      colorama.init(autoreset=True)
+
    To take the start time of the game which will later be used to calculate the game duration in the win function.<br>
 
       import time
@@ -590,9 +596,9 @@
    ---
 
    #### Flags
-   Flags are placed by the user on cells they deduce have mines to ensure they do not forget and select them by accident.
+   Red flags are placed by the user on cells they deduce have mines to ensure they do not forget and select them by accident.
  
-   Each time a user makes a guess they will be asked if they would like to place a flag at these coordinates. If they select yes, then the board will show a 'F' in this cell on the next round.
+   Each time a user makes a guess they will be asked if they would like to place a flag at these coordinates. If they select yes, then the board will show a red 'F' in this cell on the next round.
 
    ![Place Flag](readme_assets/features/demo-features/gameplay/place-flag.png)
 
@@ -606,12 +612,12 @@
 
    ---
 
-   Consideration was made for using an image instead of a 'F' on the board.
+   Consideration was made for using an image instead of a red 'F' on the board.
    To do this I considered using the following Unicode Character ("\U0001F6A9"). 🚩
 
    However, the Unicode character took up 2 spaces on the board which did not look right as the rest was set up to deal with single characters. I considered changing the cell size on the board to accommodate this, but this would have meant that either the 1-character numbers or the flag would have been slightly off centre.
 
-   In the end I opted to keep the 'F' as I felt this was in keeping with the games old school aesthetic being a console game.
+   In the end I opted to keep the red 'F' as I felt this was in keeping with the games old school aesthetic being a console game. Making the flag red makes it easier for the user to identify especially on the larger boards.
 
    <br>
 
