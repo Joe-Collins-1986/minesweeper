@@ -41,21 +41,7 @@ def home_page_img():
     Present home page image
     """
     print(figlet_format("    MINESWEEPER", font="standard"))
-    print("""
-                                    _________
-                █                 /  _______  \\                 █
-             █  █  █             /  /       \\  \\             █  █  █
-              █████             /  / warning \\  \\             █████
-           ██ █████ ██         /  /   mines   \\  \\         ██ █████ ██
-              █████           /  /    ahead!   \\  \\           █████
-             █  █  █         /  /_______________\\  \\         █  █  █
-                █            \\_____________________/            █
-
-                              WELCOME TO MINESWEEPER
-
-................................................................................
-................................................................................
-        """)
+    print(intro_img)
 
 
 def get_username():
@@ -152,38 +138,14 @@ def rules(user_name):
     print("\033[4m" + "Instructional Video:\n")
     print("https://www.youtube.com/watch?v=dvvrOeITzG8\n\n")
     print("\033[4m" + "Mission Objective:")
-    print("""
-The objective of Minesweeper is to select every cell on the presented grid
-without selecting one that is hiding a mine.\n\n""")
+    print("The objective of Minesweeper is to select every cell on the "
+          "presented grid \nwithout selecting one that is hiding a mine.\n\n")
 
     input("Hit 'Enter' to move onto the instructions\n")
     cls()
     print(figlet_format("                      RULES", font="standard"))
     print("\033[4m" + "Instructions:")
-    print("""
-1. First select the difficulty you wish to play. Harder settings will have a
-   larger grid and more mines.\n
-2. You will then be presented with an empty grid.\n
-3. Select two coordinates (row, column) on the board.\n
-    - Once selected the grid cell will either display a number or a mine.\n
-    - If the cell has a mine, you lose.\n
-    - If the cell has a number, it will inform you of surrounding mines to
-      help you make educated decisions on your next guess.\n
-    - If for example the cell presents the number 2 it means there are two
-      mines next to the numbered cell.\n
-    - If there are no mines next to the selected cell then the number will
-      present as a 0 and it will open up the cells next to it
-      until it reaches cells that are next to a mine.\n
-4. If the numbers indicate that a cell has a mine it is good practice to mark
-   this with a flag to stop yourself forgetting later.\n
-    - You will be asked each time you select a cell if you wish to plant a
-      flag or dig.\n
-    - If a flag already exists on the cell that you select you will be asked
-      if you want to dig the spot or leave the flag.\n
-5. If you uncover every available cell without selecting those with mines
-   you win.\n
-6. And the most important step. Have fun...happy mining
-""")
+    print(rules_txt)
     input("\nHit 'Enter' to return to home page\n")
 
     start_game(user_name)
@@ -226,7 +188,7 @@ def scoreboard_selection(user_name):
 
 def return_scoreboard(level, user_name):
     """
-    Retrive data from google sheets and present as a scorecard
+    Retieve data from google sheets and present as a scorecard
     Sort order using recorded time at index 3 of each list in sheets list
     Drop unessecary info (difficulty and time in seconds)
     Set 'Enter' to return to start_game function
