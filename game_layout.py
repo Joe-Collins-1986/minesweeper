@@ -3,6 +3,10 @@ import pyfiglet
 from pyfiglet import figlet_format  # used for aesthetically pleasing titles
 from format import *  # used for clear function
 
+import colorama
+from colorama import Fore, Style  # Used to color warnings
+colorama.init(autoreset=True)  # reset color to default after use
+
 
 class GameLayout:
     """
@@ -115,7 +119,7 @@ class GameLayout:
 
         if f == "y" or f == "yes" or f == "f" or f == "flag":
             print("YOU HAVE PLANTED A FLAG")
-            self.user_board[x][y] = "F"
+            self.user_board[x][y] = f"{Fore.RED}{Style.BRIGHT}F{Style.RESET_ALL}"
             self.space_edge_guesses(x, y)
             self.flags_placed += 1
 

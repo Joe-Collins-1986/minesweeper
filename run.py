@@ -66,7 +66,7 @@ def get_username():
     print(intro_msg)
     while name_page:
         user_name = input(
-            "Please enter your name (maximum 10 characters)\n").strip().lower()
+            "Please enter your name (maximum 10 characters)\n").strip()
 
         if len(user_name) > 0 and len(user_name) <= 10:
             while len(user_name) < 10:
@@ -329,7 +329,9 @@ def play(board_size, no_mines, user_name):
 
                 if board.user_board[int(x_indices)][int(y_indices)] not in (
                         f"  {str(x_axis)}  |  _", "_", "_  |",
-                        f"  {str(x_axis)}  |  F", "F", "F  |"):
+                        f"  {str(x_axis)}  |  {Fore.RED}{Style.BRIGHT}F{Style.RESET_ALL}", 
+                        f"{Fore.RED}{Style.BRIGHT}F{Style.RESET_ALL}", 
+                        f"{Fore.RED}{Style.BRIGHT}F{Style.RESET_ALL}  |"):
                     raise Exception(
                         f"You have already dug {x_axis} {y_axis}\n")
 
@@ -352,7 +354,9 @@ def play(board_size, no_mines, user_name):
             2. If the cell is empty
         """
         if board.user_board[int(x_indices)][int(y_indices)] in (
-                f"  {str(x_axis)}  |  F", "F", "F  |"):
+                f"  {str(x_axis)}  |  {Fore.RED}{Style.BRIGHT}F{Style.RESET_ALL}", 
+                f"{Fore.RED}{Style.BRIGHT}F{Style.RESET_ALL}", 
+                f"{Fore.RED}{Style.BRIGHT}F{Style.RESET_ALL}  |"):
             dig_input = True
             while dig_input:
                 try:
