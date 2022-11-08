@@ -119,7 +119,8 @@ class GameLayout:
 
         if f == "y" or f == "yes" or f == "f" or f == "flag":
             print("YOU HAVE PLANTED A FLAG")
-            self.user_board[x][y] = f"{Fore.RED}{Style.BRIGHT}F{Style.RESET_ALL}"
+            self.user_board[x][y] = (f"{Fore.RED}{Style.BRIGHT}" +
+                                     f"F{Style.RESET_ALL}")
             self.space_edge_guesses(x, y)
             self.flags_placed += 1
 

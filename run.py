@@ -329,8 +329,9 @@ def play(board_size, no_mines, user_name):
 
                 if board.user_board[int(x_indices)][int(y_indices)] not in (
                         f"  {str(x_axis)}  |  _", "_", "_  |",
-                        f"  {str(x_axis)}  |  {Fore.RED}{Style.BRIGHT}F{Style.RESET_ALL}", 
-                        f"{Fore.RED}{Style.BRIGHT}F{Style.RESET_ALL}", 
+                        f"  {str(x_axis)}  |  " +
+                        f"{Fore.RED}{Style.BRIGHT}F{Style.RESET_ALL}",
+                        f"{Fore.RED}{Style.BRIGHT}F{Style.RESET_ALL}",
                         f"{Fore.RED}{Style.BRIGHT}F{Style.RESET_ALL}  |"):
                     raise Exception(
                         f"You have already dug {x_axis} {y_axis}\n")
@@ -354,8 +355,9 @@ def play(board_size, no_mines, user_name):
             2. If the cell is empty
         """
         if board.user_board[int(x_indices)][int(y_indices)] in (
-                f"  {str(x_axis)}  |  {Fore.RED}{Style.BRIGHT}F{Style.RESET_ALL}", 
-                f"{Fore.RED}{Style.BRIGHT}F{Style.RESET_ALL}", 
+                f"  {str(x_axis)}  |  " +
+                f"{Fore.RED}{Style.BRIGHT}F{Style.RESET_ALL}",
+                f"{Fore.RED}{Style.BRIGHT}F{Style.RESET_ALL}",
                 f"{Fore.RED}{Style.BRIGHT}F{Style.RESET_ALL}  |"):
             dig_input = True
             while dig_input:
