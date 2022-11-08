@@ -162,7 +162,8 @@ class GameLayout:
         last columns are guessed.
         """
         if y == 0:
-            self.user_board[x][y] = f"  {str(x +1)}  |  {str(self.user_board[x][y])}"
+            self.user_board[x][y] = f"  {str(x +1)}  |  " + \
+                                    f"{str(self.user_board[x][y])}"
         elif y == self.board_size - 1:
             self.user_board[x][y] = str(self.user_board[x][y]) + "  |"
 
@@ -204,4 +205,5 @@ class GameLayout:
             top_of_grid = top_of_grid + "______"
             column_no = column_no + "  " + str(i + 2) + "   "
 
-        return f"{column_no}\n{top_of_grid}\n{self.side_lines}\n{grid_layout}\n{self.row_seperator}"
+        return f"{column_no}\n{top_of_grid}\n{self.side_lines}" + \
+               f"\n{grid_layout}\n{self.row_seperator}"
