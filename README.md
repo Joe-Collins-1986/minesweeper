@@ -42,7 +42,7 @@
    ## Live Project [*(link to live project)*](https://minesweeper-python-project.herokuapp.com/)
 
    ## Project Introduction
-   (**Note:** The aim of this project will be to develop the classic game 'Minesweeper'. This game will be developed using Python and will be deployed using mock terminal on the Heroku platform.
+   The aim of this project will be to develop the classic game 'Minesweeper'. This game will be developed using Python and will be deployed using mock terminal on the Heroku platform.
 
    Minesweeper is a challenging single player logic game where the user must select tiles on a grid without hitting a mine. If the user successfully selects a tile without hitting a mine, then the tile will provide information as to whether a mine or multiple mines are hidden within its neighbouring tiles. This is presented in the form of numbers, a tile with 3 mines in neighbouring tiles will present the user with the number 3.
 
@@ -937,29 +937,14 @@
 
    ___
    
-   **game_play.py:**<br>
-   I ran manual updates on the outstanding issues until only 2 remained.
-
-   ![game_layout Final](readme_assets/testing/game-layout-final.png)
-
-   These 2 lines were intentionally left as i felt breaking the line length would negatively impact the readability of the code:
-
-   Error 1 (line too long (85 > 79 characters)pycodestyleE(501)[Ln 168, Col 80]:
-
-      self.user_board[x][y] = f"  {str(x +1)}  |  {str(self.user_board[x][y])}"
-
-   Error 2 (line too long (100 > 79 characters)pycodestyleE(501)[Ln 210, Col 80]:
-
-      self.user_board[x][y] = f"  {str(x +1)}  |  {str(self.user_board[x][y])}"
-
-   ___
-   
-   **run.py:**<br>
+   **game_play.py & run.py:**<br>
    I ran manual updates on the outstanding issues until they were all resolved.
    I do feel this slightly impacted the readability of some of the printed strings and user input fields but I aligned the wrapped lines content to make it as clear as possible.
 
+   ___
+   
    **gitpod.yml:**<br>
-   There were some additional warnings raised for gitpod.yml which related to a jupiter extension. These were not in scope and had no impact on the live games functionality so were not addressed.
+   There were some additional warnings raised for gitpod.yml which related to a jupiter extension. These were not in scope and had no impact on the live game functionality so were not addressed.
 
 
    ## Testing User Stories From User Experience (UX) Section
